@@ -1,0 +1,12 @@
+# Please read descriptions in 'mc.inp' file for more detail.
+
+GEO_GLOBAL
+
+SURFACE_BEGIN
+    CYLINDER  name=ps_boundary center=0,0,100    height=0,0,1     radius=20
+    CYLINDER  name=target      center=0,0,0      height=0,0,0.05  radius=2
+SURFACE_END
+
+REGION ps_boundary  +ps_boundary
+REGION target       +target
+REGION void         -target & -ps_boundary

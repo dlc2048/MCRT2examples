@@ -1,0 +1,17 @@
+# Example of STL model import
+# Sappho torso model
+# 
+# builder command
+# > RT2builder -i world.inp
+#
+# viewer command (condition for viewer.jpg image in example folder)
+# > RT2viewer -e 0 0 200
+
+# Surfaces
+SURFACE_BEGIN
+    MODEL name=torso    file=models/Sapphos_Head_Refined.stl scale=5,5,5
+SURFACE_END
+
+# Region
+REGION torso  +torso
+REGION void   -torso

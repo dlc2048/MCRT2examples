@@ -1,0 +1,185 @@
+# Please read descriptions in 'mc_xray.inp' file for more detail.
+
+$ESCALE$  1.001
+$ESCALEI$ 0.999
+
+GEO_GLOBAL stepsize=2e-7 error_tolerance=1
+
+ROT_DEFI name=trans_global delta=-4.5,-16.5,-57.5
+ROT_DEFI name=zoom         affine=$ESCALE$,0,0,0,0,$ESCALE$,0,0,0,0,$ESCALE$,0
+ROT_DEFI name=zoomi        affine=$ESCALEI$,0,0,0,0,$ESCALEI$,0,0,0,0,$ESCALEI$,0
+ROT_DEFI name=trans_r9     delta=4.42415,20.00184,52.71968
+ROT_DEFI name=trans_r9i    delta=-4.42415,-20.00184,-52.71968
+ROT_DEFI name=trans_r10    delta=4.90167,20.00184,52.71968
+ROT_DEFI name=trans_r10i   delta=-4.90167,-20.00184,-52.71968
+ROT_DEFI name=trans_r11    delta=4.66291,20.02472,52.88286
+ROT_DEFI name=trans_r11i   delta=-4.66291,-20.02472,-52.88286
+ROT_DEFI name=trans_r12    delta=4.66291,20.25481,53.74157
+ROT_DEFI name=trans_r12i   delta=-4.66291,-20.25481,-53.74157
+ROT_DEFI name=trans_cat    delta=0,0,0.001
+ROT_DEFI name=trans_t1     delta=4.66291,19.30158,41.43814
+ROT_DEFI name=trans_t1i    delta=-4.66291,-19.30158,-41.43814
+ROT_DEFI name=trans_b20    delta=4.66291,21.76803,102.1025
+ROT_DEFI name=trans_b20i   delta=-4.66291,-21.76803,-102.1025
+
+# Surfaces
+SURFACE_BEGIN
+    TRANSFORM_BEGIN target=trans_global
+        MODEL name=body1            file=models/body1.stl            scale=0.1,0.1,0.1  # mm
+        MODEL name=body2            file=models/body2.stl            scale=0.1,0.1,0.1  # mm
+        MODEL name=body3            file=models/body3.stl            scale=0.1,0.1,0.1  # mm
+        MODEL name=rear1            file=models/rear1.stl            scale=0.1,0.1,0.1  # mm
+        MODEL name=rear2            file=models/rear2.stl            scale=0.1,0.1,0.1  # mm
+        MODEL name=rear3            file=models/rear3.stl            scale=0.1,0.1,0.1  # mm
+        MODEL name=rear4            file=models/rear4.stl            scale=0.1,0.1,0.1  # mm
+        MODEL name=rear5            file=models/rear5.stl            scale=0.1,0.1,0.1  # mm
+        MODEL name=rear6            file=models/rear6.stl            scale=0.1,0.1,0.1  # mm
+        MODEL name=rear7            file=models/rear7.stl            scale=0.1,0.1,0.1  # mm
+        MODEL name=rear8            file=models/rear8.stl            scale=0.1,0.1,0.1  # mm
+		TRANSFORM_BEGIN target=trans_t1
+		    TRANSFORM_BEGIN target=zoomi
+				TRANSFORM_BEGIN target=trans_t1i
+					MODEL name=trigger1         file=models/trigger1.stl         scale=0.1,0.1,0.1  # mm
+				TRANSFORM_END
+			TRANSFORM_END
+		TRANSFORM_END
+        MODEL name=trigger2         file=models/trigger2.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=trigger3         file=models/trigger3.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=trigger4         file=models/trigger4.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=trigger5         file=models/trigger5.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=trigger6         file=models/trigger6.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=trigger7         file=models/trigger7.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=trigger8         file=models/trigger8.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=trigger9         file=models/trigger9.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=trigger10        file=models/trigger10.stl        scale=0.1,0.1,0.1  # mm
+        MODEL name=trigger11        file=models/trigger11.stl        scale=0.1,0.1,0.1  # mm
+        MODEL name=trigger12        file=models/trigger12.stl        scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel2          file=models/barrel2.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel3          file=models/barrel3.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel4          file=models/barrel4.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel5          file=models/barrel5.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel6          file=models/barrel6.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel7          file=models/barrel7.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel8          file=models/barrel8.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel9          file=models/barrel9.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel10         file=models/barrel10.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel11         file=models/barrel11.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel12         file=models/barrel12.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel13         file=models/barrel13.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel14         file=models/barrel14.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel15         file=models/barrel15.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel16         file=models/barrel16.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel17         file=models/barrel17.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel18         file=models/barrel18.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=barrel19         file=models/barrel19.stl         scale=0.1,0.1,0.1  # mm
+		TRANSFORM_BEGIN target=trans_b20
+		    TRANSFORM_BEGIN target=zoom
+				TRANSFORM_BEGIN target=trans_b20i
+					MODEL name=barrel20         file=models/barrel20.stl         scale=0.1,0.1,0.1  # mm
+				TRANSFORM_END
+			TRANSFORM_END
+		TRANSFORM_END
+        MODEL name=receiver1        file=models/receiver1.stl        scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver2        file=models/receiver2.stl        scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver3        file=models/receiver3.stl        scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver4        file=models/receiver4.stl        scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver5        file=models/receiver5.stl        scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver6        file=models/receiver6.stl        scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver7        file=models/receiver7.stl        scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver8        file=models/receiver8.stl        scale=0.1,0.1,0.1  # mm
+		TRANSFORM_BEGIN target=trans_r9
+		    TRANSFORM_BEGIN target=zoom
+				TRANSFORM_BEGIN target=trans_r9i
+					MODEL name=receiver9        file=models/receiver9.stl        scale=0.1,0.1,0.1  # mm
+				TRANSFORM_END
+			TRANSFORM_END
+		TRANSFORM_END
+		TRANSFORM_BEGIN target=trans_r10
+		    TRANSFORM_BEGIN target=zoom
+				TRANSFORM_BEGIN target=trans_r10i
+					MODEL name=receiver10       file=models/receiver10.stl       scale=0.1,0.1,0.1  # mm
+				TRANSFORM_END
+			TRANSFORM_END
+		TRANSFORM_END
+		TRANSFORM_BEGIN target=trans_r11
+		    TRANSFORM_BEGIN target=zoom
+				TRANSFORM_BEGIN target=trans_r11i
+					MODEL name=receiver11       file=models/receiver11.stl       scale=0.1,0.1,0.1  # mm
+				TRANSFORM_END
+			TRANSFORM_END
+		TRANSFORM_END
+		TRANSFORM_BEGIN target=trans_r12
+		    TRANSFORM_BEGIN target=zoom
+				TRANSFORM_BEGIN target=trans_r12i
+					MODEL name=receiver12       file=models/receiver12.stl       scale=0.1,0.1,0.1  # mm
+				TRANSFORM_END
+			TRANSFORM_END
+		TRANSFORM_END
+        MODEL name=receiver13       file=models/receiver13.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver14       file=models/receiver14.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver15       file=models/receiver15.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver16       file=models/receiver16.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver17       file=models/receiver17.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver18       file=models/receiver18.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver19       file=models/receiver19.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver20       file=models/receiver20.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver21       file=models/receiver21.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver22       file=models/receiver22.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver23       file=models/receiver23.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver24       file=models/receiver24.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver25       file=models/receiver25.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver26       file=models/receiver26.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=receiver27       file=models/receiver27.stl       scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet1          file=models/bullet1.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet2          file=models/bullet2.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet3          file=models/bullet3.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet4          file=models/bullet4.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet5          file=models/bullet5.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet6          file=models/bullet6.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet7          file=models/bullet7.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet8          file=models/bullet8.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet9          file=models/bullet9.stl          scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet10         file=models/bullet10.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet11         file=models/bullet11.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet12         file=models/bullet12.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet13         file=models/bullet13.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet14         file=models/bullet14.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet15         file=models/bullet15.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet16         file=models/bullet16.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet17         file=models/bullet17.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet18         file=models/bullet18.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet19         file=models/bullet19.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet20         file=models/bullet20.stl         scale=0.1,0.1,0.1  # mm
+        MODEL name=bullet21         file=models/bullet21.stl         scale=0.1,0.1,0.1  # mm
+		TRANSFORM_BEGIN target=trans_cat
+			MODEL name=catridge_case    file=models/catridge_case.stl    scale=0.1,0.1,0.1  # mm
+		TRANSFORM_END
+        MODEL name=webbing_metal1   file=models/webbing_metal1.stl   scale=0.1,0.1,0.1  # mm
+        MODEL name=webbing_metal2   file=models/webbing_metal2.stl   scale=0.1,0.1,0.1  # mm
+        MODEL name=webbing_metal3   file=models/webbing_metal3.stl   scale=0.1,0.1,0.1  # mm
+        MODEL name=webbing_strap    file=models/webbing_strap.stl    scale=0.1,0.1,0.1  # mm
+    TRANSFORM_END
+SURFACE_END
+
+# Region
+REGION rear            rear1 | rear2 | rear3 | rear4 | rear5 | rear6 | rear7 | rear8
+REGION trigger        (trigger1 | trigger2 | trigger3 | trigger4  | trigger5  | trigger6 |  \
+                       trigger7 | trigger8 | trigger9 | trigger10 | trigger11 | trigger12)
+REGION barrel         (barrel2  | barrel3  | barrel4  | barrel5  | barrel6  | \
+                       barrel7  | barrel8  | barrel9  | barrel10 | barrel11 | barrel12 | \
+                       barrel13 | barrel14 | barrel15 | barrel16 | barrel17 | barrel18 | barrel19 | barrel20) & -@trigger
+REGION receiver       (receiver1  | receiver2  | receiver3  | receiver4  | receiver5  | receiver6  |  \
+                       receiver7  | receiver8  | receiver9  | receiver10 | receiver11 | receiver12 |  \
+                       receiver13 | receiver14 | receiver15 | receiver16 | receiver17 | receiver18 |  \
+                       receiver19 | receiver20 | receiver21 | receiver22 | receiver23 | receiver24 |  \
+                       receiver25 | receiver26 | receiver27) & -(@trigger | @barrel)
+REGION body           (body1 | body2 | body3) & -(@barrel | @rear | @trigger | @receiver)
+
+REGION catridge_bullet bullet1  | bullet2  | bullet3  | bullet4  | bullet5  | bullet6  |  \
+                       bullet7  | bullet8  | bullet9  | bullet10 | bullet11 | bullet12 |  \
+                       bullet13 | bullet14 | bullet15 | bullet16 | bullet17 | bullet18 |  \ 
+                       bullet19 | bullet20 | bullet21 
+REGION catridge_case   catridge_case & -@catridge_bullet
+REGION buckel_metal    webbing_metal1 | webbing_metal2 | webbing_metal3
+REGION strap           webbing_strap & -(@buckel_metal | @rear | @barrel)
+REGION void            -(@body | @rear | @trigger | @barrel | @receiver | @catridge_bullet | @catridge_case | @buckel_metal | @strap)

@@ -1,0 +1,8 @@
+SURFACE_BEGIN
+    CUBE  name=t_water      center=-10,0,0  size=5,5,5
+    CUBE  name=t_tungsten   center=10,0,0   size=5,5,5
+SURFACE_END
+
+REGION  t_water      +t_water
+REGION  t_tungsten   +t_tungsten
+REGION  void         -t_water & -t_tungsten

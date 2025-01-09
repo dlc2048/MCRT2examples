@@ -1,0 +1,86 @@
+# Example of X-ray LINear ACcelerator
+# 6 MV target + flattening filter + XY jaws + Multileaf Collimator.
+# 1x1x1 m3 water phantom is placed on isocenter.
+# 
+# geometry build is required before run this code.
+# builder command
+# > RT2builder -i world.inp
+#
+# viewer command (condition for viewer.jpg image in example folder)
+# > RT2viewer -e 100 -300 200
+#
+# MC run command
+# > RT2mc -i mc.inp -o mc.out
+# 
+# Attached output sample (mc_sample.out) is the result of MC run 
+# on the Nvidia RTX 4060 ti card.
+#
+# The scoring results can be plotted by Python script.
+# Python run command
+# > python3 plot.py  [Linux]
+# > python  plot.py  [Windows]
+#
+# Attached image file lists
+# [spect.png]: The X-ray spectrum of entered beam from void to phantom
+# [dose.png]: The isodose curve of water phantom
+# [flux.png]: Photon flux map for checking
+
+CUDA_SETTINGS block_per_sm=128 buffer_ratio=0.6
+
+ELECTRON transport_cutoff=0.1  production_cutoff=0.1
+POSITRON transport_cutoff=0.1  production_cutoff=0.1
+PHOTON   transport_cutoff=0.01 production_cutof=0.01 compton_mode=egsnrc
+
+NEUTRON      activate=0
+GENERIC_ION  activate=0
+NEUTRON_HIGH activate=0
+
+COMPOUND vacuum    0.0
+COMPOUND hydrogen  0.08988 101      99.98 1002     0.02
+COMPOUND oxygen    1.141   8016     99.56 8017     0.44
+COMPOUND water     1.0     hydrogen    -2 oxygen     -1
+COMPOUND tungsten  19.25   74182     26.5 74183    14.3 74184    30.6 74186 28.4
+COMPOUND copper    8.92    29063     69.2 29065    30.9
+
+COMPOUND mlc_alloy 17.5    tungsten  92.5 copper    7.5
+
+ASSIGN region=prim_coll  compound=tungsten
+ASSIGN region=target_w   compound=tungsten
+ASSIGN region=target_cu  compound=copper
+ASSIGN region=ff         compound=copper
+ASSIGN region=jaws       compound=tungsten
+ASSIGN region=mlc        compound=mlc_alloy
+ASSIGN region=phantom    compound=water
+ASSIGN region=void       compound=vacuum
+
+ENTRY ebin  6  # 6 MV
+ENTRY eprob 1
+ENTRY dbin  1
+ENTRY dprob 1
+
+BEAM_GLOBAL mode=macro nps=1000000000
+
+BEAM_CYLINDER name=beam             \
+              pid=-1                \
+			  position=0,0,+110     \ 
+			  radius=0,0            \
+			  height=0              \
+              type=linear           \
+			  weight=1              \
+			  direction=0,0,-1      \
+			  energy=ebin,eprob     \
+			  divergence=dbin,dprob
+
+$RANGE$ 100
+
+# flux
+MESH_TRACK    name=xray  pid=0  nx=100 ny=100 nz=100 xrange=-$RANGE$,$RANGE$ yrange=-$RANGE$,$RANGE$ zrange=-$RANGE$,$RANGE$ \
+              erange=0,10  escale=linear  ne=1
+
+# spectrum
+CROSS         name=xspect_phantom pid=0 from=void to=phantom erange=1e-2,1e+1 escale=log ne=30
+
+# dose
+MESH_DENSITY  name=depo_gamma pid=0  type=depo nx=100 ny=100 nz=100 xrange=-50,50 yrange=-50,50 zrange=-100,0
+MESH_DENSITY  name=depo_elect pid=-1 type=depo nx=100 ny=100 nz=100 xrange=-50,50 yrange=-50,50 zrange=-100,0
+MESH_DENSITY  name=depo_posit pid=+1 type=depo nx=100 ny=100 nz=100 xrange=-50,50 yrange=-50,50 zrange=-100,0

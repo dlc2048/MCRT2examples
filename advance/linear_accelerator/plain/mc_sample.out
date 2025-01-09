@@ -1,0 +1,566 @@
+ [2024-12-20 11:56:43] 
+ [INFO] Read input file stream 'mc.inp'
+ [WARNING] Field 'block_decay_limit' is not found. Use default value (1)
+ [WARNING] Field 'block_decay_rate' is not found. Use default value (0.2)
+ [WARNING] Field 'block_dim' is not found. Use default value (128)
+ [WARNING] Field 'gpu' is not found. Use default value (0)
+ [WARNING] Field 'seed' is not found. Use default value (42)
+ [LINE]     25  CUDA_SETTINGS block_per_sm=128 buffer_ratio=0.6
+ [LINE]     53  ENTRY ebin 6
+ [LINE]     54  ENTRY eprob 1
+ [LINE]     55  ENTRY dbin 1
+ [LINE]     56  ENTRY dprob 1
+ [WARNING] Field 'activate' is not found. Use default value (1)
+ [WARNING] Field 'do_rayleigh' is not found. Use default value (1)
+ [WARNING] Field 'library' is not found. Use default value (epdl97)
+ [WARNING] Field 'nbin' is not found. Use default value (1000)
+ [WARNING] Field 'print_xs' is not found. Use default value (0)
+ [WARNING] Field 'production_cutoff' is not found. Use default value (0.01)
+ [WARNING] Field 'sauter' is not found. Use default value (1)
+ [WARNING] Field 'simple_photo' is not found. Use default value (0)
+ [WARNING] Field 'use_nrc_pair' is not found. Use default value (1)
+ [LINE]     29  PHOTON transport_cutoff=0.01 production_cutof=0.01 compton_mode=
+        egsnrc
+ [WARNING] Field 'activate' is not found. Use default value (1)
+ [WARNING] Field 'brem_angle' is not found. Use default value (simple)
+ [WARNING] Field 'brem_corr' is not found. Use default value (icru)
+ [WARNING] Field 'brem_xs' is not found. Use default value (nrc)
+ [WARNING] Field 'do_spin' is not found. Use default value (1)
+ [WARNING] Field 'eii_mode' is not found. Use default value (off)
+ [WARNING] Field 'estepe' is not found. Use default value (0.2)
+ [WARNING] Field 'fudgems' is not found. Use default value (1)
+ [WARNING] Field 'ie_fudge' is not found. Use default value (1)
+ [WARNING] Field 'library' is not found. Use default value (pegsless)
+ [WARNING] Field 'n_brem_split' is not found. Use default value (5)
+ [WARNING] Field 'nbin' is not found. Use default value (1000)
+ [WARNING] Field 'print_xs' is not found. Use default value (0)
+ [WARNING] Field 'smax' is not found. Use default value (1e+10)
+ [WARNING] Field 'use_presta2' is not found. Use default value (0)
+ [WARNING] Field 'ximax' is not found. Use default value (0.5)
+ [LINE]     27  ELECTRON transport_cutoff=0.1 production_cutoff=0.1
+ [WARNING] Field 'activate' is not found. Use default value (1)
+ [WARNING] Field 'library' is not found. Use default value (pegsless)
+ [LINE]     28  POSITRON transport_cutoff=0.1 production_cutoff=0.1
+ [WARNING] Field 'library' is not found. Use default value (endf7_260)
+ [WARNING] Field 'print_xs' is not found. Use default value (0)
+ [WARNING] Field 'production_cutoff' is not found. Use default value (0)
+ [WARNING] Field 'transport_cutoff' is not found. Use default value (0)
+ [LINE]     31  NEUTRON activate=0
+ [WARNING] Field 'library' is not found. Use default value (Glauber-Gribov)
+ [WARNING] Field 'nbin' is not found. Use default value (1000)
+ [WARNING] Field 'production_cutoff' is not found. Use default value (0.001)
+ [WARNING] Field 'transport_cutoff' is not found. Use default value (0.001)
+ [LINE]     33  NEUTRON_HIGH activate=0
+ [WARNING] Field 'estepe' is not found. Use default value (0.05)
+ [WARNING] Field 'lat_alg96' is not found. Use default value (1)
+ [WARNING] Field 'lat_disp' is not found. Use default value (1)
+ [WARNING] Field 'library' is not found. Use default value (bethe)
+ [WARNING] Field 'nbin' is not found. Use default value (1000)
+ [WARNING] Field 'production_cutoff' is not found. Use default value (2)
+ [WARNING] Field 'smax' is not found. Use default value (1e+10)
+ [WARNING] Field 'straggling' is not found. Use default value (1)
+ [WARNING] Field 'transport_cutoff' is not found. Use default value (2)
+ [LINE]     32  GENERIC_ION activate=0
+ [LINE]     35  COMPOUND vacuum 0.0
+ [LINE]     36  COMPOUND hydrogen 0.08988 101 99.98 1002 0.02
+ [LINE]     37  COMPOUND oxygen 1.141 8016 99.56 8017 0.44
+ [LINE]     38  COMPOUND water 1.0 hydrogen -2 oxygen -1
+ [LINE]     39  COMPOUND tungsten 19.25 74182 26.5 74183 14.3 74184 30.6 74186 2
+        8.4
+ [LINE]     40  COMPOUND copper 8.92 29063 69.2 29065 30.9
+ [LINE]     42  COMPOUND mlc_alloy 17.5 tungsten 92.5 copper 7.5
+ [LINE]     44  ASSIGN region=prim_coll compound=tungsten
+ [LINE]     45  ASSIGN region=target_w compound=tungsten
+ [LINE]     46  ASSIGN region=target_cu compound=copper
+ [LINE]     47  ASSIGN region=ff compound=copper
+ [LINE]     48  ASSIGN region=jaws compound=tungsten
+ [LINE]     49  ASSIGN region=mlc compound=mlc_alloy
+ [LINE]     50  ASSIGN region=phantom compound=water
+ [LINE]     51  ASSIGN region=void compound=vacuum
+ [LINE]     58  BEAM_GLOBAL mode=macro nps=1000000000
+ [WARNING] Field 'rotation' is not found. Use default value (0)
+ [LINE]     69  BEAM_CYLINDER name=beam pid=-1 position=0,0,+110 radius=0,0 heig
+        ht=0 type=linear weight=1 direction=0,0,-1 energy=ebin,eprob divergence=
+        dbin,dprob
+ [LINE]     75  MESH_TRACK name=xray pid=0 nx=100 ny=100 nz=100 xrange=-100,100 
+        yrange=-100,100 zrange=-100,100 erange=0,10 escale=linear ne=1
+ [LINE]     81  MESH_DENSITY name=depo_gamma pid=0 type=depo nx=100 ny=100 nz=10
+        0 xrange=-50,50 yrange=-50,50 zrange=-100,0
+ [LINE]     82  MESH_DENSITY name=depo_elect pid=-1 type=depo nx=100 ny=100 nz=1
+        00 xrange=-50,50 yrange=-50,50 zrange=-100,0
+ [LINE]     83  MESH_DENSITY name=depo_posit pid=+1 type=depo nx=100 ny=100 nz=1
+        00 xrange=-50,50 yrange=-50,50 zrange=-100,0
+ [WARNING] Field 'area' is not found. Use default value (0)
+ [LINE]     78  CROSS name=xspect_phantom pid=0 from=void to=phantom erange=1e-2
+        ,1e+1 escale=log ne=30
+ [2024-12-20 11:56:44] 
+ [INFO] Close input file stream
+ [2024-12-20 11:56:44] 
+ [INFO] All data are prepared!
+
+
+ ################################################################## 
+ #                                                                # 
+ #                         Data Summaries                         # 
+ #                                                                # 
+ ################################################################## 
+
+
+ [INFO] *** Compound Summaries ***
+  Number of compound                             5
+  Memory usage                         0.000499725 (MiB)
+  Eligible compound lists
+ [         tungsten ]
+  Density                                    19.25 (g/cm3)
+  Effective Z                                   74
+  Effective A                              183.835
+  Ionization energy                         821.51 (eV)
+  Radiation length                        0.351316 (cm)
+  Mode     ELECTRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode       PHOTON                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode     POSITRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode      VACANCY                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode      NEUTRON                            off
+  Mode        DELTA                             on
+      - prod cutoff                            0.3 (MeV)
+      - tran cutoff                            0.3 (MeV)
+  Mode  GENERIC_ION                            off
+ <Composition> 
+      Isotope       Mass [Dalton]   Mass Fraction [%]  Number Fracton [%] 
+        W-182            181.9531             26.5531             26.8278 
+        W-183            182.9516             14.3287             14.3979 
+        W-184            183.9502             30.6613             30.6422 
+        W-186            185.9575             28.4569             28.1322 
+ [           copper ]
+  Density                                     8.92 (g/cm3)
+  Effective Z                                   29
+  Effective A                              63.5332
+  Ionization energy                         363.86 (eV)
+  Radiation length                         1.44173 (cm)
+  Mode     ELECTRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode       PHOTON                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode     POSITRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode      VACANCY                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode      NEUTRON                            off
+  Mode        DELTA                             on
+      - prod cutoff                            0.3 (MeV)
+      - tran cutoff                            0.3 (MeV)
+  Mode  GENERIC_ION                            off
+ <Composition> 
+      Isotope       Mass [Dalton]   Mass Fraction [%]  Number Fracton [%] 
+        Cu-63             62.9296             69.1309             69.7939 
+        Cu-65             64.9278             30.8691             30.2061 
+ [        mlc_alloy ]
+  Density                                     17.5 (g/cm3)
+  Effective Z                              65.4487
+  Effective A                              160.975
+  Ionization energy                        767.066 (eV)
+  Radiation length                        0.400696 (cm)
+  Mode     ELECTRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode       PHOTON                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode     POSITRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode      VACANCY                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode      NEUTRON                            off
+  Mode        DELTA                             on
+      - prod cutoff                            0.3 (MeV)
+      - tran cutoff                            0.3 (MeV)
+  Mode  GENERIC_ION                            off
+ <Composition> 
+      Isotope       Mass [Dalton]   Mass Fraction [%]  Number Fracton [%] 
+        Cu-63             62.9296              5.1848             13.2628 
+        Cu-65             64.9278              2.3152              5.7400 
+        W-182            181.9531             24.5616             21.7298 
+        W-183            182.9516             13.2540             11.6619 
+        W-184            183.9502             28.3617             24.8193 
+        W-186            185.9575             26.3226             22.7863 
+ [            water ]
+  Density                                        1 (g/cm3)
+  Effective Z                              3.33333
+  Effective A                              6.00497
+  Ionization energy                        75.3191 (eV)
+  Radiation length                         36.0823 (cm)
+  Mode     ELECTRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode       PHOTON                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode     POSITRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode      VACANCY                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode      NEUTRON                            off
+  Mode        DELTA                             on
+      - prod cutoff                            0.3 (MeV)
+      - tran cutoff                            0.3 (MeV)
+  Mode  GENERIC_ION                            off
+ <Composition> 
+      Isotope       Mass [Dalton]   Mass Fraction [%]  Number Fracton [%] 
+          H-1              1.0078             11.1877             66.6600 
+          H-2              2.0141          2.2380e-03          6.6725e-03 
+         O-16             15.9949             88.4193             33.1953 
+         O-17             16.9991              0.3908              0.1380 
+ [           vacuum ]
+  Density                                        0 (g/cm3)
+  Effective Z                                    0
+  Effective A                                    0
+  Ionization energy                             -1 (eV)
+  Radiation length                    3.51983e-312 (cm)
+  Mode     ELECTRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode       PHOTON                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode     POSITRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode      VACANCY                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode      NEUTRON                            off
+  Mode        DELTA                             on
+      - prod cutoff                            0.3 (MeV)
+      - tran cutoff                            0.3 (MeV)
+  Mode  GENERIC_ION                            off
+ <Composition> 
+      Isotope       Mass [Dalton]   Mass Fraction [%]  Number Fracton [%] 
+
+
+ [INFO] *** Random Element Tables ***
+  Number of compound                             5
+  Random table lists
+ [         tungsten ]
+      Element            Table ID         Probability 
+     Tungsten                   3            100.0000 
+ [           copper ]
+      Element            Table ID         Probability 
+       Copper                   2            100.0000 
+ [        mlc_alloy ]
+      Element            Table ID         Probability 
+       Copper                   2              8.4201 
+     Tungsten                   3             91.5799 
+ [            water ]
+      Element            Table ID         Probability 
+     Hydrogen                   0             20.0000 
+       Oxygen                   1             80.0000 
+ [           vacuum ]
+
+
+ [INFO] *** Shell Structure Summaries ***
+  Number of element                              4
+  Memory usage                         0.000663757 (MiB)
+  Shell structure lists
+ [         Hydrogen ]
+  Symbol                                         H
+  Atomic number                                  1
+  Number of shell                                1
+  All Vacancies Deposited                         
+ <Shell lists> 
+   Shell  Table ID   Number of Electron  Binding Energy [eV] 
+       K         0               1.0000              13.6100 
+ [           Oxygen ]
+  Symbol                                         O
+  Atomic number                                  8
+  Number of shell                                4
+  All Vacancies Deposited                         
+ <Shell lists> 
+   Shell  Table ID   Number of Electron  Binding Energy [eV] 
+       K         1               2.0000             537.2800 
+      L1         2               2.0000              29.2300 
+      L2         3               1.3300              14.1900 
+      L3         4               2.6700              14.1500 
+ [           Copper ]
+  Symbol                                        Cu
+  Atomic number                                 29
+  Number of shell                               10
+  All Vacancies Deposited                         
+ <Shell lists> 
+   Shell  Table ID   Number of Electron  Binding Energy [eV] 
+       K         5               2.0000            8943.2002 
+      L1         6               2.0000            1086.1000 
+      L2         7               2.0000             958.5300 
+      L3         8               4.0000             937.4900 
+      M1         9               2.0000             121.2600 
+      M2        10               2.0000              80.5000 
+      M3        11               4.0000              77.8600 
+      M4        12               4.0000              10.0900 
+      M5        13               6.0000               9.8000 
+      N1        14               1.0000               7.1100 
+ [         Tungsten ]
+  Symbol                                         W
+  Atomic number                                 74
+  Number of shell                               22
+  Vacancy Deposited Under                       L3
+ <Shell lists> 
+   Shell  Table ID   Number of Electron  Binding Energy [eV] 
+       K        15               2.0000           6.9689e+04 
+      L1        16               2.0000           1.2077e+04 
+      L2        17               2.0000           1.1573e+04 
+      L3        18               4.0000           1.0206e+04 
+      M1        19               2.0000            2796.5000 
+      M2        20               2.0000            2567.8000 
+      M3        21               4.0000            2271.2000 
+      M4        22               4.0000            1881.1000 
+      M5        23               6.0000            1816.2000 
+      N1        24               2.0000             584.7000 
+      N2        25               2.0000             488.6100 
+      N3        26               4.0000             419.6200 
+      N4        27               4.0000             260.0500 
+      N5        28               6.0000             247.3400 
+      N6        29               6.0000              45.6100 
+      N7        30               8.0000              43.2500 
+      O1        31               2.0000              85.1400 
+      O2        32               2.0000              56.0200 
+      O3        33               4.0000              45.6500 
+      O4        34               1.6000               8.2700 
+      O5        35               2.4000               7.4100 
+      P1        36               2.0000               7.7000 
+
+
+ [INFO] *** Relaxation Summaries ***
+  Number of Action                              37
+  Memory usage                           0.0116081 (MiB)
+
+
+ [INFO] *** Photon Transport Summaries ***
+  XS library/model                          epdl97
+  XS interpolation table                      1000 (bins)
+  Rayleigh scattering                           On
+  Photoelectric mode                      Detailed
+  PE Sauter distribution                        On
+  Compton scattering                        EGSnrc
+  NIST/NRC pair production                      On
+  Number of XS table                             5
+  Memory usage                            0.613926 (MiB)
+
+
+ [INFO] *** Electron Transport Summaries ***
+  XS library/model                        pegsless
+  XS interpolation table                      1000 (bins)
+  CH algorithm                            PRESTA-I
+  Use ionization FUDGEM                         On
+  Mott spin correction                          On
+  Fractional eloss limit                        20 (%)
+  Maximum step length                        1e+10 (cm)
+  Maximum momentum transfer                    0.5
+  Bremss XS generator             NRC + Correction
+  Bremss correction method               NIST/ICRU
+  Bremss angular sampler           KM Leading Term
+  Impact ionization mode                       Off
+  Number of XS table                             5
+  Memory usage                               1.297 (MiB)
+
+
+ [INFO] *** World Summaries ***
+  Number of Facet                           157795
+  Tracer Dimension                      4352 x 128
+  GAS Size                                 10.4182 (MiB)
+  Region Table Size                        0.60194 (MiB)
+  Tracer Size                                55.25 (MiB)
+
+
+ [INFO] *** Source Summaries ***
+  Mode                                       MACRO
+  Memory usage                         6.86646e-05 (MiB)
+ [             beam ]
+  Weight                                         1
+  Primary                                       -1
+  Energy sampling                            PULSE
+  Energy interp                             LINEAR
+  Energy bin                                     1
+  Direction sampling                         PULSE
+  Direction bin                                  1
+*** Affine matrix ***
+    |           -1            0    1.225e-16            0 |
+    |            0            1            0            0 |
+    |   -1.225e-16            0           -1          110 |
+  Beam shape                              CYLINDER
+  Beam size (r0)                                 0 (cm)
+  Beam size (r1)                                 0 (cm)
+  Beam height                                    0 (cm)
+
+
+ [INFO] *** Tally Summaries ***
+  MESH_TRACK                                     1
+  MESH_DENSITY                                   3
+  CROSS                                          1
+  TRACK                                          0
+  DENSITY                                        0
+  PHASE_SPACE                                    0
+  DETECTOR                                       0
+  Memory usage                              62.885 (MiB)
+
+
+ [INFO] *** Buffer Summaries ***
+  Available memories                         14999 (MiB)
+  Memory usage ratio                            60 (%)
+  Number of buffer                              16
+  Size per buffer                         16154624 (Banks)
+
+
+ [2024-12-20 11:56:44] 
+ [INFO] Start main Monte Carlo stage
+ [2024-12-20 11:57:14] 
+ [INFO] NPS 50000000
+ [2024-12-20 11:57:45] 
+ [INFO] NPS 100000000
+ [2024-12-20 11:58:16] 
+ [INFO] NPS 150000000
+ [2024-12-20 11:58:50] 
+ [INFO] NPS 200000000
+ [2024-12-20 11:59:22] 
+ [INFO] NPS 250000000
+ [2024-12-20 11:59:53] 
+ [INFO] NPS 300000000
+ [2024-12-20 12:00:27] 
+ [INFO] NPS 350000000
+ [2024-12-20 12:01:00] 
+ [INFO] NPS 400000000
+ [2024-12-20 12:01:30] 
+ [INFO] NPS 450000000
+ [2024-12-20 12:02:01] 
+ [INFO] NPS 500000000
+ [2024-12-20 12:02:32] 
+ [INFO] NPS 550000000
+ [2024-12-20 12:03:06] 
+ [INFO] NPS 600000000
+ [2024-12-20 12:03:40] 
+ [INFO] NPS 650000000
+ [2024-12-20 12:04:12] 
+ [INFO] NPS 700000000
+ [2024-12-20 12:04:43] 
+ [INFO] NPS 750000000
+ [2024-12-20 12:05:15] 
+ [INFO] NPS 800000000
+ [2024-12-20 12:05:46] 
+ [INFO] NPS 850000000
+ [2024-12-20 12:06:17] 
+ [INFO] NPS 900000000
+ [2024-12-20 12:06:50] 
+ [INFO] NPS 950000000
+ [2024-12-20 12:07:22] 
+ [INFO] NPS 1000000000
+ [2024-12-20 12:07:22] 
+ [INFO] End of main Monte Carlo stage
+ [INFO] Start the residual stage
+ [INFO] Block is set to 870
+ [INFO] Block is set to 174
+ [INFO] Block is set to 34
+ [INFO] Block is set to 6
+ [INFO] Block is set to 1
+ [2024-12-20 12:07:30] 
+ [INFO] End of residual stage
+ [INFO] *** Launch History ***
+  NPS setup                             1000000000
+  Launched histories                    1000472576
+  Total weight                         1.00047e+09
+ [INFO] *** Kernel Execution Histories ***
+  Electron Transport                  237130912640 (Banks)
+  Photon Transport                     12038824320 (Banks)
+  Positron Transport                    2103912704 (Banks)
+  Neutron Transport                              0 (Banks)
+  Fast Neutron Transport                         0 (Banks)
+  Generic ion Transport                          0 (Banks)
+  Atomic Relaxation                    10586320768 (Banks)
+  Rayleigh Scattering                    535770880 (Banks)
+  Photoelectric Effect                  6460322688 (Banks)
+  Compton Scattering                    1510872960 (Banks)
+  Pair production                         38589056 (Banks)
+  e- Bremsstrahlung                     4556693120 (Banks)
+  Moller Scattering                     2631953920 (Banks)
+  e+ Bremsstrahlung                       22004864 (Banks)
+  Bhabha Scattering                       10892160 (Banks)
+  e+e- Annihilation                       38516480 (Banks)
+ [INFO] *** Residual Banks ***
+  Electron Transport                           150 (Banks)
+  Photon Transport                             111 (Banks)
+  Positron Transport                           151 (Banks)
+  Neutron Transport                              0 (Banks)
+  Fast Neutron Transport                         0 (Banks)
+  Generic ion Transport                          0 (Banks)
+  Atomic Relaxation                             83 (Banks)
+  Rayleigh Scattering                          138 (Banks)
+  Photoelectric Effect                          63 (Banks)
+  Compton Scattering                           126 (Banks)
+  Pair production                              119 (Banks)
+  e- Bremsstrahlung                             94 (Banks)
+  Moller Scattering                            137 (Banks)
+  e+ Bremsstrahlung                             81 (Banks)
+  Bhabha Scattering                             73 (Banks)
+  e+e- Annihilation                            131 (Banks)
+ [INFO] *** Tally Summaries ***
+ [             xray ]
+  Part                                      Photon
+  Origin                      -1e+02,-1e+02,-1e+02 (cm)
+  Size                                       2,2,2 (cm)
+  Shape                                100,100,100
+  Total volume                               8e+06 (cm3)
+  Energy from                                    0 (MeV)
+  Energy to                                     10 (MeV)
+  Binning method                    linear spacing
+  Number of bin                                  1
+  Quantity                                 Fluence (#/cm2/hist)
+ [       depo_elect ]
+  Part                                    Electron
+  Origin                            -50,-50,-1e+02 (cm)
+  Size                                       1,1,1 (cm)
+  Shape                                100,100,100
+  Total volume                               1e+06 (cm3)
+  Quantity                                  E depo (MeV/cm3/hist)
+  Maximum depo at                       (53,52,98)
+  with                                 9.22667e-07 (MeV/cm3/hist)
+ [       depo_gamma ]
+  Part                                      Photon
+  Origin                            -50,-50,-1e+02 (cm)
+  Size                                       1,1,1 (cm)
+  Shape                                100,100,100
+  Total volume                               1e+06 (cm3)
+  Quantity                                  E depo (MeV/cm3/hist)
+  Maximum depo at                       (30,45,86)
+  with                                 9.99475e-12 (MeV/cm3/hist)
+ [       depo_posit ]
+  Part                                    Positron
+  Origin                            -50,-50,-1e+02 (cm)
+  Size                                       1,1,1 (cm)
+  Shape                                100,100,100
+  Total volume                               1e+06 (cm3)
+  Quantity                                  E depo (MeV/cm3/hist)
+  Maximum depo at                       (50,51,96)
+  with                                 1.78417e-08 (MeV/cm3/hist)
+ [   xspect_phantom ]
+  Part                                      Photon
+  Energy from                                 0.01 (MeV)
+  Energy to                                     10 (MeV)
+  Binning method                       log spacing
+  Number of bin                                 30
+  Quantity                                 Fluence (#/cm2/hist)
+  Total area                                 60000 (cm2)
+  Region from                                 void
+  Region to                                phantom

@@ -1,0 +1,8 @@
+# Please read descriptions in 'mc.inp' file for more detail.
+
+SURFACE_BEGIN
+    CUBE      name=phantom      center=0,0,0   size=20,20,20
+SURFACE_END
+
+REGION phantom   +phantom
+REGION void      -phantom 

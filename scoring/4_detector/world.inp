@@ -1,0 +1,10 @@
+# Please read descriptions in 'mc.inp' file for more detail.
+
+GEO_GLOBAL
+
+SURFACE_BEGIN
+    CYLINDER name=crystal    center=0,0,0      height=0,0,7.62  radius=3.81
+SURFACE_END
+
+REGION crystal    +crystal
+REGION void       -crystal

@@ -1,0 +1,72 @@
+# Surface transformation and nested definition
+# 
+# builder command
+# > RT2builder -i world.inp
+#
+# viewer command (condition for viewer.jpg image in example folder)
+# > RT2viewer -e 0 0 100
+
+$OBJ_TYPE$   CONE
+$OBJ_PREFIX$ cone
+$RADIUS$     2
+$HEIGHT$     0,10,0
+$ORIGIN$     0,10,0
+
+ROT_DEFI  name=rot30  axis=z  theta=30
+
+SURFACE_BEGIN  # nested transformation
+    $OBJ_TYPE$   name=$OBJ_PREFIX$0  center=$ORIGIN$  height=$HEIGHT$  radius=$RADIUS$
+    TRANSFORM_BEGIN target=rot30
+        $OBJ_TYPE$   name=$OBJ_PREFIX$30  center=$ORIGIN$  height=$HEIGHT$  radius=$RADIUS$
+        TRANSFORM_BEGIN target=rot30
+            $OBJ_TYPE$   name=$OBJ_PREFIX$60  center=$ORIGIN$  height=$HEIGHT$  radius=$RADIUS$
+            TRANSFORM_BEGIN target=rot30
+                $OBJ_TYPE$   name=$OBJ_PREFIX$90  center=$ORIGIN$  height=$HEIGHT$  radius=$RADIUS$ 
+                TRANSFORM_BEGIN target=rot30
+                    $OBJ_TYPE$   name=$OBJ_PREFIX$120 center=$ORIGIN$  height=$HEIGHT$  radius=$RADIUS$ 
+                    TRANSFORM_BEGIN target=rot30
+                        $OBJ_TYPE$   name=$OBJ_PREFIX$150 center=$ORIGIN$  height=$HEIGHT$  radius=$RADIUS$
+                        TRANSFORM_BEGIN target=rot30
+                            $OBJ_TYPE$   name=$OBJ_PREFIX$180 center=$ORIGIN$  height=$HEIGHT$  radius=$RADIUS$      
+                            TRANSFORM_BEGIN target=rot30
+                                $OBJ_TYPE$   name=$OBJ_PREFIX$210 center=$ORIGIN$  height=$HEIGHT$  radius=$RADIUS$  
+                                TRANSFORM_BEGIN target=rot30
+                                    $OBJ_TYPE$   name=$OBJ_PREFIX$240 center=$ORIGIN$  height=$HEIGHT$  radius=$RADIUS$ 
+                                    TRANSFORM_BEGIN target=rot30
+                                        $OBJ_TYPE$   name=$OBJ_PREFIX$270 center=$ORIGIN$  height=$HEIGHT$  radius=$RADIUS$ 
+                                        TRANSFORM_BEGIN target=rot30
+                                            $OBJ_TYPE$   name=$OBJ_PREFIX$300 center=$ORIGIN$  height=$HEIGHT$  radius=$RADIUS$
+                                            TRANSFORM_BEGIN target=rot30
+                                                $OBJ_TYPE$   name=$OBJ_PREFIX$330 center=$ORIGIN$  height=$HEIGHT$  radius=$RADIUS$                                            
+                                            TRANSFORM_END
+                                        TRANSFORM_END
+                                    TRANSFORM_END
+                                TRANSFORM_END
+                            TRANSFORM_END
+                        TRANSFORM_END
+                    TRANSFORM_END
+                TRANSFORM_END
+            TRANSFORM_END
+        TRANSFORM_END
+    TRANSFORM_END
+SURFACE_END
+
+
+REGION $OBJ_PREFIX$0   +$OBJ_PREFIX$0  
+REGION $OBJ_PREFIX$30  +$OBJ_PREFIX$30 
+REGION $OBJ_PREFIX$60  +$OBJ_PREFIX$60 
+REGION $OBJ_PREFIX$90  +$OBJ_PREFIX$90 
+REGION $OBJ_PREFIX$120 +$OBJ_PREFIX$120
+REGION $OBJ_PREFIX$150 +$OBJ_PREFIX$150
+REGION $OBJ_PREFIX$180 +$OBJ_PREFIX$180
+REGION $OBJ_PREFIX$210 +$OBJ_PREFIX$210
+REGION $OBJ_PREFIX$240 +$OBJ_PREFIX$240
+REGION $OBJ_PREFIX$270 +$OBJ_PREFIX$270
+REGION $OBJ_PREFIX$300 +$OBJ_PREFIX$300
+REGION $OBJ_PREFIX$330 +$OBJ_PREFIX$330
+
+REGION void -$OBJ_PREFIX$0   & -$OBJ_PREFIX$30  & -$OBJ_PREFIX$60  &  \
+            -$OBJ_PREFIX$90  & -$OBJ_PREFIX$120 & -$OBJ_PREFIX$150 &  \
+            -$OBJ_PREFIX$180 & -$OBJ_PREFIX$210 & -$OBJ_PREFIX$240 &  \
+            -$OBJ_PREFIX$270 & -$OBJ_PREFIX$300 & -$OBJ_PREFIX$330 
+            

@@ -1,0 +1,3 @@
+air      -300
+tissue   +300
+bone     +9999

@@ -1,0 +1,12 @@
+# Please read descriptions in 'mc.inp' file for more detail.
+
+GEO_GLOBAL
+
+# Surfaces
+SURFACE_BEGIN
+    MODEL name=target    file=model/Stanford_Bunny.stl    # cm
+SURFACE_END
+
+# Region
+REGION target  target 
+REGION void   -target

@@ -1,0 +1,775 @@
+ [2025-01-02 10:36:52] 
+ [INFO] Read input file stream 'mc.inp'
+ [WARNING] Field 'block_decay_limit' is not found. Use default value (1)
+ [WARNING] Field 'block_decay_rate' is not found. Use default value (0.2)
+ [WARNING] Field 'block_dim' is not found. Use default value (128)
+ [WARNING] Field 'buffer_ratio' is not found. Use default value (0.6)
+ [WARNING] Field 'seed' is not found. Use default value (42)
+ [LINE]     20  CUDA_SETTINGS block_per_sm=128 gpu=0
+ [LINE]     22  ENTRY ebin 1.25
+ [LINE]     23  ENTRY eprob 1
+ [LINE]     24  ENTRY dbin -1 1
+ [LINE]     25  ENTRY dprob 1
+ [WARNING] Field 'activate' is not found. Use default value (1)
+ [WARNING] Field 'do_rayleigh' is not found. Use default value (1)
+ [WARNING] Field 'nbin' is not found. Use default value (1000)
+ [WARNING] Field 'print_xs' is not found. Use default value (0)
+ [WARNING] Field 'sauter' is not found. Use default value (1)
+ [WARNING] Field 'simple_photo' is not found. Use default value (0)
+ [WARNING] Field 'use_nrc_pair' is not found. Use default value (1)
+ [LINE]     28  PHOTON transport_cutoff=0.001 production_cutoff=0.001 library=ep
+        dl97 compton_mode=egsnrc
+ [WARNING] Field 'activate' is not found. Use default value (1)
+ [WARNING] Field 'brem_angle' is not found. Use default value (simple)
+ [WARNING] Field 'brem_corr' is not found. Use default value (icru)
+ [WARNING] Field 'brem_xs' is not found. Use default value (nrc)
+ [WARNING] Field 'do_spin' is not found. Use default value (1)
+ [WARNING] Field 'eii_mode' is not found. Use default value (off)
+ [WARNING] Field 'estepe' is not found. Use default value (0.2)
+ [WARNING] Field 'fudgems' is not found. Use default value (1)
+ [WARNING] Field 'ie_fudge' is not found. Use default value (1)
+ [WARNING] Field 'library' is not found. Use default value (pegsless)
+ [WARNING] Field 'n_brem_split' is not found. Use default value (5)
+ [WARNING] Field 'nbin' is not found. Use default value (1000)
+ [WARNING] Field 'print_xs' is not found. Use default value (0)
+ [WARNING] Field 'smax' is not found. Use default value (1e+10)
+ [WARNING] Field 'ximax' is not found. Use default value (0.5)
+ [LINE]     27  ELECTRON use_presta2=1 transport_cutoff=0.01 production_cutoff=0
+        .01
+ [WARNING] Field 'activate' is not found. Use default value (1)
+ [WARNING] Field 'library' is not found. Use default value (eadl)
+ [WARNING] Field 'local_deposit' is not found. Use default value (0)
+ [LINE]     29  VACANCY transport_cutoff=0.001 production_cutoff=0.001 print_det
+        ail=1
+ [WARNING] Field 'library' is not found. Use default value (endf7_260)
+ [WARNING] Field 'print_xs' is not found. Use default value (0)
+ [WARNING] Field 'production_cutoff' is not found. Use default value (0)
+ [WARNING] Field 'transport_cutoff' is not found. Use default value (0)
+ [LINE]     32  NEUTRON activate=0
+ [WARNING] Field 'library' is not found. Use default value (Glauber-Gribov)
+ [WARNING] Field 'nbin' is not found. Use default value (1000)
+ [WARNING] Field 'production_cutoff' is not found. Use default value (0.001)
+ [WARNING] Field 'transport_cutoff' is not found. Use default value (0.001)
+ [LINE]     33  NEUTRON_HIGH activate=0
+ [WARNING] Field 'estepe' is not found. Use default value (0.05)
+ [WARNING] Field 'lat_alg96' is not found. Use default value (1)
+ [WARNING] Field 'lat_disp' is not found. Use default value (1)
+ [WARNING] Field 'library' is not found. Use default value (bethe)
+ [WARNING] Field 'nbin' is not found. Use default value (1000)
+ [WARNING] Field 'production_cutoff' is not found. Use default value (2)
+ [WARNING] Field 'smax' is not found. Use default value (1e+10)
+ [WARNING] Field 'straggling' is not found. Use default value (1)
+ [WARNING] Field 'transport_cutoff' is not found. Use default value (2)
+ [LINE]     34  GENERIC_ION activate=0
+ [LINE]     36  COMPOUND vacuum 0.0
+ [LINE]     37  COMPOUND sodium 0.968 11023 100.0
+ [LINE]     38  COMPOUND iodine 4.944 53127 100.0
+ [LINE]     40  COMPOUND nai 3.67 sodium -1 iodine -1
+ [LINE]     42  ASSIGN region=crystal compound=nai
+ [LINE]     43  ASSIGN region=void compound=vacuum
+ [LINE]     45  BEAM_GLOBAL mode=macro nps=1e9
+ [WARNING] Field 'rotation' is not found. Use default value (0)
+ [LINE]     55  BEAM_CUBIC name=beam pid=0 position=0,0,-10 size=0,0,0 type=line
+        ar weight=1 direction=0,0,1 energy=ebin,eprob divergence=dbin,dprob
+ [WARNING] Field 'pid' is not found. Use default value (0)
+ [LINE]     57  DETECTOR name=gebw erange=1e-3,2e+0 escale=linear ne=1024 a=0.0 
+        b=0.0752 c=-0.1210 where=crystal
+ [WARNING] Field 'pid' is not found. Use default value (0)
+ [LINE]     58  DETECTOR name=gebwo erange=1e-3,2e+0 escale=linear ne=1024 a=0.0
+         b=0.0 c=0.0 where=crystal
+ [2025-01-02 10:36:53] 
+ [INFO] Close input file stream
+ [2025-01-02 10:36:57] 
+ [INFO] All data are prepared!
+
+
+ ################################################################## 
+ #                                                                # 
+ #                         Data Summaries                         # 
+ #                                                                # 
+ ################################################################## 
+
+
+ [INFO] *** Compound Summaries ***
+  Number of compound                             2
+  Memory usage                         0.000133514 (MiB)
+  Eligible compound lists
+ [              nai ]
+  Density                                     3.67 (g/cm3)
+  Effective Z                                   32
+  Effective A                               74.947
+  Ionization energy                        452.009 (eV)
+  Radiation length                         2.58611 (cm)
+  Mode     ELECTRON                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode       PHOTON                             on
+      - prod cutoff                          0.001 (MeV)
+      - tran cutoff                          0.001 (MeV)
+  Mode     POSITRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode      VACANCY                             on
+      - prod cutoff                          0.001 (MeV)
+      - tran cutoff                          0.001 (MeV)
+  Mode      NEUTRON                            off
+  Mode        DELTA                             on
+      - prod cutoff                            0.3 (MeV)
+      - tran cutoff                            0.3 (MeV)
+  Mode  GENERIC_ION                            off
+ <Composition> 
+      Isotope       Mass [Dalton]   Mass Fraction [%]  Number Fracton [%] 
+        Na-23             22.9895             15.3372             50.0000 
+        I-127            126.9045             84.6628             50.0000 
+ [           vacuum ]
+  Density                                        0 (g/cm3)
+  Effective Z                                    0
+  Effective A                                    0
+  Ionization energy                             -1 (eV)
+  Radiation length                    6.75038e-313 (cm)
+  Mode     ELECTRON                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode       PHOTON                             on
+      - prod cutoff                          0.001 (MeV)
+      - tran cutoff                          0.001 (MeV)
+  Mode     POSITRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode      VACANCY                             on
+      - prod cutoff                          0.001 (MeV)
+      - tran cutoff                          0.001 (MeV)
+  Mode      NEUTRON                            off
+  Mode        DELTA                             on
+      - prod cutoff                            0.3 (MeV)
+      - tran cutoff                            0.3 (MeV)
+  Mode  GENERIC_ION                            off
+ <Composition> 
+      Isotope       Mass [Dalton]   Mass Fraction [%]  Number Fracton [%] 
+
+
+ [INFO] *** Random Element Tables ***
+  Number of compound                             2
+  Random table lists
+ [              nai ]
+      Element            Table ID         Probability 
+       Sodium                   0             17.1875 
+       Iodine                   1             82.8125 
+ [           vacuum ]
+
+
+ [INFO] *** Shell Structure Summaries ***
+  Number of element                              2
+  Memory usage                         0.000343323 (MiB)
+  Shell structure lists
+ [           Sodium ]
+  Symbol                                        Na
+  Atomic number                                 11
+  Number of shell                                5
+  Vacancy Deposited Under                        K
+ <Shell lists> 
+   Shell  Table ID   Number of Electron  Binding Energy [eV] 
+       K         0               2.0000            1064.0000 
+      L1         1               2.0000              64.4800 
+      L2         2               2.0000              36.4200 
+      L3         3               4.0000              36.2200 
+      M1         4               1.0000               5.1500 
+ [           Iodine ]
+  Symbol                                         I
+  Atomic number                                 53
+  Number of shell                               17
+  Vacancy Deposited Under                       M1
+ <Shell lists> 
+   Shell  Table ID   Number of Electron  Binding Energy [eV] 
+       K         5               2.0000           3.3164e+04 
+      L1         6               2.0000            5161.8999 
+      L2         7               2.0000            4857.5000 
+      L3         8               4.0000            4554.5000 
+      M1         9               2.0000            1055.4000 
+      M2        10               2.0000             927.2000 
+      M3        11               4.0000             869.8100 
+      M4        12               4.0000             641.4600 
+      M5        13               6.0000             629.3100 
+      N1        14               2.0000             191.0400 
+      N2        15               2.0000             145.5300 
+      N3        16               4.0000             134.2100 
+      N4        17               4.0000              60.0400 
+      N5        18               6.0000              58.2600 
+      O1        19               2.0000              21.0100 
+      O2        20               1.6700              10.7700 
+      O3        21               3.3300               9.6300 
+
+
+ [INFO] *** Relaxation Summaries ***
+  Number of Action                              22
+  Memory usage                          0.00660706 (MiB)
+  Action Lists
+ [         Sodium K ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+      0    Radiative           0.6690                1027.5800          36.4200 
+      1    Radiative           1.3296                1027.7800          36.2200 
+      2   Local Depo          98.0014                   0.0000        1064.0000 
+ [        Sodium L1 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+      3   Local Depo         100.0000                   0.0000          64.4800 
+ [        Sodium L2 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+      4   Local Depo         100.0000                   0.0000          36.4200 
+ [        Sodium L3 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+      5   Local Depo         100.0000                   0.0000          36.2200 
+ [        Sodium M1 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+      6   Local Depo         100.0000                   0.0000           5.1500 
+ [         Iodine K ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+      7    Radiative          25.4309      L2       2.8306e+04           0.0000 
+      8    Radiative          47.2118      L3       2.8610e+04           0.0000 
+      9    Radiative           4.3909               3.2237e+04         927.2000 
+     10    Radiative           8.5152               3.2294e+04         869.8100 
+     11    Radiative       4.1225e-02               3.2522e+04         641.4600 
+     12    Radiative       5.6506e-02               3.2535e+04         629.3100 
+     13    Radiative           0.9156               3.3018e+04         145.5300 
+     14    Radiative           1.7912               3.3030e+04         134.2100 
+     15    Radiative       7.3224e-03               3.3104e+04          60.0400 
+     16    Radiative       1.0007e-02               3.3106e+04          58.2600 
+     17    Radiative       7.3213e-02               3.3153e+04          10.7700 
+     18    Radiative           0.1371               3.3154e+04           9.6300 
+     19        Auger           0.8917  L1  L1       2.2840e+04           0.0000 
+     20        Auger           1.0642  L1  L2       2.3145e+04           0.0000 
+     21        Auger           1.3051  L1  L3       2.3448e+04           0.0000 
+     22        Auger           0.3179  L1  M1       2.6947e+04           0.0000 
+     23        Auger           0.2029      L1       2.7075e+04         927.2000 
+     24        Auger           0.2514      L1       2.7132e+04         869.8100 
+     25        Auger       1.6800e-02      L1       2.7361e+04         641.4600 
+     26        Auger       1.8381e-02      L1       2.7373e+04         629.3100 
+     27        Auger       6.8414e-02      L1       2.7811e+04         191.0400 
+     28        Auger       4.1063e-02      L1       2.7857e+04         145.5300 
+     29        Auger       5.0551e-02      L1       2.7868e+04         134.2100 
+     30        Auger       3.0143e-03      L1       2.7942e+04          60.0400 
+     31        Auger       3.2860e-03      L1       2.7944e+04          58.2600 
+     32        Auger       1.0130e-02      L1       2.7981e+04          21.0100 
+     33        Auger       3.9284e-03      L1       2.7991e+04          10.7700 
+     34        Auger       4.6943e-03      L1       2.7992e+04           9.6300 
+     35        Auger           0.1334  L2  L2       2.3449e+04           0.0000 
+     36        Auger           2.8237  L2  L3       2.3752e+04           0.0000 
+     37        Auger           0.1573  L2  M1       2.7251e+04           0.0000 
+     38        Auger       4.5534e-02      L2       2.7379e+04         927.2000 
+     39        Auger           0.4533      L2       2.7437e+04         869.8100 
+     40        Auger       2.0333e-02      L2       2.7665e+04         641.4600 
+     41        Auger       6.8165e-02      L2       2.7677e+04         629.3100 
+     42        Auger       3.2565e-02      L2       2.8115e+04         191.0400 
+     43        Auger       9.0426e-03      L2       2.8161e+04         145.5300 
+     44        Auger       8.8153e-02      L2       2.8172e+04         134.2100 
+     45        Auger       3.6073e-03      L2       2.8246e+04          60.0400 
+     46        Auger       1.2007e-02      L2       2.8248e+04          58.2600 
+     47        Auger       4.7931e-03      L2       2.8285e+04          21.0100 
+     48        Auger       8.6473e-04      L2       2.8296e+04          10.7700 
+     49        Auger       8.1532e-03      L2       2.8297e+04           9.6300 
+     50        Auger           1.4172  L3  L3       2.4055e+04           0.0000 
+     51        Auger           0.1891  L3  M1       2.7554e+04           0.0000 
+     52        Auger           0.4424      L3       2.7682e+04         927.2000 
+     53        Auger           0.4674      L3       2.7740e+04         869.8100 
+     54        Auger       8.1360e-02      L3       2.7968e+04         641.4600 
+     55        Auger       7.4984e-02      L3       2.7980e+04         629.3100 
+     56        Auger       3.8987e-02      L3       2.8418e+04         191.0400 
+     57        Auger       8.6448e-02      L3       2.8464e+04         145.5300 
+     58        Auger       9.1442e-02      L3       2.8475e+04         134.2100 
+     59        Auger       1.4404e-02      L3       2.8550e+04          60.0400 
+     60        Auger       1.3243e-02      L3       2.8551e+04          58.2600 
+     61        Auger       5.7320e-03      L3       2.8588e+04          21.0100 
+     62        Auger       8.2273e-03      L3       2.8599e+04          10.7700 
+     63        Auger       8.4497e-03      L3       2.8600e+04           9.6300 
+     64        Auger       2.7918e-02  M1  M1       3.1053e+04           0.0000 
+     65        Auger       3.0265e-02      M1       3.1181e+04         927.2000 
+     66        Auger       3.6714e-02      M1       3.1239e+04         869.8100 
+     67        Auger       2.3223e-03      M1       3.1467e+04         641.4600 
+     68        Auger       2.4459e-03      M1       3.1479e+04         629.3100 
+     69        Auger       1.1983e-02      M1       3.1918e+04         191.0400 
+     70        Auger       6.1272e-03      M1       3.1963e+04         145.5300 
+     71        Auger       7.3872e-03      M1       3.1974e+04         134.2100 
+     72        Auger       4.2001e-04      M1       3.2049e+04          60.0400 
+     73        Auger       4.4471e-04      M1       3.2050e+04          58.2600 
+     74        Auger       1.7789e-03      M1       3.2088e+04          21.0100 
+     75        Auger       5.9295e-04      M1       3.2098e+04          10.7700 
+     76        Auger       6.9178e-04      M1       3.2099e+04           9.6300 
+     77        Auger       3.7307e-03               3.1310e+04        1854.4000 
+     78        Auger       7.2217e-02               3.1367e+04        1797.0100 
+     79        Auger       2.4954e-03               3.1595e+04        1568.6600 
+     80        Auger       8.3260e-03               3.1607e+04        1556.5100 
+     81        Auger       6.2755e-03               3.2046e+04        1118.2400 
+     82        Auger       1.4823e-03               3.2091e+04        1072.7300 
+     83        Auger       1.4084e-02               3.2103e+04        1061.4100 
+     84        Auger       4.4472e-04               3.2177e+04         987.2400 
+     85        Auger       1.4823e-03               3.2178e+04         985.4600 
+     86        Auger       9.1415e-04               3.2216e+04         948.2100 
+     87        Auger       1.4823e-04               3.2226e+04         937.9700 
+     88        Auger       1.3096e-03               3.2227e+04         936.8300 
+     89        Auger       3.8665e-02               3.1424e+04        1739.6200 
+     90        Auger       1.0599e-02               3.1653e+04        1511.2700 
+     91        Auger       9.5368e-03               3.1665e+04        1499.1200 
+     92        Auger       7.5848e-03               3.2103e+04        1060.8500 
+     93        Auger       1.4157e-02               3.2149e+04        1015.3400 
+     94        Auger       1.5145e-02               3.2160e+04        1004.0200 
+     95        Auger       1.8777e-03               3.2234e+04         929.8500 
+     96        Auger       1.6799e-03               3.2236e+04         928.0700 
+     97        Auger       1.1118e-03               3.2273e+04         890.8200 
+     98        Auger       1.3341e-03               3.2283e+04         880.5800 
+     99        Auger       1.4083e-03               3.2285e+04         879.4400 
+    100        Auger       1.2172e-03               3.1893e+04        1270.7700 
+    101        Auger       4.4472e-04               3.2332e+04         832.5000 
+    102        Auger       4.4472e-04               3.2377e+04         786.9900 
+    103        Auger       1.8726e-03               3.2388e+04         775.6700 
+    104        Auger       2.1066e-04               3.2464e+04         699.7200 
+    105        Auger       7.0219e-05               3.2501e+04         662.4700 
+    106        Auger       4.6813e-05               3.2512e+04         652.2300 
+    107        Auger       1.6384e-04               3.2513e+04         651.0900 
+    108        Auger       2.8623e-04               3.1905e+04        1258.6200 
+    109        Auger       4.7704e-04               3.2344e+04         820.3500 
+    110        Auger       1.5027e-03               3.2389e+04         774.8400 
+    111        Auger       1.7174e-03               3.2400e+04         763.5200 
+    112        Auger       2.1467e-04               3.2475e+04         689.3500 
+    113        Auger       9.5409e-05               3.2476e+04         687.5700 
+    114        Auger       7.1555e-05               3.2514e+04         650.3200 
+    115        Auger       1.4311e-04               3.2524e+04         640.0800 
+    116        Auger       1.6696e-04               3.2525e+04         638.9400 
+    117        Auger       1.2422e-03               3.2782e+04         382.0800 
+    118        Auger       1.2422e-03               3.2827e+04         336.5700 
+    119        Auger       1.4811e-03               3.2839e+04         325.2500 
+    120        Auger       7.1660e-05               3.2913e+04         251.0800 
+    121        Auger       9.5550e-05               3.2915e+04         249.3000 
+    122        Auger       3.5831e-04               3.2952e+04         212.0500 
+    123        Auger       1.1943e-04               3.2962e+04         201.8100 
+    124        Auger       1.4332e-04               3.2963e+04         200.6700 
+    125        Auger       1.3702e-04               3.2873e+04         291.0600 
+    126        Auger       2.5579e-03               3.2884e+04         279.7400 
+    127        Auger       6.8513e-05               3.2958e+04         205.5700 
+    128        Auger       2.5122e-04               3.2960e+04         203.7900 
+    129        Auger       1.8271e-04               3.2998e+04         166.5400 
+    130        Auger       2.2838e-05               3.3008e+04         156.3000 
+    131        Auger       2.2838e-04               3.3009e+04         155.1600 
+    132        Auger       1.3813e-03               3.2896e+04         268.4200 
+    133        Auger       3.2232e-04               3.2970e+04         194.2500 
+    134        Auger       2.9930e-04               3.2972e+04         192.4700 
+    135        Auger       2.0721e-04               3.3009e+04         155.2200 
+    136        Auger       2.5326e-04               3.3019e+04         144.9800 
+    137        Auger       2.5326e-04               3.3020e+04         143.8400 
+    138        Auger       4.9413e-05               3.3046e+04         118.3000 
+    139        Auger       2.4707e-05               3.3083e+04          81.0500 
+    140        Auger       2.4707e-05               3.3094e+04          69.6700 
+    141        Auger       2.4707e-05               3.3085e+04          79.2700 
+    142        Auger       2.4707e-05               3.3095e+04          69.0300 
+    143        Auger       2.4707e-05               3.3096e+04          67.8900 
+    144        Auger       2.4707e-05               3.3122e+04          42.0200 
+    145        Auger       2.4707e-05               3.3132e+04          31.7800 
+    146        Auger       2.4707e-05               3.3133e+04          30.6400 
+    147        Auger       2.4707e-05               3.3144e+04          20.4000 
+ [        Iodine L1 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    148   Local Depo       1.9988e-03      L2           0.0000         304.4000 
+    149   Local Depo       3.4508e-02      L3           0.0000         607.4000 
+    150    Radiative           1.3155                4234.7002         927.2000 
+    151    Radiative           2.0889                4292.0898         869.8100 
+    152    Radiative       1.8827e-02                4520.4399         641.4600 
+    153    Radiative       2.8121e-02                4532.5898         629.3100 
+    154    Radiative           0.2774                5016.3701         145.5300 
+    155    Radiative           0.4511                5027.6899         134.2100 
+    156    Radiative       2.2040e-03                5101.8599          60.0400 
+    157    Radiative       3.3435e-03                5103.6401          58.2600 
+    158    Radiative       2.4169e-02                5151.1299          10.7700 
+    159    Radiative       3.7713e-02                5152.2700           9.6300 
+    160   Local Depo           5.6427      L2           0.0000         304.4000 
+    161   Local Depo           4.0763      L2           0.0000         304.4000 
+    162   Local Depo           5.2561      L2           0.0000         304.4000 
+    163   Local Depo           1.2992      L2           0.0000         304.4000 
+    164   Local Depo           2.0858      L2           0.0000         304.4000 
+    165   Local Depo           0.8115      L2           0.0000         304.4000 
+    166   Local Depo           0.3691      L2           0.0000         304.4000 
+    167   Local Depo           0.4631      L2           0.0000         304.4000 
+    168   Local Depo           7.4315      L3           0.0000         607.4000 
+    169   Local Depo           3.2976      L3           0.0000         607.4000 
+    170   Local Depo           6.2373      L3           0.0000         607.4000 
+    171   Local Depo           5.9400      L3           0.0000         607.4000 
+    172   Local Depo           7.6263      L3           0.0000         607.4000 
+    173   Local Depo           1.0643      L3           0.0000         607.4000 
+    174   Local Depo           0.3039      L3           0.0000         607.4000 
+    175   Local Depo           0.5648      L3           0.0000         607.4000 
+    176   Local Depo           1.3331  M1  M1           0.0000        3051.1001 
+    177   Local Depo           2.6533      M1           0.0000        4106.5001 
+    178   Local Depo           4.9151      M1           0.0000        4106.4999 
+    179   Local Depo           3.9432      M1           0.0000        4106.5001 
+    180   Local Depo           5.5836      M1           0.0000        4106.4999 
+    181   Local Depo           0.4903      M1           0.0000        4106.5000 
+    182   Local Depo           0.5266      M1           0.0000        4106.5000 
+    183   Local Depo           0.9675      M1           0.0000        4106.5000 
+    184   Local Depo           0.6063      M1           0.0000        4106.5000 
+    185   Local Depo           0.8535      M1           0.0000        4106.5000 
+    186   Local Depo       7.1121e-02      M1           0.0000        4106.5000 
+    187   Local Depo       5.0296e-02      M1           0.0000        4106.5000 
+    188   Local Depo       8.9862e-02      M1           0.0000        4106.5001 
+    189   Local Depo          21.1626                   0.0000        5161.8999 
+ [        Iodine L2 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    190   Local Depo       5.6800e-06      L3           0.0000         303.0000 
+    191    Radiative           0.3925      M1        3802.1001           0.0000 
+    192    Radiative       5.5008e-03                3987.6899         869.8100 
+    193    Radiative           7.0225                4216.0400         641.4600 
+    194    Radiative       5.4051e-02                4666.4600         191.0400 
+    195    Radiative       6.3193e-04                4723.2900         134.2100 
+    196    Radiative           1.0036                4797.4600          60.0400 
+    197    Radiative       6.1056e-03                4836.4902          21.0100 
+    198    Radiative       5.2855e-05                4847.8701           9.6300 
+    199   Local Depo           1.1429      L3           0.0000         303.0000 
+    200   Local Depo           5.0468      L3           0.0000         303.0000 
+    201   Local Depo           1.7629      L3           0.0000         303.0000 
+    202   Local Depo           6.4282      L3           0.0000         303.0000 
+    203   Local Depo           2.3870      L3           0.0000         303.0000 
+    204   Local Depo           0.1537      L3           0.0000         303.0000 
+    205   Local Depo           0.4577      L3           0.0000         303.0000 
+    206   Local Depo           0.1626      L3           0.0000         303.0000 
+    207   Local Depo           0.1028  M1  M1           0.0000        2746.7000 
+    208   Local Depo           2.4895      M1           0.0000        3802.0999 
+    209   Local Depo           0.2435      M1           0.0000        3802.1000 
+    210   Local Depo           0.1838      M1           0.0000        3802.0999 
+    211   Local Depo           0.3523      M1           0.0000        3802.1000 
+    212   Local Depo       3.5136e-02      M1           0.0000        3802.1001 
+    213   Local Depo           0.3406      M1           0.0000        3802.1001 
+    214   Local Depo       4.2612e-02      M1           0.0000        3802.0999 
+    215   Local Depo       2.0839e-02      M1           0.0000        3802.1001 
+    216   Local Depo       3.4108e-02      M1           0.0000        3802.1001 
+    217   Local Depo       5.0462e-03      M1           0.0000        3802.1001 
+    218   Local Depo       3.0650e-02      M1           0.0000        3802.1001 
+    219   Local Depo       3.8311e-03      M1           0.0000        3802.1000 
+    220   Local Depo          70.0884                   0.0000        4857.5000 
+ [        Iodine L3 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    221    Radiative           0.7059      M1        3499.1001           0.0000 
+    222    Radiative       3.8221e-03                3627.3000         927.2000 
+    223    Radiative       3.5637e-03                3684.6899         869.8100 
+    224    Radiative           0.6987                3913.0400         641.4600 
+    225    Radiative           6.1943                3925.1899         629.3100 
+    226    Radiative       5.9630e-02                4363.4600         191.0400 
+    227    Radiative       3.1180e-04                4408.9702         145.5300 
+    228    Radiative       2.9908e-04                4420.2900         134.2100 
+    229    Radiative       9.7401e-02                4494.4600          60.0400 
+    230    Radiative           0.8676                4496.2402          58.2600 
+    231    Radiative       7.9253e-03                4533.4902          21.0100 
+    232    Radiative       2.7065e-05                4543.7300          10.7700 
+    233    Radiative       2.4915e-05                4544.8701           9.6300 
+    234   Local Depo           0.1353  M1  M1           0.0000        2443.7000 
+    235   Local Depo       9.7247e-02      M1           0.0000        3499.0999 
+    236   Local Depo           2.8883      M1           0.0000        3499.1000 
+    237   Local Depo           0.2873      M1           0.0000        3499.0999 
+    238   Local Depo           0.3090      M1           0.0000        3499.1000 
+    239   Local Depo       4.6388e-02      M1           0.0000        3499.1001 
+    240   Local Depo       1.6038e-02      M1           0.0000        3499.1001 
+    241   Local Depo           0.3948      M1           0.0000        3499.0999 
+    242   Local Depo       2.4261e-02      M1           0.0000        3499.1001 
+    243   Local Depo       2.4159e-02      M1           0.0000        3499.1001 
+    244   Local Depo       6.5982e-03      M1           0.0000        3499.1001 
+    245   Local Depo       1.5227e-03      M1           0.0000        3499.1001 
+    246   Local Depo       3.4615e-02      M1           0.0000        3499.1000 
+    247   Local Depo          87.0950                   0.0000        4554.5000 
+ [        Iodine M1 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    248    Radiative       1.8859e-03                1044.6300          10.7700 
+    249    Radiative       2.5382e-03                1045.7700           9.6300 
+    250   Local Depo          99.9956                   0.0000        1055.4000 
+ [        Iodine M2 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    251   Local Depo         100.0000                   0.0000         927.2000 
+ [        Iodine M3 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    252   Local Depo         100.0000                   0.0000         869.8100 
+ [        Iodine M4 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    253   Local Depo         100.0000                   0.0000         641.4600 
+ [        Iodine M5 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    254   Local Depo         100.0000                   0.0000         629.3100 
+ [        Iodine N1 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    255   Local Depo         100.0000                   0.0000         191.0400 
+ [        Iodine N2 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    256   Local Depo         100.0000                   0.0000         145.5300 
+ [        Iodine N3 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    257   Local Depo         100.0000                   0.0000         134.2100 
+ [        Iodine N4 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    258   Local Depo         100.0000                   0.0000          60.0400 
+ [        Iodine N5 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    259   Local Depo         100.0000                   0.0000          58.2600 
+ [        Iodine O1 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    260   Local Depo         100.0000                   0.0000          21.0100 
+ [        Iodine O2 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    261   Local Depo         100.0000                   0.0000          10.7700 
+ [        Iodine O3 ]
+     ID       Action  Probability [%]  V1  V2   Secondary [eV]  Deposition [eV] 
+    262   Local Depo         100.0000                   0.0000           9.6300 
+
+
+ [INFO] *** Photon Transport Summaries ***
+  XS library/model                          epdl97
+  XS interpolation table                      1000 (bins)
+  Rayleigh scattering                           On
+  Photoelectric mode                      Detailed
+  PE Sauter distribution                        On
+  Compton scattering                        EGSnrc
+  NIST/NRC pair production                      On
+  Number of XS table                             2
+  Memory usage                            0.193737 (MiB)
+
+
+ [INFO] *** Electron Transport Summaries ***
+  XS library/model                        pegsless
+  XS interpolation table                      1000 (bins)
+  CH algorithm                           PRESTA-II
+  Use ionization FUDGEM                         On
+  Mott spin correction                          On
+  Fractional eloss limit                        20 (%)
+  Maximum step length                        1e+10 (cm)
+  Maximum momentum transfer                    0.5
+  Bremss XS generator             NRC + Correction
+  Bremss correction method               NIST/ICRU
+  Bremss angular sampler           KM Leading Term
+  Impact ionization mode                       Off
+  Number of XS table                             2
+  Memory usage                            0.324432 (MiB)
+
+
+ [INFO] *** World Summaries ***
+  Number of Facet                              400
+  Tracer Dimension                      4352 x 128
+  GAS Size                               0.0272217 (MiB)
+  Region Table Size                     0.00152588 (MiB)
+  Tracer Size                                55.25 (MiB)
+
+
+ [INFO] *** Source Summaries ***
+  Mode                                       MACRO
+  Memory usage                         7.24792e-05 (MiB)
+ [             beam ]
+  Weight                                         1
+  Primary                                        0
+  Energy sampling                            PULSE
+  Energy interp                             LINEAR
+  Energy bin                                     1
+  Direction sampling                      SPECTRUM
+  Direction bin                                  2
+*** Affine matrix ***
+    |            1            0            0            0 |
+    |            0            1            0            0 |
+    |            0            0            1          -10 |
+  Beam shape                                  CUBE
+  Beam size (x)                                  0 (cm)
+  Beam size (y)                                  0 (cm)
+  Beam size (z)                                  0 (cm)
+
+
+ [INFO] *** Tally Summaries ***
+  MESH_TRACK                                     0
+  MESH_DENSITY                                   0
+  CROSS                                          0
+  TRACK                                          0
+  DENSITY                                        0
+  PHASE_SPACE                                    0
+  DETECTOR                                       2
+  Memory usage                             3034.53 (MiB)
+
+
+ [INFO] *** Buffer Summaries ***
+  Available memories                         12039 (MiB)
+  Memory usage ratio                            60 (%)
+  Number of buffer                              16
+  Size per buffer                         11698176 (Banks)
+
+
+ [2025-01-02 10:36:57] 
+ [INFO] Start main Monte Carlo stage
+ [INFO] Detector tally found, batch mode is activated
+  Batch size                             132579328
+  Batch iter                                     8
+ [INFO] Start new batch
+ [2025-01-02 10:36:57] 
+ [INFO] NPS 50000000
+ [2025-01-02 10:36:58] 
+ [INFO] NPS 100000000
+ [2025-01-02 10:36:59] 
+ [INFO] End of main Monte Carlo stage
+ [INFO] Start the residual stage
+ [INFO] Block is set to 870
+ [INFO] Block is set to 174
+ [INFO] Block is set to 34
+ [INFO] Block is set to 6
+ [INFO] Block is set to 1
+ [2025-01-02 10:37:04] 
+ [INFO] End of residual stage
+ [INFO] Start new batch
+ [2025-01-02 10:37:04] 
+ [INFO] NPS 150000000
+ [2025-01-02 10:37:04] 
+ [INFO] NPS 200000000
+ [2025-01-02 10:37:05] 
+ [INFO] NPS 250000000
+ [2025-01-02 10:37:06] 
+ [INFO] End of main Monte Carlo stage
+ [INFO] Start the residual stage
+ [INFO] Block is set to 870
+ [INFO] Block is set to 174
+ [INFO] Block is set to 34
+ [INFO] Block is set to 6
+ [INFO] Block is set to 1
+ [2025-01-02 10:37:11] 
+ [INFO] End of residual stage
+ [INFO] Start new batch
+ [2025-01-02 10:37:11] 
+ [INFO] NPS 300000000
+ [2025-01-02 10:37:11] 
+ [INFO] NPS 350000000
+ [2025-01-02 10:37:13] 
+ [INFO] End of main Monte Carlo stage
+ [INFO] Start the residual stage
+ [INFO] Block is set to 870
+ [INFO] Block is set to 174
+ [INFO] Block is set to 34
+ [INFO] Block is set to 6
+ [INFO] Block is set to 1
+ [2025-01-02 10:37:18] 
+ [INFO] End of residual stage
+ [INFO] Start new batch
+ [2025-01-02 10:37:18] 
+ [INFO] NPS 400000000
+ [2025-01-02 10:37:19] 
+ [INFO] NPS 450000000
+ [2025-01-02 10:37:19] 
+ [INFO] NPS 500000000
+ [2025-01-02 10:37:20] 
+ [INFO] End of main Monte Carlo stage
+ [INFO] Start the residual stage
+ [INFO] Block is set to 870
+ [INFO] Block is set to 174
+ [INFO] Block is set to 34
+ [INFO] Block is set to 6
+ [INFO] Block is set to 1
+ [2025-01-02 10:37:25] 
+ [INFO] End of residual stage
+ [INFO] Start new batch
+ [2025-01-02 10:37:25] 
+ [INFO] NPS 550000000
+ [2025-01-02 10:37:26] 
+ [INFO] NPS 600000000
+ [2025-01-02 10:37:26] 
+ [INFO] NPS 650000000
+ [2025-01-02 10:37:27] 
+ [INFO] End of main Monte Carlo stage
+ [INFO] Start the residual stage
+ [INFO] Block is set to 870
+ [INFO] Block is set to 174
+ [INFO] Block is set to 34
+ [INFO] Block is set to 6
+ [INFO] Block is set to 1
+ [2025-01-02 10:37:32] 
+ [INFO] End of residual stage
+ [INFO] Start new batch
+ [2025-01-02 10:37:32] 
+ [INFO] NPS 700000000
+ [2025-01-02 10:37:33] 
+ [INFO] NPS 750000000
+ [2025-01-02 10:37:34] 
+ [INFO] End of main Monte Carlo stage
+ [INFO] Start the residual stage
+ [INFO] Block is set to 870
+ [INFO] Block is set to 174
+ [INFO] Block is set to 34
+ [INFO] Block is set to 6
+ [INFO] Block is set to 1
+ [2025-01-02 10:37:39] 
+ [INFO] End of residual stage
+ [INFO] Start new batch
+ [2025-01-02 10:37:39] 
+ [INFO] NPS 800000000
+ [2025-01-02 10:37:39] 
+ [INFO] NPS 850000000
+ [2025-01-02 10:37:40] 
+ [INFO] NPS 900000000
+ [2025-01-02 10:37:41] 
+ [INFO] End of main Monte Carlo stage
+ [INFO] Start the residual stage
+ [INFO] Block is set to 870
+ [INFO] Block is set to 174
+ [INFO] Block is set to 34
+ [INFO] Block is set to 6
+ [INFO] Block is set to 1
+ [2025-01-02 10:37:46] 
+ [INFO] End of residual stage
+ [INFO] Start new batch
+ [2025-01-02 10:37:47] 
+ [INFO] NPS 950000000
+ [2025-01-02 10:37:47] 
+ [INFO] NPS 1000000000
+ [2025-01-02 10:37:47] 
+ [INFO] End of main Monte Carlo stage
+ [INFO] Start the residual stage
+ [INFO] Block is set to 870
+ [INFO] Block is set to 174
+ [INFO] Block is set to 34
+ [INFO] Block is set to 6
+ [INFO] Block is set to 1
+ [2025-01-02 10:37:52] 
+ [INFO] End of residual stage
+ [INFO] *** Launch History ***
+  NPS setup                             1000000000
+  Launched histories                    1000472576
+  Total weight                         1.00047e+09
+ [INFO] *** Kernel Execution Histories ***
+  Electron Transport                    4546679296 (Banks)
+  Photon Transport                      1114353920 (Banks)
+  Positron Transport                       2969344 (Banks)
+  Neutron Transport                              0 (Banks)
+  Fast Neutron Transport                         0 (Banks)
+  Generic ion Transport                          0 (Banks)
+  Atomic Relaxation                       61942400 (Banks)
+  Rayleigh Scattering                      2118912 (Banks)
+  Photoelectric Effect                    26134912 (Banks)
+  Compton Scattering                      27303040 (Banks)
+  Pair production                            54912 (Banks)
+  e- Bremsstrahlung                        9984128 (Banks)
+  Moller Scattering                       85945088 (Banks)
+  e+ Bremsstrahlung                           3200 (Banks)
+  Bhabha Scattering                          40064 (Banks)
+  e+e- Annihilation                          54272 (Banks)
+ [INFO] *** Residual Banks ***
+  Electron Transport                           151 (Banks)
+  Photon Transport                              81 (Banks)
+  Positron Transport                           150 (Banks)
+  Neutron Transport                              0 (Banks)
+  Fast Neutron Transport                         0 (Banks)
+  Generic ion Transport                          0 (Banks)
+  Atomic Relaxation                             94 (Banks)
+  Rayleigh Scattering                          134 (Banks)
+  Photoelectric Effect                         118 (Banks)
+  Compton Scattering                           126 (Banks)
+  Pair production                              131 (Banks)
+  e- Bremsstrahlung                             79 (Banks)
+  Moller Scattering                            148 (Banks)
+  e+ Bremsstrahlung                            139 (Banks)
+  Bhabha Scattering                            153 (Banks)
+  e+e- Annihilation                            139 (Banks)
+ [INFO] *** Tally Summaries ***
+ [             gebw ]
+  Energy from                                0.001 (MeV)
+  Energy to                                      2 (MeV)
+  Binning method                    linear spacing
+  Number of bin                               1024
+  Quantity                                 Fluence (#/cm2/hist)
+ [            gebwo ]
+  Energy from                                0.001 (MeV)
+  Energy to                                      2 (MeV)
+  Binning method                    linear spacing
+  Number of bin                               1024
+  Quantity                                 Fluence (#/cm2/hist)

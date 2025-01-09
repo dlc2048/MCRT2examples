@@ -1,0 +1,22 @@
+# Example of NIFTI based voxel model
+# 
+# nifti to voxel conversion is required before run this code
+# converter command
+# > RT2nifti -i image.nii.gz -ho houns.txt
+#
+# builder command
+# > RT2builder -i world.inp
+#
+# viewer command (condition for viewer.jpg image in example folder)
+# > RT2viewer -e 30 50 50
+#
+# 'viewer.jpg' is the visualization result of region 'bone' with 
+# transparent mode
+
+
+SURFACE_BEGIN
+	VOXEL     name=voxel file=image.nii.gz.vxl
+SURFACE_END
+
+REGION voxel  +voxel
+REGION void   -@voxel

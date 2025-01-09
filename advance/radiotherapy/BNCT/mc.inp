@@ -1,0 +1,429 @@
+# Example of Boron Neutron Capture Therapy (BNCT)
+# ICRP reference phantom that has arbitrary designated tumor
+# in brain is irradiated by 10 cm Annular neutron beam.
+# 
+# NIFTI converter is required before run this code.
+# RT2nifti command
+# > RT2nifti -i ref.nii.gz -ho houns.txt -o voxel
+#
+# geometry build is required before run this code.
+# builder command
+# > RT2builder -i world.inp
+#
+# MC run command
+# > RT2mc -i mc.inp -o mc.out
+#
+# The attached file ref_30.bnn and ref_31 bnn are
+# the FLUKA calculation result for the same simulation.
+# These file can be transformed to RT2 MESH_DENSITY tally
+# for comparison
+# run command
+# > RT2fluka -i ref_30.bnn
+# > RT2fluka -i ref_31.bnn
+#
+# The scoring results can be plotted by Python script.
+# Python run command
+# > python3 plot.py  [Linux]
+# > python  plot.py  [Windows]
+#
+# Attached image file lists
+# [bench.svg]: Isodose curve, depth and lateral dose profile
+#              of RT2 and FLUKA.
+
+
+CUDA_SETTINGS block_per_sm=128 gpu=0
+
+# Neutron spectrum from
+# Lee, S., Chang, H., Lee, J., Kye, Y. U., & Ye, S. J. (2020). Neutron yields 
+# of Be-9 (p, xn) reactions and beam characterization for accelerator-based 
+# boron neutron capture therapy facility using MCNP6, PHITS, and GEANT4 
+# simulation results. Nuclear Instruments and Methods in Physics Research 
+# Section B: Beam Interactions with Materials and Atoms, 478, 233-238.
+
+ENTRY ebin  1.00000e-8   1.48423e-8   2.80156e-8   4.74898e-8   8.70462e-8   \
+            1.54935e-7   2.57543e-7   4.36566e-7   7.40031e-7   1.21829e-6   \
+            1.96675e-6   3.11315e-6   4.97680e-6   7.35783e-6   9.57966e-6   \
+            1.28440e-5   1.63983e-5   1.88018e-5   2.37711e-5   3.18713e-5   \
+            4.35763e-5   5.89929e-5   7.24269e-5   9.15799e-5   1.13553e-4   \
+            1.28929e-4   1.44977e-4   1.78012e-4   2.16421e-4   2.40991e-4   \
+            2.70988e-4   3.10706e-4   3.77790e-4   4.46067e-4   5.21555e-4   \
+            6.21871e-4   7.41481e-4   9.55983e-4   1.25690e-3   1.57380e-3   \
+            1.91359e-3   2.23743e-3   2.41936e-3   2.72051e-3   3.30788e-3   \
+            4.26481e-3   5.49857e-3   6.49232e-3   7.37140e-3   8.45279e-3   \
+            9.41239e-3   1.01777e-2   1.10053e-2   1.23737e-2   1.43285e-2   \
+            1.57997e-2   1.72524e-2   1.97834e-2   2.26830e-2   2.50121e-2   \
+            2.81255e-2   3.13148e-2   3.45303e-2   3.88283e-2   4.36566e-2   \
+            4.76705e-2   5.46638e-2   6.58188e-2   7.32909e-2   8.40330e-2   \
+            9.82539e-2   1.14895e-1   1.48132e-1   2.00540e-1   2.96483e-1   \
+            4.21502e-1   5.48782e-1   8.03434e-1   1.18768e+0   1.84374e+0   \
+            2.83433e+0   3.95139e+0   6.25533e+0   1.00000e+1
+ENTRY eprob 1.14914e-4   7.39470e-4   9.20928e-4   2.29161e-3   3.85781e-3   \
+            4.58277e-3   5.98735e-3   7.52311e-3   8.99112e-3   1.03101e-2   \
+            1.21577e-2   1.44668e-2   1.38762e-2   1.01328e-2   1.23692e-2   \
+            1.13711e-2   7.08241e-3   1.15981e-2   1.56106e-2   1.79266e-2   \
+            1.89452e-2   1.34288e-2   1.61088e-2   1.57034e-2   9.42019e-3   \
+            9.48775e-3   1.66012e-2   1.71078e-2   9.38453e-3   1.09894e-2   \
+            1.26130e-2   1.89945e-2   1.64802e-2   1.63281e-2   1.87305e-2   \
+            1.96004e-2   2.93451e-2   3.31977e-2   2.91728e-2   2.63307e-2   \
+            2.19680e-2   1.07793e-2   1.77469e-2   2.81505e-2   3.85849e-2   \
+            4.03587e-2   2.38263e-2   2.07244e-2   2.20217e-2   1.77992e-2   \
+            1.27578e-2   1.25986e-2   1.81045e-2   2.33826e-2   1.48430e-2   \
+            1.23334e-2   1.81191e-2   1.72285e-2   9.29816e-3   4.47082e-3   \
+            7.43703e-3   2.78661e-3   3.95885e-3   4.36412e-3   1.94468e-3   \
+            7.56625e-3   1.25333e-2   5.91225e-3   3.77987e-3   1.04611e-3   \
+            2.04823e-3   4.58277e-3   3.70089e-3   2.50227e-3   2.35413e-3   \
+            3.76156e-3   6.87520e-3   5.23054e-3   3.96606e-3   2.62692e-3   \
+            1.93311e-3   1.73732e-3   9.55193e-4
+ENTRY dbin  1
+ENTRY dprob 1
+
+COMPOUND vacuum       0.0
+
+COMPOUND hydrogen   0.001   101 99.9855  1002  0.0145
+COMPOUND carbon     0.001  6012   100.0
+COMPOUND nitrogen   0.001  7014   100.0  
+COMPOUND oxygen     0.001  8016    99.8  8017     0.2
+COMPOUND sodium     0.001 11023   100.0
+COMPOUND magnesium  0.001 12024    79.0 12025    10.0 12026    11.0
+COMPOUND phosphorus 0.001 15031   100.0
+COMPOUND sulfur     0.001 16032    94.8 16033    0.76 16034    4.37 16036    0.02
+COMPOUND chlorine   0.001 17035    76.0 17037    24.0
+COMPOUND potassium  0.001 19039    93.3 19041    6.73
+COMPOUND calcium    0.001 20040    96.9 20042   0.647 20043   0.135 20044    2.09 20046   0.004
+COMPOUND iron       0.001 26054    5.85 26056    91.8 26057    2.12 26058    0.28
+
+COMPOUND air      0.001                                                              \
+                  nitrogen 80.0   oxygen 20.0                                        
+COMPOUND urine    1.040                                                              \
+                  hydrogen 10.7   carbon    0.3   nitrogen    1.0                    \
+                  oxygen   87.3   sodium    0.4   phosphorus  0.1  potassium  0.2    \
+                  5010     1.5e-3
+COMPOUND gastro   1.040                                                              \
+                  hydrogen 10.0   carbon    22.2  nitrogen    2.2                    \
+                  oxygen   64.4   sodium    0.1   phosphorus  0.2  sulfur     0.3    \
+                  chlorine 0.1    potassium 0.4   calcium     0.1                    \
+                  5010     1.5e-3
+COMPOUND lung     0.382                                                              \
+                  hydrogen 10.3   carbon    10.7  nitrogen    3.2                    \
+                  oxygen   74.6   sodium    0.2   phosphorus  0.2  sulfur     0.3    \
+                  chlorine 0.3    potassium 0.2                                      \
+                  5010     1.5e-3
+COMPOUND adipo    0.950                                                              \
+                  hydrogen 11.4   carbon    58.8  nitrogen    0.8                    \
+                  oxygen   28.7   sodium    0.1   sulfur      0.1  chlorine   0.1    \
+                  5010     1.5e-3
+COMPOUND breast   1.020                                                              \
+                  hydrogen 11.2   carbon    51.6  nitrogen    1.1                    \
+                  oxygen   35.8   sodium    0.1   sulfur      0.1  chlorine   0.1    \
+                  5010     1.5e-3
+COMPOUND lymph    1.030                                                              \
+                  hydrogen 10.8   carbon    4.2   nitrogen    1.1                    \
+                  oxygen   83.1   sodium    0.3   sulfur      0.1  chlorine   0.4    \
+                  5010     1.5e-3
+COMPOUND prosta   1.030                                                              \
+                  hydrogen 10.4   carbon    23.1  nitrogen    2.8                    \
+                  oxygen   62.7   sodium    0.1   phosphorus  0.2  sulfur     0.3    \
+                  chlorine 0.2    potassium 0.2                                      \
+                  5010     1.5e-3
+COMPOUND gallbl   1.030                                                              \
+                  hydrogen 10.4   carbon    23.1  nitrogen    2.8                    \
+                  oxygen   62.7   sodium    0.1   phosphorus  0.2  sulfur     0.3    \
+                  chlorine 0.2    potassium 0.2                                      
+COMPOUND oesoph   1.030                                                              \
+                  hydrogen 10.4   carbon    21.3  nitrogen    2.9                    \
+                  oxygen   64.4   sodium    0.1   phosphorus  0.2  sulfur     0.3    \
+                  chlorine 0.2    potassium 0.2                                      \
+                  5010     1.5e-3
+COMPOUND adrena   1.030                                                              \
+                  hydrogen 10.4   carbon    22.1  nitrogen    2.8                    \
+                  oxygen   63.7   sodium    0.1   phosphorus  0.2  sulfur     0.3    \
+                  chlorine 0.2    potassium 0.2                                      \
+                  5010     1.5e-3
+COMPOUND testes   1.040                                                              \
+                  hydrogen 10.6   carbon    10.0  nitrogen    2.1                    \
+                  oxygen   76.4   sodium    0.2   phosphorus  0.1  sulfur     0.2    \
+                  chlorine 0.2    potassium 0.2                                      \
+                  5010     1.5e-3
+COMPOUND uribla   1.040                                                              \
+                  hydrogen 10.5   carbon    9.6   nitrogen    2.6                    \
+                  oxygen   76.1   sodium    0.2   phosphorus  0.2  sulfur     0.2    \
+                  chlorine 0.3    potassium 0.3                                      \
+                  5010     1.5e-3
+COMPOUND thyroi   1.040                                                              \
+                  hydrogen 10.4   carbon    11.7  nitrogen    2.6                    \
+                  oxygen   74.5   sodium    0.2   phosphorus  0.1  sulfur     0.1    \
+                  chlorine 0.2    potassium 0.1   53127       0.1                    \
+                  5010     1.5e-3
+COMPOUND spleen   1.040                                                              \
+                  hydrogen 10.2   carbon    11.1  nitrogen    3.3                    \
+                  oxygen   74.3   sodium    0.1   phosphorus  0.2  sulfur     0.2    \
+                  chlorine 0.3    potassium 0.2   iron        0.1                    \
+                  5010     1.5e-3
+COMPOUND lintes   1.040                                                              \
+                  hydrogen 10.5   carbon    11.3  nitrogen    2.6                    \
+                  oxygen   75.0   sodium    0.1   phosphorus  0.1  sulfur     0.1    \
+                  chlorine 0.2    potassium 0.1                                      \
+                  5010     1.5e-3
+COMPOUND sintes   1.040                                                              \
+                  hydrogen 10.5   carbon    11.3  nitrogen    2.6                    \
+                  oxygen   75.0   sodium    0.1   phosphorus  0.1  sulfur     0.1    \
+                  chlorine 0.2    potassium 0.1                                      \
+                  5010     1.5e-3
+COMPOUND stomac   1.040                                                              \
+                  hydrogen 10.5   carbon    11.4  nitrogen    2.5                    \
+                  oxygen   75.0   sodium    0.1   phosphorus  0.1  sulfur     0.1    \
+                  chlorine 0.2    potassium 0.1                                      \
+                  5010     1.5e-3
+COMPOUND kidney   1.050                                                              \
+                  hydrogen 10.3   carbon    12.4  nitrogen    3.1                    \
+                  oxygen   73.1   sodium    0.2   phosphorus  0.2  sulfur     0.2    \
+                  chlorine 0.2    potassium 0.2   calcium     0.1                    \
+                  5010     1.5e-3
+COMPOUND eyes     1.050                                                              \
+                  hydrogen 9.7    carbon    18.1  nitrogen    5.1                    \
+                  oxygen   66.3   sodium    0.2   phosphorus  0.1  sulfur     0.3    \
+                  chlorine 0.1                                                       \
+                  5010     1.5e-3
+COMPOUND heart    1.050                                                              \
+                  hydrogen 10.4   carbon    13.8  nitrogen    2.9                    \
+                  oxygen   71.9   sodium    0.1   phosphorus  0.1  sulfur     0.2    \
+                  chlorine 0.2    potassium 0.3                                      \
+                  5010     1.5e-3
+COMPOUND brain    1.050                                                              \
+                  hydrogen 10.7   carbon    14.3  nitrogen    2.3                    \
+                  oxygen   71.3   sodium    0.2   phosphorus  0.4  sulfur     0.2    \
+                  chlorine 0.3    potassium 0.3                                      \
+                  5010     1.5e-3
+COMPOUND pancre   1.050                                                              \
+                  hydrogen 10.5   carbon    15.5  nitrogen    2.5                    \
+                  oxygen   70.6   sodium    0.2   phosphorus  0.2  sulfur     0.1    \
+                  chlorine 0.2    potassium 0.2                                      \
+                  5010     1.5e-3
+COMPOUND liver    1.050                                                              \
+                  hydrogen 10.2   carbon    13.0  nitrogen    3.1                    \
+                  oxygen   72.5   sodium    0.2   phosphorus  0.2  sulfur     0.3    \
+                  chlorine 0.2    potassium 0.3                                      \
+                  5010     1.5e-3
+COMPOUND mtissu   1.050                                                              \
+                  hydrogen 10.2   carbon    14.2  nitrogen    3.4                    \
+                  oxygen   71.1   sodium    0.1   phosphorus  0.2  sulfur     0.3    \
+                  chlorine 0.1    potassium 0.4                                      \
+                  5010     1.5e-3
+COMPOUND blood    1.060                                                              \
+                  hydrogen 10.2   carbon    11.0  nitrogen    3.3                    \
+                  oxygen   74.5   sodium    0.1   phosphorus  0.1  sulfur     0.2    \
+                  chlorine 0.1    potassium 0.2   iron        0.1                    \
+                  5010     1.5e-3
+COMPOUND skin     1.090                                                              \
+                  hydrogen 10.0   carbon    19.9  nitrogen    4.2                    \
+                  oxygen   65.0   sodium    0.2   phosphorus  0.1  sulfur     0.2    \
+                  chlorine 0.3    potassium 0.1                                      \
+                  5010     1.5e-3
+COMPOUND cartil   1.100                                                              \
+                  hydrogen 9.6    carbon    9.9   nitrogen    2.2                    \
+                  oxygen   74.4   sodium    0.5   phosphorus  2.2  sulfur     0.9    \
+                  chlorine 0.3                                                       \
+                  5010     1.5e-3
+COMPOUND llbone   0.980                                                              \
+                  hydrogen 11.5   carbon    63.6  nitrogen    0.7                    \
+                  oxygen   23.9   sodium    0.1   sulfur      0.1  chlorine   0.1    \
+                  5010     1.5e-3
+COMPOUND labone   0.980                                                              \
+                  hydrogen 11.5   carbon    63.6  nitrogen    0.7                    \
+                  oxygen   23.9   sodium    0.1   sulfur      0.1  chlorine   0.1    \
+                  5010     1.5e-3
+COMPOUND lhalve   0.980                                                              \
+                  hydrogen 11.5   carbon    63.6  nitrogen    0.7                    \
+                  oxygen   23.9   sodium    0.1   sulfur      0.1  chlorine   0.1    \
+                  5010     1.5e-3
+COMPOUND uhalve   0.980                                                              \
+                  hydrogen 11.5   carbon    63.6  nitrogen    0.7                    \
+                  oxygen   23.9   sodium    0.1   sulfur      0.1  chlorine   0.1    \
+                  5010     1.5e-3
+COMPOUND sternu   1.041                                                              \
+                  hydrogen 10.4   carbon    40.9  nitrogen    2.7                    \
+                  oxygen   43.8   sodium    0.1   phosphorus  0.6  sulfur     0.2    \
+                  chlorine 0.2    potassium 0.1   calcium     0.9  iron       0.1    \
+                  5010     1.5e-3
+COMPOUND sacrum   1.031                                                              \
+                  hydrogen 10.5   carbon    41.9  nitrogen    2.7                    \
+                  oxygen   43.2   sodium    0.1   phosphorus  0.4  sulfur     0.2    \
+                  chlorine 0.2    potassium 0.1   calcium     0.6  iron       0.1    \
+                  5010     1.5e-3
+COMPOUND lspine   1.112                                                              \
+                  hydrogen 9.5    carbon    34.0  nitrogen    2.8                    \
+                  oxygen   48.0   sodium    0.1   phosphorus  1.8  sulfur     0.3    \
+                  chlorine 0.2    potassium 0.1   calcium     3.2                    \
+                  5010     1.5e-3
+COMPOUND tspine   1.074                                                              \
+                  hydrogen 9.9    carbon    37.6  nitrogen    2.7                    \
+                  oxygen   45.9   sodium    0.1   phosphorus  1.2  sulfur     0.2    \
+                  chlorine 0.2    potassium 0.1   calcium     2.0  iron       0.1    \
+                  5010     1.5e-3
+COMPOUND cspine   1.050                                                              \
+                  hydrogen 10.3   carbon    40.0  nitrogen    2.7                    \
+                  oxygen   44.4   sodium    0.1   phosphorus  0.7  sulfur     0.2    \
+                  chlorine 0.2    potassium 0.1   calcium     1.2  iron       0.1    \
+                  5010     1.5e-3
+COMPOUND scapul   1.183                                                              \
+                  hydrogen 8.7    carbon    30.9  nitrogen    2.6                    \
+                  oxygen   48.3   sodium    0.2   magnesium   0.1  phosphorus 3.0    \
+                  sulfur   0.4    chlorine  0.2   calcium     5.6                    \
+                  5010     1.5e-3
+COMPOUND ribs     1.165                                                              \
+                  hydrogen 8.9    carbon    29.2  nitrogen    2.9                    \
+                  oxygen   50.7   sodium    0.2   phosphorus  2.6  sulfur     0.4    \
+                  chlorine 0.2    potassium 0.1   calcium     4.8                    \
+                  5010     1.5e-3
+COMPOUND pelvis   1.123                                                              \
+                  hydrogen 9.4    carbon    36.0  nitrogen    2.5                    \
+                  oxygen   45.4   sodium    0.2   phosphorus  2.1  sulfur     0.3    \
+                  chlorine 0.2    potassium 0.1   calcium     3.8                    \
+                  5010     1.5e-3
+COMPOUND mandib   1.228                                                              \
+                  hydrogen 8.3    carbon    26.6  nitrogen    2.7                    \
+                  oxygen   51.1   sodium    0.3   magnesium   0.1  phosphorus 3.6    \
+                  sulfur   0.4    chlorine  0.2   calcium     6.7                    \
+                  5010     1.5e-3
+COMPOUND fbone    1.108                                                              \
+                  hydrogen 9.7    carbon    43.9  nitrogen    1.7                    \
+                  oxygen   38.1   sodium    0.2   phosphorus  2.1  sulfur     0.3    \
+                  chlorine 0.1    calcium   3.9                                      \
+                  5010     1.5e-3
+COMPOUND llbspo   1.108                                                              \
+                  hydrogen 9.7    carbon    43.9  nitrogen    1.7                    \
+                  oxygen   38.1   sodium    0.2   phosphorus  2.1  sulfur     0.3    \
+                  chlorine 0.1    calcium   3.9                                      \
+                  5010     1.5e-3
+COMPOUND lfemor   1.108                                                              \
+                  hydrogen 9.7    carbon    43.9  nitrogen    1.7                    \
+                  oxygen   38.1   sodium    0.2   phosphorus  2.1  sulfur     0.3    \
+                  chlorine 0.1    calcium   3.9                                      \
+                  5010     1.5e-3
+COMPOUND ufemor   1.124                                                              \
+                  hydrogen 9.4    carbon    38.5  nitrogen    2.2                    \
+                  oxygen   43.0   sodium    0.2   phosphorus  2.2  sulfur     0.3    \
+                  chlorine 0.1    calcium   4.1                                      \
+                  5010     1.5e-3
+COMPOUND craniu   1.157                                                              \
+                  hydrogen 9.0    carbon    33.5  nitrogen    2.5                    \
+                  oxygen   46.7   sodium    0.2   phosphorus  2.6  sulfur     0.3    \
+                  chlorine 0.2    potassium 0.1   calcium     4.9                    \
+                  5010     1.5e-3
+COMPOUND clavic   1.151                                                              \
+                  hydrogen 9.1    carbon    34.8  nitrogen    2.4                    \
+                  oxygen   45.7   sodium    0.2   phosphorus  2.6  sulfur     0.3    \
+                  chlorine 0.1    calcium   4.8                                      \
+                  5010     1.5e-3
+COMPOUND handbo   1.108                                                              \
+                  hydrogen 9.7    carbon    43.9  nitrogen    1.7                    \
+                  oxygen   38.1   sodium    0.2   phosphorus  2.1  sulfur     0.3    \
+                  chlorine 0.1    calcium   3.9                                      \
+                  5010     1.5e-3
+COMPOUND labspo   1.108                                                              \
+                  hydrogen 9.7    carbon    43.9  nitrogen    1.7                    \
+                  oxygen   38.1   sodium    0.2   phosphorus  2.1  sulfur     0.3    \
+                  chlorine 0.1    calcium   3.9                                      \
+                  5010     1.5e-3
+COMPOUND lhumer   1.108                                                              \
+                  hydrogen 9.7    carbon    43.9  nitrogen    1.7                    \
+                  oxygen   38.1   sodium    0.2   phosphorus  2.1  sulfur     0.3    \
+                  chlorine 0.1    calcium   3.9                                      \
+                  5010     1.5e-3
+COMPOUND uhumer   1.205                                                              \
+                  hydrogen 8.5    carbon    28.8  nitrogen    2.6                    \
+                  oxygen   49.8   sodium    0.2   magnesium   0.1  phosphorus 3.3    \
+                  sulfur   0.4    chlorine  0.2   calcium     6.1                    \
+                  5010     1.5e-3
+COMPOUND minera   1.92                                                               \
+                  hydrogen 3.6    carbon    15.9  nitrogen    4.2                    \
+                  oxygen   44.8   sodium    0.3   magnesium   0.2  phosphorus 9.4    \
+                  sulfur   0.3    calcium   21.3                                     \
+                  5010     1.5e-3
+COMPOUND teeth    2.75                                                               \
+                  hydrogen 2.2    carbon    9.5   nitrogen    2.9                    \
+                  oxygen   42.1   magnesium 0.7   phosphorus  13.7 calcium    28.9   \
+                  5010     1.5e-3
+COMPOUND btumor   1.050                                                              \
+                  hydrogen 10.7   carbon    14.3  nitrogen    2.3                    \
+                  oxygen   71.3   sodium    0.2   phosphorus  0.4  sulfur     0.2    \
+                  chlorine 0.3    potassium 0.3                                      \
+                  5010     4.5e-3
+				  
+ASSIGN region=RFAIR   compound=air    
+ASSIGN region=URINE   compound=urine  
+ASSIGN region=GASTRO  compound=gastro 
+ASSIGN region=LUNG    compound=lung   
+ASSIGN region=ADIPO   compound=adipo  
+ASSIGN region=BREAST  compound=breast 
+ASSIGN region=LYMPH   compound=lymph  
+ASSIGN region=PROSTA  compound=prosta 
+ASSIGN region=GALLBL  compound=gallbl 
+ASSIGN region=OESOPH  compound=oesoph 
+ASSIGN region=ADRENA  compound=adrena 
+ASSIGN region=TESTES  compound=testes 
+ASSIGN region=URIBLA  compound=uribla 
+ASSIGN region=THYROI  compound=thyroi 
+ASSIGN region=SPLEEN  compound=spleen 
+ASSIGN region=LINTES  compound=lintes 
+ASSIGN region=SINTES  compound=sintes 
+ASSIGN region=STOMAC  compound=stomac 
+ASSIGN region=KIDNEY  compound=kidney 
+ASSIGN region=EYES    compound=eyes   
+ASSIGN region=HEART   compound=heart  
+ASSIGN region=BRAIN   compound=brain  
+ASSIGN region=PANCRE  compound=pancre 
+ASSIGN region=LIVER   compound=liver  
+ASSIGN region=MTISSU  compound=mtissu 
+ASSIGN region=BLOOD   compound=blood  
+ASSIGN region=SKIN    compound=skin   
+ASSIGN region=CARTIL  compound=cartil 
+ASSIGN region=LLBONE  compound=llbone 
+ASSIGN region=LABONE  compound=labone 
+ASSIGN region=LHALVE  compound=lhalve 
+ASSIGN region=UHALVE  compound=uhalve 
+ASSIGN region=STERNU  compound=sternu 
+ASSIGN region=SACRUM  compound=sacrum 
+ASSIGN region=LSPINE  compound=lspine 
+ASSIGN region=TSPINE  compound=tspine 
+ASSIGN region=CSPINE  compound=cspine 
+ASSIGN region=SCAPUL  compound=scapul 
+ASSIGN region=RIBS    compound=ribs   
+ASSIGN region=PELVIS  compound=pelvis 
+ASSIGN region=MANDIB  compound=mandib 
+ASSIGN region=FBONE   compound=fbone  
+ASSIGN region=LLBSPO  compound=llbspo 
+ASSIGN region=LFEMOR  compound=lfemor 
+ASSIGN region=UFEMOR  compound=ufemor 
+ASSIGN region=CRANIU  compound=craniu 
+ASSIGN region=CLAVIC  compound=clavic 
+ASSIGN region=HANDBO  compound=handbo 
+ASSIGN region=LABSPO  compound=labspo 
+ASSIGN region=LHUMER  compound=lhumer 
+ASSIGN region=UHUMER  compound=uhumer 
+ASSIGN region=MINERA  compound=minera 
+ASSIGN region=TEETH   compound=teeth  
+ASSIGN region=PAD     compound=air
+ASSIGN region=BTUMOR  compound=btumor
+ASSIGN region=reg1    compound=vacuum
+ASSIGN region=void    compound=vacuum
+
+BEAM_GLOBAL mode=macro nps=5e9
+
+BEAM_CYLINDER name=beam             \
+              pid=6                 \
+              position=-5,14,169.6  \ 
+              radius=0,5            \
+              height=0              \
+              type=linear           \
+              weight=1              \
+              direction=1,0,0       \
+              energy=ebin,eprob     \
+              divergence=dbin,dprob
+		
+MESH_DENSITY   name=md1 pid=-1  nx=254 ny=127 nz=42 type=dose xrange=-0.10685,54.172951 yrange=-0.10685,27.033051 zrange=143.6,177.2
+MESH_DENSITY   name=md2 pid=0  nx=254 ny=127 nz=42 type=dose xrange=-0.10685,54.172951 yrange=-0.10685,27.033051 zrange=143.6,177.2
+MESH_DENSITY   name=md3 pid=1  nx=254 ny=127 nz=42 type=dose xrange=-0.10685,54.172951 yrange=-0.10685,27.033051 zrange=143.6,177.2
+MESH_DENSITY   name=md4 pid=6  nx=254 ny=127 nz=42 type=dose xrange=-0.10685,54.172951 yrange=-0.10685,27.033051 zrange=143.6,177.2
+MESH_DENSITY   name=md5 pid=26  nx=254 ny=127 nz=42 type=dose xrange=-0.10685,54.172951 yrange=-0.10685,27.033051 zrange=143.6,177.2
+

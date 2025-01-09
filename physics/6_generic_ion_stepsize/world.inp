@@ -1,0 +1,10 @@
+# Please read descriptions in 'mc.inp' file for more detail.
+
+GEO_GLOBAL
+
+SURFACE_BEGIN
+    CUBE name=phantom center=0,0,25 size=50,50,50
+SURFACE_END
+
+REGION target +phantom
+REGION void   -phantom

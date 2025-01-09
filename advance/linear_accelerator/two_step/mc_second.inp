@@ -1,0 +1,49 @@
+# Please read descriptions in 'mc_first.inp' file for more detail.
+
+CUDA_SETTINGS block_per_sm=128 buffer_ratio=0.6
+
+ELECTRON transport_cutoff=0.1  production_cutoff=0.1
+POSITRON transport_cutoff=0.1  production_cutoff=0.1
+PHOTON   transport_cutoff=0.01 production_cutof=0.01 compton_mode=egsnrc
+
+NEUTRON      activate=0
+GENERIC_ION  activate=0
+NEUTRON_HIGH activate=0
+
+COMPOUND vacuum    0.0
+COMPOUND hydrogen  0.08988 101      99.98 1002     0.02
+COMPOUND oxygen    1.141   8016     99.56 8017     0.44
+COMPOUND water     1.0     hydrogen    -2 oxygen     -1
+COMPOUND tungsten  19.25   74182     26.5 74183    14.3 74184    30.6 74186 28.4
+COMPOUND copper    8.92    29063     69.2 29065    30.9
+
+COMPOUND mlc_alloy 17.5    tungsten  92.5 copper    7.5
+
+ASSIGN region=prim_coll  compound=vacuum
+ASSIGN region=target_w   compound=vacuum
+ASSIGN region=target_cu  compound=vacuum
+ASSIGN region=ff         compound=vacuum
+ASSIGN region=jaws       compound=vacuum
+ASSIGN region=mlc        compound=vacuum
+ASSIGN region=phantom    compound=water
+ASSIGN region=void       compound=vacuum
+
+ENTRY ebin  6  # 6 MV
+ENTRY eprob 1
+ENTRY dbin  1
+ENTRY dprob 1
+
+BEAM_GLOBAL mode=ps nps=1e9
+
+BEAM_PS file=mc_first_ps.phs
+
+$RANGE$ 100
+
+# flux
+MESH_TRACK    name=xray  pid=0  nx=100 ny=100 nz=100 xrange=-$RANGE$,$RANGE$ yrange=-$RANGE$,$RANGE$ zrange=-$RANGE$,$RANGE$ \
+              erange=0,10  escale=linear  ne=1
+
+# dose
+MESH_DENSITY  name=depo_gamma pid=0  type=depo nx=100 ny=100 nz=100 xrange=-50,50 yrange=-50,50 zrange=-100,0
+MESH_DENSITY  name=depo_elect pid=-1 type=depo nx=100 ny=100 nz=100 xrange=-50,50 yrange=-50,50 zrange=-100,0
+MESH_DENSITY  name=depo_posit pid=+1 type=depo nx=100 ny=100 nz=100 xrange=-50,50 yrange=-50,50 zrange=-100,0

@@ -1,0 +1,21 @@
+# Example for Boolean subtraction and union
+# 
+# builder command
+# > RT2builder -i world.inp
+#
+# viewer command (condition for viewer.jpg image in example folder)
+# > RT2viewer -e -20 20 30
+
+
+SURFACE_BEGIN
+    CUBE      name=cube1    center=-6,-1,-1  size=6,6,6
+    ICOSPHERE name=sphere1  center=-4,1,1    radius=3
+    CUBE      name=cube2    center=4,-1,-1   size=6,6,6
+    ICOSPHERE name=sphere2  center=6,1,1     radius=3
+SURFACE_END
+
+
+# union
+REGION union  cube1 | sphere1
+REGION sub    cube2 & -sphere2
+REGION void   -@union & -@sub

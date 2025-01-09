@@ -1,0 +1,47 @@
+# Example of nested compound definition
+# seawater 3.5% salt + 96.5% water
+# 
+# geometry build is required before run this code.
+# builder command
+# > RT2builder -i world.inp
+#
+# MC run command
+# > RT2mc -i mc.inp -o mc.out
+# 
+# Attached output sample (mc_sample.out) is the result of MC run 
+# on the Nvidia RTX 4060 ti card.
+#
+
+CUDA_SETTINGS block_per_sm=128 gpu=0
+
+ENTRY ebin  1
+ENTRY eprob 1 
+ENTRY dbin  1
+ENTRY dprob 1
+
+COMPOUND vacuum   0.0
+
+COMPOUND hydrogen 1e-8   101   99.9855  1002  0.0145
+COMPOUND oxygen   1e-8   8016  99.8     8017  0.2
+COMPOUND water    1.0    hydrogen  -2   oxygen    -1
+
+COMPOUND sodium   0.969  11023 100.0
+COMPOUND chlorine 1e-8   17035 76.0     17037 24.0
+COMPOUND salt     2.17   sodium    -1   chlorine  -1
+
+COMPOUND seawater 1.03   water   96.5   salt     3.5
+
+ASSIGN region=cube  compound=seawater
+ASSIGN region=void  compound=vacuum
+
+BEAM_GLOBAL mode=macro nps=1   # dummy beam for MC running
+
+BEAM_CUBIC    name=beam             \
+              pid=0                 \
+              position=0,0,0        \ 
+              size=0,0,0            \
+              type=linear           \
+              weight=1              \
+              direction=0,0,1       \
+              energy=ebin,eprob     \
+              divergence=dbin,dprob

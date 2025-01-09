@@ -1,0 +1,40 @@
+CUDA_SETTINGS gpu=0 block_per_sm=128 buffer_ratio=0.8
+
+$NX$ 200
+$NY$ 200
+$NZ$ 200
+
+ENTRY ebin  200.0
+ENTRY eprob 1
+ENTRY dbin  1
+ENTRY dprob 1
+
+ELECTRON       transport_cutoff=0.01  production_cutoff=0.01
+PHOTON         transport_cutoff=0.01  production_cutoff=0.01
+VACANCY        transport_cutoff=0.01  production_cutoff=0.01
+GENERIC_ION    estepe=0.01
+ION_INELASTIC  mode_high=off
+DELTA          production_cutoff=1e8
+
+COMPOUND vacuum     0.0    
+COMPOUND hydrogen   0.01     101 99.985 1002 0.015
+COMPOUND oxygen     0.01    8016 100.0
+COMPOUND water      1.0     hydrogen -2 oxygen -1
+
+ASSIGN region=target compound=water
+ASSIGN region=void   compound=vacuum
+
+BEAM_GLOBAL mode=macro nps=1e8
+
+BEAM_CUBIC    name=beam             \
+              pid=1001              \
+              position=0,0,-10      \ 
+              size=10,10,0          \
+              type=linear           \
+              weight=1              \
+              direction=0,0,1       \
+              energy=ebin,eprob     \
+              divergence=dbin,dprob
+
+MESH_DENSITY name=dose_i pid=26 xrange=-25,25 yrange=-25,25 zrange=0,50 \
+             nx=$NX$  ny=$NY$  nz=$NZ$  type=depo

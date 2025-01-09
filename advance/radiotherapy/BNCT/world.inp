@@ -1,0 +1,16 @@
+# Please read descriptions in 'mc.inp' file for more detail.
+
+GEO_GLOBAL
+
+ROT_DEFI name=trans affine=-1,0,0,0,0,-1,0,0,0,0,1,0
+
+# Surfaces
+SURFACE_BEGIN
+    TRANSFORM_BEGIN target=trans
+        VOXEL name=s1 file=voxel.vxl
+    TRANSFORM_END
+SURFACE_END
+
+# Region
+REGION reg1   s1
+REGION void  -@reg1

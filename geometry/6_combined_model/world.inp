@@ -1,0 +1,45 @@
+# Example of STL model boolean
+# Locking plier model
+# 
+# builder command
+# > RT2builder -i world.inp
+#
+# viewer command (condition for viewer.jpg image in example folder)
+# > RT2viewer -e 0 0 30
+
+ROT_DEFI name=delta_global delta=-7,-2,0
+
+# Surfaces
+SURFACE_BEGIN
+    TRANSFORM_BEGIN target=delta_global
+        MODEL name=arm1_pincap1  file=models/arm1_pincap1.STL scale=0.1,0.1,0.1  # mm -> cm
+        MODEL name=arm1_pincap2  file=models/arm1_pincap2.STL scale=0.1,0.1,0.1
+        MODEL name=arm1_clamp    file=models/arm1_clamp.STL   scale=0.1,0.1,0.1  
+        MODEL name=arm1_grip     file=models/arm1_grip.STL    scale=0.1,0.1,0.1
+        MODEL name=arm2_pincap1  file=models/arm2_pincap1.STL scale=0.1,0.1,0.1
+        MODEL name=arm2_pincap2  file=models/arm2_pincap2.STL scale=0.1,0.1,0.1
+        MODEL name=arm2_pincap3  file=models/arm2_pincap3.STL scale=0.1,0.1,0.1
+        MODEL name=arm2_pincap4  file=models/arm2_pincap4.STL scale=0.1,0.1,0.1
+        MODEL name=arm2_clamp    file=models/arm2_clamp.STL   scale=0.1,0.1,0.1
+        MODEL name=arm2_grip     file=models/arm2_grip.STL    scale=0.1,0.1,0.1
+        MODEL name=spring        file=models/spring.STL       scale=0.1,0.1,0.1
+        MODEL name=centerlink    file=models/centerlink.STL   scale=0.1,0.1,0.1
+        MODEL name=release       file=models/release.STL      scale=0.1,0.1,0.1
+        MODEL name=screw         file=models/screw.STL        scale=0.1,0.1,0.1
+    TRANSFORM_END
+SURFACE_END
+
+# Region
+REGION arm1_pincap  +arm1_pincap1 | +arm1_pincap2
+REGION arm1_clamp   +arm1_clamp
+REGION arm1_grip    +arm1_grip & -(arm1_clamp | @arm1_pincap | centerlink | screw)
+REGION arm2_pincap  +arm2_pincap1 | +arm2_pincap2 | +arm2_pincap3 | +arm2_pincap4
+REGION arm2_clamp   +arm2_clamp & -spring
+REGION arm2_grip    +arm2_grip & -(@arm2_pincap | arm2_clamp | centerlink | release)
+REGION spring       +spring 
+REGION centerlink   +centerlink & -release
+REGION release      +release
+REGION screw        +screw
+REGION void         -( arm1_clamp | arm1_grip  | @arm1_pincap \ 
+                      | arm2_grip | arm2_clamp | @arm2_pincap \ 
+                      | spring | centerlink | release | screw )

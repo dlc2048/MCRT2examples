@@ -1,0 +1,73 @@
+# Example of scintillator detector
+# Point cs-137 source is placed 5 cm away from 3x3 inches scintillator
+# detector. 5 mm thickness cubic hollow lead shield cover the detector
+# and source.
+# 
+# geometry build is required before run this code
+# builder command
+# > RT2builder -i world.inp
+#
+# MC run command
+# > RT2mc -i mc.inp -o mc.out
+# 
+# Attached output sample (mc_sample.out) is the result of MC run 
+# on the Nvidia RTX 4060 ti card.
+#
+# The scoring results can be plotted by Python script
+# Python run command
+# > python3 plot.py  [Linux]
+# > python  plot.py  [Windows]
+
+CUDA_SETTINGS block_per_sm=128 gpu=0
+
+ENTRY ebin  0.662  # cs-137 peak
+ENTRY eprob 1 
+ENTRY dbin  -1 1
+ENTRY dprob 1
+
+ELECTRON       use_presta2=1 transport_cutoff=0.01 production_cutoff=0.01
+PHOTON         transport_cutoff=0.001 production_cutoff=0.001 library=epdl97 compton_mode=egsnrc
+VACANCY        transport_cutoff=0.001 production_cutoff=0.001 print_detail=1
+
+# disable neutron/ion transport
+NEUTRON        activate=0  
+NEUTRON_HIGH   activate=0
+GENERIC_ION    activate=0
+
+COMPOUND vacuum     0.0
+COMPOUND sodium     0.968  11023 100.0
+COMPOUND iodine     4.944  53127 100.0
+COMPOUND lead       11.348 82204  1.40 82206  24.1 82207  22.1 82208  52.4
+COMPOUND aluminum   2.7    13027 100.0
+COMPOUND magnesium  1.738  12024 78.99 12025  10.0 12026 11.01
+COMPOUND oxygen     0.001   8016  99.8  8017  0.02
+COMPOUND silicon    2.33   14028 92.23 14029  4.67 14030   3.1
+
+COMPOUND nai        3.67  sodium    -1 iodine -1
+COMPOUND mgo        2.000 magnesium -1 oxygen -1
+COMPOUND sio2       0.94  silicon   -1 oxygen -2
+
+ASSIGN region=crystal    compound=nai
+ASSIGN region=cavity     compound=mgo
+ASSIGN region=cage       compound=aluminum
+ASSIGN region=base       compound=sio2
+ASSIGN region=shield_cav compound=vacuum
+ASSIGN region=shield     compound=lead
+ASSIGN region=void       compound=vacuum
+
+CUTOFF_ELECTRON target=lead transport_cutoff=0.7 production_cutoff=0.7
+
+BEAM_GLOBAL mode=macro nps=1e9
+
+BEAM_CUBIC    name=beam             \
+              pid=0                 \
+              position=0,0,-5       \ 
+              size=0,0,0            \
+              type=linear           \
+              weight=1              \
+              direction=0,0,1       \
+              energy=ebin,eprob     \
+              divergence=dbin,dprob
+			  
+DETECTOR name=gebw  erange=1e-3,1e+0 escale=linear ne=1024 a=0.0 b=0.0752 c=-0.1210 where=crystal
+DETECTOR name=gebwo erange=1e-3,1e+0 escale=linear ne=1024 a=0.0 b=0.0    c=0.0     where=crystal

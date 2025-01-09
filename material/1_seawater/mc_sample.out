@@ -1,0 +1,753 @@
+ [2024-12-24 10:51:24] 
+ [INFO] Read input file stream 'mc.inp'
+ [WARNING] Field 'block_decay_limit' is not found. Use default value (1)
+ [WARNING] Field 'block_decay_rate' is not found. Use default value (0.2)
+ [WARNING] Field 'block_dim' is not found. Use default value (128)
+ [WARNING] Field 'buffer_ratio' is not found. Use default value (0.6)
+ [WARNING] Field 'seed' is not found. Use default value (42)
+ [LINE]     15  CUDA_SETTINGS block_per_sm=128 gpu=0
+ [LINE]     17  ENTRY ebin 1
+ [LINE]     18  ENTRY eprob 1
+ [LINE]     19  ENTRY dbin 1
+ [LINE]     20  ENTRY dprob 1
+ [LINE]     22  COMPOUND vacuum 0.0
+ [LINE]     24  COMPOUND hydrogen 1e-8 101 99.9855 1002 0.0145
+ [LINE]     25  COMPOUND oxygen 1e-8 8016 99.8 8017 0.2
+ [LINE]     26  COMPOUND water 1.0 hydrogen -2 oxygen -1
+ [LINE]     28  COMPOUND sodium 0.969 11023 100.0
+ [LINE]     29  COMPOUND chlorine 1e-8 17035 76.0 17037 24.0
+ [LINE]     30  COMPOUND salt 2.17 sodium -1 chlorine -1
+ [LINE]     32  COMPOUND seawater 1.03 water 96.5 salt 3.5
+ [LINE]     34  ASSIGN region=cube compound=seawater
+ [LINE]     35  ASSIGN region=void compound=vacuum
+ [LINE]     37  BEAM_GLOBAL mode=macro nps=1
+ [WARNING] Field 'rotation' is not found. Use default value (0)
+ [LINE]     47  BEAM_CUBIC name=beam pid=0 position=0,0,0 size=0,0,0 type=linear
+         weight=1 direction=0,0,1 energy=ebin,eprob divergence=dbin,dprob
+ [2024-12-24 10:51:25] 
+ [INFO] Close input file stream
+ [2024-12-24 10:51:26] 
+ [INFO] All data are prepared!
+
+
+ ################################################################## 
+ #                                                                # 
+ #                         Data Summaries                         # 
+ #                                                                # 
+ ################################################################## 
+
+
+ [INFO] *** Compound Summaries ***
+  Number of compound                             2
+  Memory usage                          0.00021553 (MiB)
+  Eligible compound lists
+ [         seawater ]
+  Density                                     1.03 (g/cm3)
+  Effective Z                              3.41227
+  Effective A                              6.17592
+  Ionization energy                        77.2765 (eV)
+  Radiation length                         34.2505 (cm)
+  Mode     ELECTRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode       PHOTON                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode     POSITRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode      VACANCY                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode      NEUTRON                             on
+      - prod cutoff                          1e-11 (MeV)
+      - tran cutoff                          1e-11 (MeV)
+  Mode        DELTA                             on
+      - prod cutoff                            0.3 (MeV)
+      - tran cutoff                            0.3 (MeV)
+  Mode  GENERIC_ION                             on
+      - prod cutoff                              2 (MeV)
+      - tran cutoff                              2 (MeV)
+ <Composition> 
+      Isotope       Mass [Dalton]   Mass Fraction [%]  Number Fracton [%] 
+          H-1              1.0078             10.7978             66.1685 
+          H-2              2.0141          1.5659e-03          4.8016e-03 
+         O-16             15.9949             85.5293             33.0244 
+         O-17             16.9991              0.1714          6.2272e-02 
+        Na-23             22.9895              1.3774              0.3700 
+        Cl-35             34.9688              1.6132              0.2849 
+        Cl-37             36.9659              0.5094          8.5111e-02 
+ [           vacuum ]
+  Density                                        0 (g/cm3)
+  Effective Z                                    0
+  Effective A                                    0
+  Ionization energy                             -1 (eV)
+  Radiation length                    2.33457e-312 (cm)
+  Mode     ELECTRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode       PHOTON                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode     POSITRON                             on
+      - prod cutoff                            0.1 (MeV)
+      - tran cutoff                            0.1 (MeV)
+  Mode      VACANCY                             on
+      - prod cutoff                           0.01 (MeV)
+      - tran cutoff                           0.01 (MeV)
+  Mode      NEUTRON                             on
+      - prod cutoff                          1e-11 (MeV)
+      - tran cutoff                          1e-11 (MeV)
+  Mode        DELTA                             on
+      - prod cutoff                            0.3 (MeV)
+      - tran cutoff                            0.3 (MeV)
+  Mode  GENERIC_ION                             on
+      - prod cutoff                              2 (MeV)
+      - tran cutoff                              2 (MeV)
+ <Composition> 
+      Isotope       Mass [Dalton]   Mass Fraction [%]  Number Fracton [%] 
+
+
+ [INFO] *** Random Element Tables ***
+  Number of compound                             2
+  Random table lists
+ [         seawater ]
+      Element            Table ID         Probability 
+     Hydrogen                   0             19.3927 
+       Oxygen                   1             77.5710 
+       Sodium                   2              1.1928 
+     Chlorine                   3              1.8434 
+ [           vacuum ]
+
+
+ [INFO] *** Shell Structure Summaries ***
+  Number of element                              4
+  Memory usage                         0.000419617 (MiB)
+  Shell structure lists
+ [         Hydrogen ]
+  Symbol                                         H
+  Atomic number                                  1
+  Number of shell                                1
+  All Vacancies Deposited                         
+ <Shell lists> 
+   Shell  Table ID   Number of Electron  Binding Energy [eV] 
+       K         0               1.0000              13.6100 
+ [           Oxygen ]
+  Symbol                                         O
+  Atomic number                                  8
+  Number of shell                                4
+  All Vacancies Deposited                         
+ <Shell lists> 
+   Shell  Table ID   Number of Electron  Binding Energy [eV] 
+       K         1               2.0000             537.2800 
+      L1         2               2.0000              29.2300 
+      L2         3               1.3300              14.1900 
+      L3         4               2.6700              14.1500 
+ [           Sodium ]
+  Symbol                                        Na
+  Atomic number                                 11
+  Number of shell                                5
+  All Vacancies Deposited                         
+ <Shell lists> 
+   Shell  Table ID   Number of Electron  Binding Energy [eV] 
+       K         5               2.0000            1064.0000 
+      L1         6               2.0000              64.4800 
+      L2         7               2.0000              36.4200 
+      L3         8               4.0000              36.2200 
+      M1         9               1.0000               5.1500 
+ [         Chlorine ]
+  Symbol                                        Cl
+  Atomic number                                 17
+  Number of shell                                7
+  All Vacancies Deposited                         
+ <Shell lists> 
+   Shell  Table ID   Number of Electron  Binding Energy [eV] 
+       K        10               2.0000            2804.8999 
+      L1        11               2.0000             268.0500 
+      L2        12               2.0000             209.4800 
+      L3        13               4.0000             207.7000 
+      M1        14               2.0000              24.8400 
+      M2        15               1.6700              12.4200 
+      M3        16               3.3300              12.2900 
+
+
+ [INFO] *** Relaxation Summaries ***
+  Number of Action                              17
+  Memory usage                         0.000843048 (MiB)
+
+
+ [INFO] *** Photon Transport Summaries ***
+  XS library/model                          epdl97
+  XS interpolation table                      1000 (bins)
+  Rayleigh scattering                           On
+  Photoelectric mode                      Detailed
+  PE Sauter distribution                        On
+  Compton scattering                 Klein-Nishina
+  NIST/NRC pair production                      On
+  Number of XS table                             2
+  Memory usage                            0.193577 (MiB)
+
+
+ [INFO] *** Electron Transport Summaries ***
+  XS library/model                        pegsless
+  XS interpolation table                      2000 (bins)
+  CH algorithm                            PRESTA-I
+  Use ionization FUDGEM                         On
+  Mott spin correction                          On
+  Fractional eloss limit                        20 (%)
+  Maximum step length                            5 (cm)
+  Maximum momentum transfer                    0.5
+  Bremss XS generator             NRC + Correction
+  Bremss correction method               NIST/ICRU
+  Bremss angular sampler           KM Leading Term
+  Impact ionization mode                       Off
+  Number of XS table                             2
+  Memory usage                             0.44632 (MiB)
+
+
+ [INFO] *** Low Energy Neutron Transport Summaries ***
+  XS library/model                       endf7_260
+  Neutron energy group                         260 (bins)
+  Gamma energy group                            52 (bins)
+  Number of macro XS table                       2
+  Number of micro XS table                       7
+  Memory usage                            0.112774 (MiB)
+
+
+ [INFO] *** High Energy Neutron Transport Summaries ***
+  XS library/model                                
+  XS interpolation table                      1000 (bins)
+  Number of XS table                             2
+  Memory usage                          0.00763702 (MiB)
+
+
+ [INFO] *** Generic Ion Transport Summaries ***
+  XS library/model                                
+  XS interpolation table                      1000 (bins)
+  Fractional eloss limit                         5 (%)
+  Maximum step length                        1e+10 (cm)
+  Energy loss straggling                        On
+  Lateral displacement                          On
+  Urban lateral ALG96                           On
+  Ion-nuclear reaction                         Off
+  Number of candidate                           49
+  Number of XS table                             2
+  Memory usage                            0.274979 (MiB)
+  Projectile candidate lists
+ [         Hydrogen ]
+    ID  A   Mass [MeV/c^2]    Life Time [s]  Ref 
+     0  1         938.2720           stable    O 
+     1  2        1875.6128           stable      
+     2  3        2808.9209       5.6090e+08      
+ [           Helium ]
+    ID  A   Mass [MeV/c^2]    Life Time [s]  Ref 
+     3  3        2808.3914           stable      
+     4  4        3727.3791           stable    O 
+     5  6        5605.5373           1.1638      
+     6  8        7482.5283           0.1718      
+ [          Lithium ]
+    ID  A   Mass [MeV/c^2]    Life Time [s]  Ref 
+     7  6        5601.5182           stable      
+     8  7        6533.8335           stable    O 
+     9  8        7471.3662           1.2117      
+    10  9        8406.8675           0.2572      
+    11 11       1.0286e+04       1.2624e-02      
+ [        Beryllium ]
+    ID  A   Mass [MeV/c^2]    Life Time [s]  Ref 
+    12  7        6534.1846       6.6338e+06      
+    13  9        8392.7497           stable    O 
+    14 10        9325.5027       6.8747e+13      
+    15 11       1.0265e+04          19.8515      
+    16 12       1.1201e+04       3.0729e-02      
+    17 14       1.3079e+04       6.2757e-03      
+ [            Boron ]
+    ID  A   Mass [MeV/c^2]    Life Time [s]  Ref 
+    18  8        7472.3194           1.1109      
+    19 10        9324.4360           stable    O 
+    20 11       1.0253e+04           stable      
+    21 12       1.1189e+04       2.9142e-02      
+    22 13       1.2123e+04       2.5002e-02      
+    23 14       1.3062e+04       1.8034e-02      
+    24 15       1.3999e+04       1.4326e-02      
+    25 17       1.5877e+04       7.3289e-03      
+ [           Carbon ]
+    ID  A   Mass [MeV/c^2]    Life Time [s]  Ref 
+    26  9        8409.2913           0.1825      
+    27 10        9327.5733          27.8296      
+    28 11       1.0254e+04        1762.7430      
+    29 12       1.1175e+04           stable    O 
+    30 13       1.2109e+04           stable      
+    31 14       1.3041e+04       2.5951e+11      
+    32 15       1.3979e+04           3.5332      
+    33 16       1.4915e+04           1.0777      
+    34 17       1.5853e+04           0.2784      
+    35 18       1.6789e+04           0.1327      
+ [         Nitrogen ]
+    ID  A   Mass [MeV/c^2]    Life Time [s]  Ref 
+    36 12       1.1192e+04       1.5870e-02      
+    37 13       1.2111e+04         862.5874      
+    38 14       1.3040e+04           stable    O 
+    39 15       1.3969e+04           stable      
+    40 16       1.4906e+04          10.2864      
+    41 17       1.5840e+04           6.0204      
+    42 18       1.6776e+04           0.9002      
+ [           Oxygen ]
+    ID  A   Mass [MeV/c^2]    Life Time [s]  Ref 
+    43 13       1.2128e+04       1.2378e-02      
+    44 14       1.3045e+04         101.8629      
+    45 15       1.3971e+04         176.3550      
+    46 16       1.4895e+04           stable    O 
+    47 17       1.5831e+04           stable      
+    48 18       1.6762e+04           stable      
+
+
+ [INFO] *** World Summaries ***
+  Number of Facet                               12
+  Tracer Dimension                      4352 x 128
+  GAS Size                              0.00354004 (MiB)
+  Region Table Size                    4.57764e-05 (MiB)
+  Tracer Size                                55.25 (MiB)
+
+
+ [INFO] *** Source Summaries ***
+  Mode                                       MACRO
+  Memory usage                         6.86646e-05 (MiB)
+ [             beam ]
+  Weight                                         1
+  Primary                                        0
+  Energy sampling                            PULSE
+  Energy interp                             LINEAR
+  Energy bin                                     1
+  Direction sampling                         PULSE
+  Direction bin                                  1
+*** Affine matrix ***
+    |            1            0            0            0 |
+    |            0            1            0            0 |
+    |            0            0            1            0 |
+  Beam shape                                  CUBE
+  Beam size (x)                                  0 (cm)
+  Beam size (y)                                  0 (cm)
+  Beam size (z)                                  0 (cm)
+
+
+ [INFO] *** Tally Summaries ***
+  MESH_TRACK                                     0
+  MESH_DENSITY                                   0
+  CROSS                                          0
+  TRACK                                          0
+  DENSITY                                        0
+  PHASE_SPACE                                    0
+  DETECTOR                                       0
+  Memory usage                                   0 (MiB)
+
+
+ [INFO] *** Buffer Summaries ***
+  Available memories                         15023 (MiB)
+  Memory usage ratio                            60 (%)
+  Number of buffer                              17
+  Size per buffer                         15040512 (Banks)
+
+
+ [2024-12-24 10:51:26] 
+ [INFO] Start main Monte Carlo stage
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] End of main Monte Carlo stage
+ [INFO] Start the residual stage
+ [INFO] Block is set to 870
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [INFO] Block is set to 174
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [INFO] Block is set to 34
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [INFO] Block is set to 6
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [INFO] Block is set to 1
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] NPS 0
+ [2024-12-24 10:51:26] 
+ [INFO] End of residual stage
+ [INFO] *** Launch History ***
+  NPS setup                                      1
+  Launched histories                        557056
+  Total weight                              557056
+ [INFO] *** Kernel Execution Histories ***
+  Electron Transport                        128256 (Banks)
+  Photon Transport                         1134720 (Banks)
+  Positron Transport                             0 (Banks)
+  Neutron Transport                              0 (Banks)
+  Fast Neutron Transport                         0 (Banks)
+  Generic ion Transport                          0 (Banks)
+  Atomic Relaxation                              0 (Banks)
+  Rayleigh Scattering                            0 (Banks)
+  Photoelectric Effect                           0 (Banks)
+  Compton Scattering                         20608 (Banks)
+  Pair production                                0 (Banks)
+  e- Bremsstrahlung                            128 (Banks)
+  Moller Scattering                           1024 (Banks)
+  e+ Bremsstrahlung                              0 (Banks)
+  Bhabha Scattering                              0 (Banks)
+  e+e- Annihilation                              0 (Banks)
+  Generic ion delta-ray                          0 (Banks)
+ [INFO] *** Residual Banks ***
+  Electron Transport                           140 (Banks)
+  Photon Transport                             116 (Banks)
+  Positron Transport                             0 (Banks)
+  Neutron Transport                              0 (Banks)
+  Fast Neutron Transport                         0 (Banks)
+  Generic ion Transport                          0 (Banks)
+  Atomic Relaxation                              0 (Banks)
+  Rayleigh Scattering                           31 (Banks)
+  Photoelectric Effect                          26 (Banks)
+  Compton Scattering                            91 (Banks)
+  Pair production                                0 (Banks)
+  e- Bremsstrahlung                            136 (Banks)
+  Moller Scattering                             97 (Banks)
+  e+ Bremsstrahlung                              0 (Banks)
+  Bhabha Scattering                              0 (Banks)
+  e+e- Annihilation                              0 (Banks)
+  Generic ion delta-ray                          0 (Banks)
+ [INFO] *** Tally Summaries ***

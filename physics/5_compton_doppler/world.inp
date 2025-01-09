@@ -1,0 +1,8 @@
+# Please read descriptions in 'mc_on.inp' file for more detail.
+
+SURFACE_BEGIN
+    CYLINDER  name=crystal  center=0,0,0  height=0,0,7.62  radius=3.81  # 3x3" crystal
+SURFACE_END
+
+REGION crystal +crystal
+REGION void    -crystal

@@ -1,0 +1,40 @@
+# Please read descriptions in 'mc_on.inp' file for more detail.
+
+CUDA_SETTINGS block_per_sm=128 gpu=0
+
+ENTRY ebin  0.662  # cs-137 peak
+ENTRY eprob 1 
+ENTRY dbin  -1 1   # isotropic
+ENTRY dprob 1
+
+ELECTRON       transport_cutoff=0.01  production_cutoff=0.01
+PHOTON         transport_cutoff=0.001 production_cutoff=0.001
+VACANCY        transport_cutoff=1e3   production_cutoff=1e3   print_detail=1
+
+# disable neutron/ion transport
+NEUTRON        activate=0  
+NEUTRON_HIGH   activate=0
+GENERIC_ION    activate=0
+
+COMPOUND vacuum     0.0
+COMPOUND sodium     0.968  11023 100.0
+COMPOUND iodine     4.944  53127 100.0
+
+COMPOUND nai        3.67  sodium    -1 iodine -1
+
+ASSIGN region=crystal    compound=nai
+ASSIGN region=void       compound=vacuum
+
+BEAM_GLOBAL mode=macro nps=1e9
+
+BEAM_CUBIC    name=beam             \
+              pid=0                 \
+              position=0,0,-5       \ 
+              size=0,0,0            \
+              type=linear           \
+              weight=1              \
+              direction=0,0,1       \
+              energy=ebin,eprob     \
+              divergence=dbin,dprob
+              
+DETECTOR name=nai  erange=1e-3,1e+0  escale=linear  ne=1024  where=crystal

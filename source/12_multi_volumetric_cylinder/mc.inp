@@ -1,0 +1,72 @@
+# Example of two cylindrical sources
+# from the MCNP PRIMER 3.3.5, second example
+# 
+# geometry build is required before run this code.
+# builder command
+# > RT2builder -i world.inp
+#
+# MC run command
+# > RT2mc -i mc.inp -o mc.out
+# 
+# The scoring results can be plotted by Python script.
+# Python run command
+# > python3 plot.py  [Linux]
+# > python  plot.py  [Windows]
+#
+# Attached image file (flux.png) is the flux map for checking the shape of source
+# Attacted image file (spect.png) is the spectrum of source, boundary crossing from
+# world to void
+
+
+CUDA_SETTINGS block_per_sm=128 gpu=0
+
+ENTRY ebin1  0.667  # .667 MeV for beam 1
+ENTRY eprob1 1
+ 
+ENTRY ebin2  1.25   # 1.25 MeV for beam 2
+ENTRY eprob2 1
+
+ENTRY dbin   -1 1   # isotropic
+ENTRY dprob  1
+
+# disable neutron/ion transport
+NEUTRON        activate=0  
+NEUTRON_HIGH   activate=0
+GENERIC_ION    activate=0
+
+COMPOUND vacuum     0.0
+
+ASSIGN region=world compound=vacuum
+ASSIGN region=void  compound=vacuum
+
+BEAM_GLOBAL mode=macro nps=1e9
+
+BEAM_CYLINDER name=p1               \
+              pid=0                 \  # photon
+              position=-30,0,0      \
+              radius=0,20           \
+              height=20             \  # axial [-10, 10]
+              type=linear           \
+              weight=0.4            \
+              direction=0,0,1       \
+              energy=ebin1,eprob1   \
+              divergence=dbin,dprob
+              
+BEAM_CYLINDER name=p2               \
+              pid=0                 \  # photon
+              position=+30,0,0      \ 
+              radius=0,10           \
+              height=60             \  # axial [-30, 30]
+              type=linear           \
+              weight=0.6            \
+              direction=0,0,1       \
+              energy=ebin2,eprob2   \
+              divergence=dbin,dprob
+              
+CROSS  name=spect  pid=0  escale=linear  erange=0,2  ne=100  from=world  to=void
+
+MESH_TRACK  name=flux  pid=0  \
+            xrange=-50,50  nx=200  \
+            yrange=-50,50  ny=200  \
+            zrange=-50,50  nz=200  \ 
+            escale=linear  erange=0,12  ne=1

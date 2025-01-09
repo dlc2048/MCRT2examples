@@ -1,0 +1,58 @@
+# Example of scintillator detector
+# Point 1.25 MeV source is placed 10 cm away from 3x3 inches scintillator
+# detector.
+# 
+# geometry build is required before run this code
+# builder command
+# > RT2builder -i world.inp
+#
+# MC run command
+# > RT2mc -i mc.inp -o mc.out
+# 
+# Attached output sample (mc_sample.out) is the result of MC run 
+# on the Nvidia RTX 4060 ti card.
+#
+# The scoring results can be plotted by Python script
+# Python run command
+# > python3 plot.py  [Linux]
+# > python  plot.py  [Windows]
+
+CUDA_SETTINGS block_per_sm=128 gpu=0
+
+ENTRY ebin  1.25
+ENTRY eprob 1 
+ENTRY dbin  -1 1
+ENTRY dprob 1
+
+ELECTRON  use_presta2=1 transport_cutoff=0.01 production_cutoff=0.01
+PHOTON    transport_cutoff=0.001 production_cutoff=0.001 library=epdl97 compton_mode=egsnrc
+VACANCY   transport_cutoff=0.001 production_cutoff=0.001 print_detail=1
+
+# disable neutron/ion transport
+NEUTRON        activate=0  
+NEUTRON_HIGH   activate=0
+GENERIC_ION    activate=0
+
+COMPOUND vacuum     0.0
+COMPOUND sodium     0.968  11023 100.0
+COMPOUND iodine     4.944  53127 100.0
+
+COMPOUND nai        3.67  sodium    -1 iodine -1
+
+ASSIGN region=crystal    compound=nai
+ASSIGN region=void       compound=vacuum
+
+BEAM_GLOBAL mode=macro nps=1e9
+
+BEAM_CUBIC    name=beam             \
+              pid=0                 \
+              position=0,0,-10      \ 
+              size=0,0,0            \
+              type=linear           \
+              weight=1              \
+              direction=0,0,1       \
+              energy=ebin,eprob     \
+              divergence=dbin,dprob
+			  
+DETECTOR name=gebw  erange=1e-3,2e+0 escale=linear ne=1024 a=0.0 b=0.0752 c=-0.1210 where=crystal  # GEB on
+DETECTOR name=gebwo erange=1e-3,2e+0 escale=linear ne=1024 a=0.0 b=0.0    c=0.0     where=crystal  # GEB off
