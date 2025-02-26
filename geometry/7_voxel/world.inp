@@ -15,8 +15,8 @@
 
 
 SURFACE_BEGIN
-	VOXEL     name=voxel file=image.nii.gz.vxl
+	VOXEL     --name   voxel   --file   image.nii.gz.vxl
 SURFACE_END
 
-REGION voxel  +voxel
-REGION void   -@voxel
+REGION   --name  voxel  --equation  +voxel
+REGION   --name  void   --equation  -@voxel

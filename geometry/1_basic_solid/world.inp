@@ -7,21 +7,21 @@
 # > RT2viewer -e 50 50 100
 
 SURFACE_BEGIN
-    CUBE      name=cube      center=-30,10,0   size=10,10,10
-    ICOSPHERE name=icosphere center=-10,10,0   radius=5
-    UVSPHERE  name=uvsphere  center=10,10,0    radius=5
-    ELLIPSOID name=ellipsoid center=30,10,0    radius=4,5,3
-    CYLINDER  name=cylinder  center=-20,-15,0  radius=5       height=0,10,0  
-    CONE      name=cone      center=0,-15,0    radius=5       height=0,10,0
-    TORUS     name=torus     center=20,-10,0   radius=5,2
+    CUBE      --name  cube      --center  -30   10    0   --size     10  10  10
+    ICOSPHERE --name  icosphere --center  -10   10    0   --radius    5
+    UVSPHERE  --name  uvsphere  --center   10   10    0   --radius    5
+    ELLIPSOID --name  ellipsoid --center   30   10    0   --radius    4   5   3
+    CYLINDER  --name  cylinder  --center  -20  -15    0   --radius    5           --height  0  10  0  
+    CONE      --name  cone      --center    0  -15    0   --radius    5           --height  0  10  0
+    TORUS     --name  torus     --center   20  -10    0   --radius    5   2
 SURFACE_END
 
-REGION cube      +cube
-REGION icosphere +icosphere
-REGION uvsphere  +uvsphere
-REGION ellipsoid +ellipsoid
-REGION cylinder  +cylinder
-REGION cone      +cone
-REGION torus     +torus
-REGION void      -cube & -icosphere & -uvsphere & -ellipsoid & -cylinder & \
-                 -cone & -torus
+REGION --name cube        --equation  +cube
+REGION --name icosphere   --equation  +icosphere
+REGION --name uvsphere    --equation  +uvsphere
+REGION --name ellipsoid   --equation  +ellipsoid
+REGION --name cylinder    --equation  +cylinder
+REGION --name cone        --equation  +cone
+REGION --name torus       --equation  +torus
+REGION --name void        --equation  -cube & -icosphere & -uvsphere & -ellipsoid & -cylinder & \
+                                      -cone & -torus

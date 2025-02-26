@@ -9,9 +9,9 @@
 
 # Surfaces
 SURFACE_BEGIN
-    MODEL name=torso    file=models/Sapphos_Head_Refined.stl scale=5,5,5
+    MODEL  --name  torso    --file  models/Sapphos_Head_Refined.stl  --scale  5  5  5
 SURFACE_END
 
 # Region
-REGION torso  +torso
-REGION void   -torso
+REGION  --name  torso  --equation  +torso
+REGION  --name  void   --equation  -torso

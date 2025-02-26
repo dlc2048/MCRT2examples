@@ -1,7 +1,5 @@
-# Example of EM cross-section plot
-# Calculate the EM cross-section and stopping power of water and tungsten
-# Using EPDL97 data library for photon, and equation based PEGSLESS algorithm
-# for electron and positron.
+# Example of hadron cross-section plot
+# Calculate the neutron transport cross-section.
 #
 # geometry build is required before run this code.
 # builder command
@@ -16,17 +14,14 @@
 # > python  plot.py  [Windows]
 #
 # Attached image files are the result of Python script.
-# In electron/positron cross-section image, 
-# dotted red lines are stopping power.
+# macro_*.png files show macroscopic XS of each compounds
+# micro_*.png files show microscopic XS of each elements
 
 CUDA_SETTINGS --block_per_sm  128  --buffer_ratio  0.6
 
-PHOTON    --print_xs  1  --production_cutoff  0.001  --transport_cutoff  0.001
-ELECTRON  --print_xs  1  --production_cutoff  0.01   --transport_cutoff  0.01
+NEUTRON  --print_xs  1
 
-# disable neutron/ion transport
-NEUTRON        --activate  false  
-GENERIC_ION    --activate  false
+ION_INELASTIC  --mode_high  abrasion
 
 COMPOUND --name  vacuum    --density  0.0    --composition  
 COMPOUND --name  water     --density  1.0    --composition  1000      -2   8000      -1

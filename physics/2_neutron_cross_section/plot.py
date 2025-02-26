@@ -55,8 +55,8 @@ def plotNeutron(xs: Neutron, file_name: str, unit: str):
 
 # Macro
 
-tungsten = Neutron('mc_neutron_tungsten.xs')
-water    = Neutron('mc_neutron_water.xs')
+tungsten = Neutron('mc_neutron_low_tungsten.xs')
+water    = Neutron('mc_neutron_low_water.xs')
 
 plotNeutron(tungsten, 'macro_tungsten.png', '[1/cm]')
 plotNeutron(water   , 'macro_water.png'   , '[1/cm]')

@@ -1,7 +1,6 @@
-# Example of EM cross-section plot
-# Calculate the EM cross-section and stopping power of water and tungsten
-# Using EPDL97 data library for photon, and equation based PEGSLESS algorithm
-# for electron and positron.
+# Example of Generic ion cross-section plot
+# Calculate the ion cross-section and stopping power of water and tungsten
+# by using Gribov-Glauber model
 #
 # geometry build is required before run this code.
 # builder command
@@ -16,17 +15,18 @@
 # > python  plot.py  [Windows]
 #
 # Attached image files are the result of Python script.
-# In electron/positron cross-section image, 
-# dotted red lines are stopping power.
+# Result of the proton and 12C cross-section image.
+# Dotted red lines are stopping power.
 
 CUDA_SETTINGS --block_per_sm  128  --buffer_ratio  0.6
 
-PHOTON    --print_xs  1  --production_cutoff  0.001  --transport_cutoff  0.001
-ELECTRON  --print_xs  1  --production_cutoff  0.01   --transport_cutoff  0.01
-
-# disable neutron/ion transport
+# disable neutron transport
 NEUTRON        --activate  false  
-GENERIC_ION    --activate  false
+
+# ion, delta and nuclear reactions (for the XS print)
+GENERIC_ION    --activate           true      --print_xs  1001 6012
+DELTA          --production_cutoff  0.1
+ION_INELASTIC  --mode_high          abrasion
 
 COMPOUND --name  vacuum    --density  0.0    --composition  
 COMPOUND --name  water     --density  1.0    --composition  1000      -2   8000      -1

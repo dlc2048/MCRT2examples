@@ -1,5 +1,5 @@
-# Example of nested compound definition
-# seawater 3.5% salt + 96.5% water
+# Example of S(a,b) table overloading
+# S(a,b) table is changed from water to ice
 # 
 # geometry build is required before run this code.
 # builder command
@@ -16,13 +16,13 @@ CUDA_SETTINGS  --block_per_sm  128  --gpu  0
 
 COMPOUND --name  vacuum   --density  0.0    --composition
 COMPOUND --name  water    --density  1.0    --composition  1000   -2   8000   -1
-COMPOUND --name  salt     --density  2.17   --composition  11000  -1   17000  -1
+COMPOUND --name  ice      --density  0.91   --composition  water  100.0
 
-COMPOUND --name  seawater --density  1.03   --composition  water   96.5   salt   3.5
+MAT_PROP  --compound  water  --sab  H(H2O)     D(D2O)
+MAT_PROP  --compound  ice    --sab  H(ice-Ih)  O(ice-Ih)   --temperature  273.15
 
-MAT_PROP  --compound  water  --sab  H(H2O)  D(D2O)
-
-ASSIGN  --region  cube  --compound  seawater
+ASSIGN  --region  cube1 --compound  water
+ASSIGN  --region  cube2 --compound  ice
 ASSIGN  --region  void  --compound  vacuum
 
 BEAM_GLOBAL --mode  macro  --nps  1e6   # dummy beam for MC running

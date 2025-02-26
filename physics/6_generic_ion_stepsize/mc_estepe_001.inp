@@ -1,3 +1,29 @@
+# Example of the step size impact
+# in the generic ion transport.
+#
+# energy loss limit per step is set to 1% in this input file,
+# whereas step is set to 5% in 'mc_estep_005.inp'.
+#
+# In a case of ion therapy, estepe value should be set to smaller
+# than 2% to get a good dose profile 
+# (this value is recommended in the FLUKA manual).
+#
+# geometry build is required before run this code.
+# builder command
+# > RT2builder -i world.inp
+#
+# MC run command (estep = 1%)
+# > RT2mc -i mc_estepe_001.inp -o mc_estepe_001.out
+# MC run command (estep = 5%)
+# > RT2mc -i mc_estepe_005.inp -o mc_estepe_005.out
+#
+# The scoring results (depth-dose profile) can be plotted by Python script.
+# Python run command
+# > python3 plot.py  [Linux]
+# > python  plot.py  [Windows]
+#
+# Attached image file (image.png) is the result of the Python script.
+
 CUDA_SETTINGS gpu=0 block_per_sm=128 buffer_ratio=0.8
 
 $NX$ 200
@@ -9,32 +35,39 @@ ENTRY eprob 1
 ENTRY dbin  1
 ENTRY dprob 1
 
-ELECTRON       transport_cutoff=0.01  production_cutoff=0.01
-PHOTON         transport_cutoff=0.01  production_cutoff=0.01
-VACANCY        transport_cutoff=0.01  production_cutoff=0.01
-GENERIC_ION    estepe=0.01
-ION_INELASTIC  mode_high=off
-DELTA          production_cutoff=1e8
+ELECTRON       --transport_cutoff  0.01  --production_cutoff  0.01
+PHOTON         --transport_cutoff  0.01  --production_cutoff  0.01
+VACANCY        --transport_cutoff  0.01  --production_cutoff  0.01
+GENERIC_ION    --estepe            0.01
+ION_INELASTIC  --mode_high         off   # turn off inelastic
+DELTA          --production_cutoff 1e8   # turn off delta
 
-COMPOUND vacuum     0.0    
-COMPOUND hydrogen   0.01     101 99.985 1002 0.015
-COMPOUND oxygen     0.01    8016 100.0
-COMPOUND water      1.0     hydrogen -2 oxygen -1
+COMPOUND  --name   vacuum  --density  0.0  --composition   
+COMPOUND  --name   water   --density  1.0  --composition  1000 -2   8000 -1
 
-ASSIGN region=target compound=water
-ASSIGN region=void   compound=vacuum
+ASSIGN  --region  target  --compound  water
+ASSIGN  --region  void    --compound  vacuum
 
-BEAM_GLOBAL mode=macro nps=1e8
+BEAM_GLOBAL  --mode  macro  --nps  1e8
 
-BEAM_CUBIC    name=beam             \
-              pid=1001              \
-              position=0,0,-10      \ 
-              size=10,10,0          \
-              type=linear           \
-              weight=1              \
-              direction=0,0,1       \
-              energy=ebin,eprob     \
-              divergence=dbin,dprob
+BEAM_CUBIC    --name      beam      \
+              --part      proton    \
+              --position  0  0  -10 \ 
+              --size      10 10 0   \
+              --type      linear    \
+              --weight    1         \
+              --direction 0  0  1   \
+              --ebin      200       \  # 200 MeV/u
+              --eprob     1         \
+              --dbin      1         \
+              --dprob     1
 
-MESH_DENSITY name=dose_i pid=26 xrange=-25,25 yrange=-25,25 zrange=0,50 \
-             nx=$NX$  ny=$NY$  nz=$NZ$  type=depo
+MESH_DENSITY  --name    dose_i   \
+              --part    all      \
+              --xrange  -25  25  \
+              --yrange  -25  25  \
+              --zrange  0    50  \
+              --nx      $NX$     \
+              --ny      $NY$     \
+              --nz      $NZ$     \
+              --type    depo

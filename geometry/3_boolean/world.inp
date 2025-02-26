@@ -8,14 +8,14 @@
 
 
 SURFACE_BEGIN
-    CUBE      name=cube1    center=-6,-1,-1  size=6,6,6
-    ICOSPHERE name=sphere1  center=-4,1,1    radius=3
-    CUBE      name=cube2    center=4,-1,-1   size=6,6,6
-    ICOSPHERE name=sphere2  center=6,1,1     radius=3
+    CUBE       --name  cube1    --center  -6  -1  -1   --height  $HEIGHT$  --radius  $RADIUS$
+    ICOSPHERE  --name  sphere1  --center  -4   1   1   --radius   3
+    CUBE       --name  cube2    --center   4  -1  -1   --size     6  6  6
+    ICOSPHERE  --name  sphere2  --center   6   1   1   --radius   3
 SURFACE_END
 
 
 # union
-REGION union  cube1 | sphere1
-REGION sub    cube2 & -sphere2
-REGION void   -@union & -@sub
+REGION --name  union  --equation  cube1 | sphere1
+REGION --name  sub    --equation  cube2 & -sphere2
+REGION --name  void   --equation  -@union & -@sub

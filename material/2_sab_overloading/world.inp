@@ -1,0 +1,10 @@
+# Please read descriptions in 'mc.inp' file for more detail.
+
+SURFACE_BEGIN
+	CUBE     --name  cube1  --center  0  0 -5   --size  1  1  1  # dummy for assign water
+	CUBE     --name  cube2  --center  0  0  5   --size  1  1  1  # dummy for assign ice
+SURFACE_END
+
+REGION  --name  cube1  --equation  +cube1
+REGION  --name  cube2  --equation  +cube2
+REGION  --name  void   --equation  -cube1  &  -cube2

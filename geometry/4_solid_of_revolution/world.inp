@@ -9,7 +9,7 @@
 
 GEO_GLOBAL
 
-ENTRY pawn_co    \
+$PAWN_CO$        \
 0.0     5.0      \
 0.11321 4.99978  \
 0.23295 4.97142  \
@@ -60,7 +60,7 @@ ENTRY pawn_co    \
 1.62178 0.0      \
 0.0     0.0
 
-ENTRY rook_co    \
+$ROOK_CO$        \
 0       5.12     \
 0.8     5.12     \
 0.8     5.8      \
@@ -96,7 +96,7 @@ ENTRY rook_co    \
 1.51725 0        \
 0       0
 
-ENTRY bishop_co  \
+$BISHOP_CO$      \
 0       6.4      \
 0.13816 6.39536  \
 0.21984 6.35832  \
@@ -152,7 +152,7 @@ ENTRY bishop_co  \
 1.52    0        \
 0       0
 
-ENTRY queen_co   \
+$QUEEN_CO$       \
 0       7.15     \
 0.66    7.15     \
 0.809   7.39     \
@@ -195,7 +195,7 @@ ENTRY queen_co   \
 1.7031  0        \
 0       0        
 
-ENTRY king_co    \
+$KING_CO$        \
 0       8.0139   \
 0.4977  8.0051   \
 0.5726  7.9702   \
@@ -243,60 +243,60 @@ ENTRY king_co    \
 1.9001  0        \
 0       0
 
-ROT_DEFI name=rook_rot  axis=x theta=-90 delta=-5,-3,0
-ROT_DEFI name=rook_0    axis=z theta=0
-ROT_DEFI name=rook_120  axis=z theta=120
-ROT_DEFI name=rook_240  axis=z theta=240
-ROT_DEFI name=queen_rot axis=x theta=-90 delta=5,-3,0
-ROT_DEFI name=queen_0   axis=z theta=0
-ROT_DEFI name=queen_120 axis=z theta=120
-ROT_DEFI name=queen_240 axis=z theta=240
-ROT_DEFI name=king_rot  axis=x theta=-90 delta=10,-3,0
+ROT_DEFI --name  rook_rot   --axis  x  --theta  -90   --delta   -5  -3   0
+ROT_DEFI --name  rook_0     --axis  z  --theta    0   
+ROT_DEFI --name  rook_120   --axis  z  --theta  120   
+ROT_DEFI --name  rook_240   --axis  z  --theta  240   
+ROT_DEFI --name  queen_rot  --axis  x  --theta  -90   --delta    5  -3   0
+ROT_DEFI --name  queen_0    --axis  z  --theta    0   
+ROT_DEFI --name  queen_120  --axis  z  --theta  120   
+ROT_DEFI --name  queen_240  --axis  z  --theta  240   
+ROT_DEFI --name  king_rot   --axis  x  --theta  -90   --delta   10  -3   0
 
 SURFACE_BEGIN
     # pawn
-    REVOLUTION name=pawn entry=pawn_co center=-10,-3,0 direction=0,1,0
+    REVOLUTION  --name  pawn  --entry  $PAWN_CO$  --center  -10  -3   0   --direction   0   1   0
     # rook
-    TRANSFORM_BEGIN target=rook_rot
-        REVOLUTION name=rook center=0,0,0 entry=rook_co 
-        TRANSFORM_BEGIN target=rook_0
-            CUBE name=rook_h0   center=0,0,5.6 size=0.4,10,0.6
+    TRANSFORM_BEGIN  --target  rook_rot
+        REVOLUTION  --name  rook   --center  0  0  0   --entry  $ROOK_CO$ 
+        TRANSFORM_BEGIN  --target  rook_0
+            CUBE    --name  rook_h0   --center  0  0  5.6  --size   0.4  10  0.6
         TRANSFORM_END
-        TRANSFORM_BEGIN target=rook_120
-            CUBE name=rook_h120 center=0,0,5.6 size=0.4,10,0.6
+        TRANSFORM_BEGIN  --target  rook_120
+            CUBE    --name  rook_h120 --center  0  0  5.6  --size   0.4  10  0.6
         TRANSFORM_END
-        TRANSFORM_BEGIN target=rook_240
-            CUBE name=rook_h240 center=0,0,5.6 size=0.4,10,0.6
+        TRANSFORM_BEGIN  --target  rook_240
+            CUBE    --name  rook_h240 --center  0  0  5.6  --size   0.4  10  0.6
         TRANSFORM_END
     TRANSFORM_END
     # bishop
-    REVOLUTION name=bishop entry=bishop_co center=0,-3,0   direction=0,1,0
+    REVOLUTION  --name  bishop  --entry  $BISHOP_CO$  --center  0  -3  0   --direction   0   1   0
     # queen
-    TRANSFORM_BEGIN target=queen_rot
-        REVOLUTION name=queen    center=0,0,0     entry=queen_co
-        UVSPHERE   name=queen_b1 center=0,0,7.15  radius=0.5
-        UVSPHERE   name=queen_b2 center=0,0,7.8   radius=0.3
-        TRANSFORM_BEGIN target=queen_0
-            CYLINDER name=queen_h0   center=0,-5,7.5 radius=0.34 height=0,10,0
+    TRANSFORM_BEGIN  --target  queen_rot
+        REVOLUTION  --name  queen     --center  0  0  0      --entry   $QUEEN_CO$
+        UVSPHERE    --name  queen_b1  --center  0  0  7.15   --radius  0.5
+        UVSPHERE    --name  queen_b2  --center  0  0  7.8    --radius  0.3
+        TRANSFORM_BEGIN  --target  queen_0
+            CYLINDER  --name  queen_h0    --center  0  -5  7.5  --radius  0.34   --height  0  10  0
         TRANSFORM_END
-        TRANSFORM_BEGIN target=queen_120
-            CYLINDER name=queen_h120 center=0,-5,7.5 radius=0.34 height=0,10,0
+        TRANSFORM_BEGIN  --target  queen_120
+            CYLINDER  --name  queen_h120  --center  0  -5  7.5  --radius  0.34   --height  0  10  0
         TRANSFORM_END
-        TRANSFORM_BEGIN target=queen_240
-            CYLINDER name=queen_h240 center=0,-5,7.5 radius=0.34 height=0,10,0
+        TRANSFORM_BEGIN  --target  queen_240
+            CYLINDER  --name  queen_h240  --center  0  -5  7.5  --radius  0.34   --height  0  10  0
         TRANSFORM_END
     TRANSFORM_END
     # king
-    TRANSFORM_BEGIN target=king_rot
-        REVOLUTION name=king    center=0,0,0    entry=king_co   
-        CUBE       name=king_c1 center=0,0,8.65 size=0.3,0.15,1.4
-        CUBE       name=king_c2 center=0,0,8.8  size=1.0,0.15,0.3
+    TRANSFORM_BEGIN  --target  king_rot
+        REVOLUTION  --name  king     --center  0  0  0     --entry  $KING_CO$   
+        CUBE        --name  king_c1  --center  0  0  8.65  --size   0.3  0.15  1.4
+        CUBE        --name  king_c2  --center  0  0  8.8   --size   1.0  0.15  0.3
     TRANSFORM_END
 SURFACE_END
 
-REGION pawn    pawn
-REGION rook    rook & -(rook_h0 | rook_h120 | rook_h240)
-REGION bishop  bishop
-REGION queen   (queen & -(queen_h0 | queen_h120 | queen_h240)) | queen_b1 | queen_b2
-REGION king    king | king_c1 | king_c2
-REGION void    -@pawn & -@rook & -@bishop & -@queen & -@king
+REGION  --name  pawn    --equation  pawn
+REGION  --name  rook    --equation  rook & -(rook_h0 | rook_h120 | rook_h240)
+REGION  --name  bishop  --equation  bishop
+REGION  --name  queen   --equation  (queen & -(queen_h0 | queen_h120 | queen_h240)) | queen_b1 | queen_b2
+REGION  --name  king    --equation  king | king_c1 | king_c2
+REGION  --name  void    --equation  -@pawn & -@rook & -@bishop & -@queen & -@king

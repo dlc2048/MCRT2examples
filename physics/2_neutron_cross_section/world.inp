@@ -1,3 +1,5 @@
+# Please read descriptions in 'mc.inp' file for more detail.
+
 SURFACE_BEGIN
     CUBE  --name  t_water      --center  -10  0  0   --size  5  5  5
     CUBE  --name  t_tungsten   --center   10  0  0   --size  5  5  5

@@ -1,7 +1,7 @@
 # Please read descriptions in 'mc.inp' file for more detail.
 
 SURFACE_BEGIN
-	CUBE     --name  cube   --center  0  0  0   --size  1  1  1  # dummy for assign seawater
+	CUBE     --name  cube   --center  0  0  0   --size  1  1  1  # dummy for assign Am242m1
 SURFACE_END
 
 REGION  --name  cube   --equation  +cube
