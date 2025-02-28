@@ -16,39 +16,43 @@
 # > python3 plot.py  [Linux]
 # > python  plot.py  [Windows]
 
-CUDA_SETTINGS block_per_sm=128 gpu=0
+CUDA_SETTINGS  --block_per_sm  128  --gpu  0
 
 ENTRY ebin  10
 ENTRY eprob 1 
 ENTRY dbin  1 
 ENTRY dprob 1
 
-ELECTRON  use_presta2=1 transport_cutoff=0.01 production_cutoff=0.01
-PHOTON    transport_cutoff=0.001 production_cutoff=0.001 library=epdl97 compton_mode=egsnrc
-VACANCY   transport_cutoff=0.001 production_cutoff=0.001 print_detail=1
+ELECTRON  --transport_cutoff  0.01   --production_cutoff  0.01   --use_presta2   true
+PHOTON    --transport_cutoff  0.001  --production_cutoff  0.001  --compton_mode  egsnrc
+VACANCY   --transport_cutoff  0.001  --production_cutoff  0.001  --print_detail  true
 
 # disable neutron/ion transport
-NEUTRON        activate=0  
-NEUTRON_HIGH   activate=0
-GENERIC_ION    activate=0
+NEUTRON       --activate  false  
+GENERIC_ION   --activate  false
 
-COMPOUND vacuum      0.0
-COMPOUND tungsten  19.25   74182     26.5 74183    14.3 74184    30.6 74186 28.4
+COMPOUND   --name   vacuum     --density     0.0   --composition
+COMPOUND   --name   tungsten   --density   19.25   --composition   74000   100.0 
 
-ASSIGN region=ps_boundary  compound=vacuum
-ASSIGN region=target       compound=tungsten
-ASSIGN region=void         compound=vacuum
+ASSIGN  --region  ps_boundary  --compound  vacuum
+ASSIGN  --region  target       --compound  tungsten
+ASSIGN  --region  void         --compound  vacuum
 
-BEAM_GLOBAL mode=macro nps=1e7
 
-BEAM_CUBIC    name=beam             \
-              pid=-1                \
-              position=0,0,-5       \ 
-              size=0,0,0            \
-              type=linear           \
-              weight=1              \
-              direction=0,0,1       \
-              energy=ebin,eprob     \
-              divergence=dbin,dprob
+BEAM_GLOBAL   --mode   macro  --nps   1e8
+
+
+BEAM_CUBIC    --name      beam        \
+              --part      electron    \
+              --position  0  0 -5     \ 
+              --size      0  0  0     \
+              --type      linear      \
+              --weight    1           \
+              --direction 0  0  1     \
+              --ebin      10          \
+              --eprob     1           \
+              --dbin      1           \
+              --dprob     1
+
               
-PHASE_SPACE name=bremss  from=void  to=ps_boundary  buffer_size=1e7
+PHASE_SPACE  --name  bremss  --part  photon  --from   void   --to   ps_boundary

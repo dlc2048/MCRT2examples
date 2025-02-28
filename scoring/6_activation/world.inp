@@ -1,0 +1,8 @@
+# Please read descriptions in 'mc.inp' file for more detail.
+
+SURFACE_BEGIN
+	CYLINDER  --name  wire   --center  0  0  -5  --radius  0.1   --height  0  0  10
+SURFACE_END
+
+REGION  --name  wire   --equation  +wire
+REGION  --name  void   --equation  -wire

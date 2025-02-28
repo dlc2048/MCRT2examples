@@ -1,0 +1,86 @@
+# Scoring dose component individually
+# from the 10 keV monoenergy BNCT scenario, 
+# water phantom with 15 ppm B-10 is irradiated.
+# 
+# geometry build is required before run this code.
+# builder command
+# > RT2builder -i world.inp
+#
+# MC run command
+# > RT2mc -i mc.inp -o mc.out
+# 
+# Attached output sample (mc_sample.out) is the result of MC run 
+# on the Nvidia RTX 4060 ti card.
+#
+# The scoring results can be plotted by Python script
+# Python run command
+# > python3 plot.py  [Linux]
+# > python  plot.py  [Windows]
+
+
+CUDA_SETTINGS  --block_per_sm  128  --gpu  0
+
+COMPOUND --name  vacuum   --density  0.0    --composition
+COMPOUND --name  water    --density  1.0    --composition  1000   -2      8000   -1
+COMPOUND --name  b_water  --density  1.0    --composition  water  100.0   5010   1.5e-3
+
+MAT_PROP  --compound  water  --sab  H(H2O)  D(D2O)
+
+ASSIGN  --region  cube  --compound  b_water
+ASSIGN  --region  void  --compound  vacuum
+
+BEAM_GLOBAL --mode  macro  --nps  1e9
+
+
+BEAM_CYLINDER  --name        beam          \
+               --part        neutron       \
+               --position    0  0  -10     \ 
+               --radius      0  5          \
+               --height      0             \
+               --type        linear        \
+               --weight      1             \
+               --direction   0  0  1       \
+               --ebin        0.01          \
+               --eprob       1             \
+               --dbin        1             \
+               --dprob       1
+            
+MESH_DENSITY  --name       all   --part  all  \
+              --xrange  -10 10   --nx    100  \
+              --yrange  -10 10   --ny    100  \
+              --zrange    0 20   --nz    100  \
+              --type      depo
+              
+MESH_DENSITY  --name        em   --part  photon + electron + positron  \
+              --xrange  -10 10   --nx    100  \
+              --yrange  -10 10   --ny    100  \
+              --zrange    0 20   --nz    100  \
+              --type      depo
+              
+MESH_DENSITY  --name    hadron   --part  n + ion  \
+              --xrange  -10 10   --nx    100  \
+              --yrange  -10 10   --ny    100  \
+              --zrange    0 20   --nz    100  \
+              --type      depo
+        
+MESH_DENSITY  --name        he   --part  n + ion  \
+              --xrange  -10 10   --nx    100  \
+              --yrange  -10 10   --ny    100  \
+              --zrange    0 20   --nz    100  \
+              --type      depo
+ION_FILTER    --tally       he   --za    2000     
+
+MESH_DENSITY  --name        li   --part  n + ion  \
+              --xrange  -10 10   --nx    100  \
+              --yrange  -10 10   --ny    100  \
+              --zrange    0 20   --nz    100  \
+              --type      depo
+ION_FILTER    --tally       li   --za    3000     
+
+MESH_DENSITY  --name  hydrogen   --part  n + ion  \
+              --xrange  -10 10   --nx    100  \
+              --yrange  -10 10   --ny    100  \
+              --zrange    0 20   --nz    100  \
+              --type      depo
+ION_FILTER    --tally hydrogen   --za    1001      
+

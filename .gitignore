@@ -1,0 +1,16 @@
+# cache
+.cache/
+
+# viewer
+*.ini
+
+# detector results
+*.det
+*.crs
+*.mtr
+*.phs
+*.mdn
+*.atv
+
+# binaries
+*.bin

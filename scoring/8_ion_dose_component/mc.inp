@@ -1,0 +1,240 @@
+# Example of water phantom irradiation
+# by 400 MeV/u carbon ion beam.
+# Physics includes delta-ray production (> 100 keV),
+# Wilsion Abraison + INCL CN formation model
+# 
+# geometry build is required before run this code.
+# builder command
+# > RT2builder -i world.inp
+#
+# MC run command
+# > RT2mc -i mc.inp -o mc.out
+# 
+# Attached output sample (mc_sample.out) is the result of MC run 
+# on the Nvidia RTX 4060 ti card.
+#
+# The scoring results can be printed by Python script
+# Python run command
+# > python3 plot.py  [Linux]
+# > python  plot.py  [Windows]
+
+
+CUDA_SETTINGS  --block_per_sm  128  --gpu  0
+
+NEUTRON      --activate false
+GENERIC_ION  --estepe   0.02
+
+COMPOUND --name  vacuum   --density  0.0    --composition
+COMPOUND --name  water    --density  1.0    --composition  1000   -2   8000   -1
+
+MAT_PROP  --compound  water  --sab  H(H2O)  D(D2O)
+
+ASSIGN  --region  cube  --compound  water
+ASSIGN  --region  void  --compound  vacuum
+
+BEAM_GLOBAL --mode  macro  --nps  1e7
+
+DELTA --production_cutoff 0.1
+
+ION_INELASTIC --mode_high  abrasion   --mode_low  incl
+
+BEAM_CYLINDER  --name        beam          \
+               --part        c12           \
+               --position    0  0  -10     \ 
+               --radius      0  1          \
+               --height      0             \
+               --type        linear        \
+               --weight      1             \
+               --direction   0  0  1       \
+               --ebin        400           \
+               --eprob       1             \
+               --dbin        1             \
+               --dprob       1
+            
+MESH_DENSITY  --name       all   --part  all  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+              
+MESH_DENSITY  --name  electron   --part  electron  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo      
+              
+MESH_DENSITY  --name       ion   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo         
+
+MESH_DENSITY  --name  hydrogen   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally hydrogen   --za    1000   
+
+MESH_DENSITY  --name        h1   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally       h1   --za    1001   
+
+MESH_DENSITY  --name        h2   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally       h2   --za    1002   
+
+MESH_DENSITY  --name        h3   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally       h3   --za    1003   
+
+MESH_DENSITY  --name    helium   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally   helium   --za    2000      
+
+MESH_DENSITY  --name       he3   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally      he3   --za    2003   
+
+MESH_DENSITY  --name       he4   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally      he4   --za    2004   
+
+MESH_DENSITY  --name       he6   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally      he6   --za    2006   
+
+MESH_DENSITY  --name   lithium   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally  lithium   --za    3000    
+
+MESH_DENSITY  --name       li6   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally      li6   --za    3006   
+
+MESH_DENSITY  --name       li7   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally      li7   --za    3007   
+
+MESH_DENSITY  --name       li8   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally      li8   --za    3008   
+
+MESH_DENSITY  --name beryllium   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally  beryllium --za    4000    
+
+MESH_DENSITY  --name       be7   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally      be7   --za    4007   
+
+MESH_DENSITY  --name       be9   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally      be9   --za    4009  
+
+MESH_DENSITY  --name      be10   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally     be10   --za    4010    
+
+MESH_DENSITY  --name     boron   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally    boron   --za    5000    
+
+MESH_DENSITY  --name       b10   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally      b10   --za    5010 
+
+MESH_DENSITY  --name       b11   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally      b11   --za    5011 
+
+MESH_DENSITY  --name    carbon   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally   carbon   --za    6000   
+
+MESH_DENSITY  --name        c9   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally       c9   --za    6009
+
+MESH_DENSITY  --name       c10   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally      c10   --za    6010        
+
+MESH_DENSITY  --name       c11   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally      c11   --za    6011       
+
+MESH_DENSITY  --name       c12   --part  ion  \
+              --xrange  -10 10   --nx      1  \
+              --yrange  -10 10   --ny      1  \
+              --zrange    0 40   --nz   2000  \
+              --type      depo
+ION_FILTER    --tally      c12   --za    6012      
+
+   

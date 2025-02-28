@@ -18,7 +18,7 @@
 # world to void
 
 
-CUDA_SETTINGS block_per_sm=128 gpu=0
+CUDA_SETTINGS  --block_per_sm  128  --gpu   0
 
 ENTRY ebin  1.25
 ENTRY eprob 1
@@ -27,31 +27,38 @@ ENTRY dbin  -1   1   # isotropic
 ENTRY dprob 1
 
 # disable neutron/ion transport
-NEUTRON        activate=0  
-NEUTRON_HIGH   activate=0
-GENERIC_ION    activate=0
+NEUTRON        --activate  false
+GENERIC_ION    --activate  false
 
-COMPOUND vacuum     0.0
+COMPOUND  --name  vacuum   --density  0.0  --composition
 
-ASSIGN region=world compound=vacuum
-ASSIGN region=void  compound=vacuum
+ASSIGN --region  world  --compound  vacuum
+ASSIGN --region  void   --compound  vacuum
 
-BEAM_GLOBAL mode=macro nps=1e9
+BEAM_GLOBAL  --mode  macro   --nps  1e9
 
-BEAM_CUBIC    name=p1               \
-              pid=0                 \  # photon
-              position=0,0,0        \
-              size=20,30,40         \
-              type=linear           \
-              weight=1              \
-              direction=0,0,1       \
-              energy=ebin,eprob     \
-              divergence=dbin,dprob
-                            
-CROSS  name=spect  pid=0  escale=linear  erange=0,2  ne=100  from=world  to=void
+BEAM_CUBIC    --name       p1          \
+              --part       photon      \ 
+              --position     0  0  0   \
+              --size        20 30 40   \ 
+              --type       linear      \
+              --weight       1         \
+              --direction    0  0  1   \
+              --ebin         1.25      \
+              --eprob        1         \
+              --dbin        -1  1      \    # isotropic
+              --dprob        1
+              
+CROSS   --name    spect     \ 
+        --part    photon    \
+        --escale  linear    \
+        --erange  0  2      \
+        --ne      100       \
+        --from    world     \
+        --to      void
 
-MESH_TRACK  name=flux  pid=0  \
-            xrange=-50,50  nx=200  \
-            yrange=-50,50  ny=200  \
-            zrange=-50,50  nz=200  \ 
-            escale=linear  erange=0,12  ne=1
+MESH_TRACK  --name    flux     --part    photon   \
+            --xrange  -50  50  --nx      200      \
+            --yrange  -50  50  --ny      200      \
+            --zrange  -50  50  --nz      200      \ 
+            --escale  linear   --erange  0  12     --ne   1

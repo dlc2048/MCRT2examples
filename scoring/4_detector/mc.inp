@@ -24,35 +24,40 @@ ENTRY eprob 1
 ENTRY dbin  -1 1
 ENTRY dprob 1
 
-ELECTRON  use_presta2=1 transport_cutoff=0.01 production_cutoff=0.01
-PHOTON    transport_cutoff=0.001 production_cutoff=0.001 library=epdl97 compton_mode=egsnrc
-VACANCY   transport_cutoff=0.001 production_cutoff=0.001 print_detail=1
+ELECTRON  --transport_cutoff  0.01   --production_cutoff  0.01    --use_presta2    true
+PHOTON    --transport_cutoff  0.001  --production_cutoff  0.001   --compton_mode   egsnrc
+VACANCY   --transport_cutoff  0.001  --production_cutoff  0.001   --print_detail   true
 
 # disable neutron/ion transport
-NEUTRON        activate=0  
-NEUTRON_HIGH   activate=0
-GENERIC_ION    activate=0
+NEUTRON        --activate  false  
+GENERIC_ION    --activate  false
 
-COMPOUND vacuum     0.0
-COMPOUND sodium     0.968  11023 100.0
-COMPOUND iodine     4.944  53127 100.0
+COMPOUND   --name  vacuum  --density   0.0   --composition  
+COMPOUND   --name  nai     --density   3.67  --composition  11000  -1  53000  -1
 
-COMPOUND nai        3.67  sodium    -1 iodine -1
+ASSIGN  --region  crystal   --compound  nai
+ASSIGN  --region  void      --compound  vacuum
 
-ASSIGN region=crystal    compound=nai
-ASSIGN region=void       compound=vacuum
+BEAM_GLOBAL  --mode  macro  --nps  1e9
 
-BEAM_GLOBAL mode=macro nps=1e9
 
-BEAM_CUBIC    name=beam             \
-              pid=0                 \
-              position=0,0,-10      \ 
-              size=0,0,0            \
-              type=linear           \
-              weight=1              \
-              direction=0,0,1       \
-              energy=ebin,eprob     \
-              divergence=dbin,dprob
+BEAM_CUBIC    --name      beam        \
+              --part      photon      \
+              --position  0  0 -10    \ 
+              --size      0  0  0     \
+              --type      linear      \
+              --weight    1           \
+              --direction 0  0  1     \
+              --ebin      1.25        \
+              --eprob     1           \
+              --dbin     -1  1        \
+              --dprob     1
 			  
-DETECTOR name=gebw  erange=1e-3,2e+0 escale=linear ne=1024 a=0.0 b=0.0752 c=-0.1210 where=crystal  # GEB on
-DETECTOR name=gebwo erange=1e-3,2e+0 escale=linear ne=1024 a=0.0 b=0.0    c=0.0     where=crystal  # GEB off
+              
+DETECTOR  --name   gebw         --where  crystal   --part     all     \
+          --erange 1e-3  2e+0   --escale linear    --ne      1024     \
+          --a      0.0          --b      0.0752    --c    -0.1210      # GEB on
+          
+DETECTOR  --name   gebwo        --where  crystal   --part     all     \
+          --erange 1e-3  2e+0   --escale linear    --ne      1024     \
+          --a      0.0          --b      0.0       --c       0.0       # GEB on

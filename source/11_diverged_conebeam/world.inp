@@ -1,8 +1,8 @@
 # Please read descriptions in 'mc.inp' file for more detail.
 
 SURFACE_BEGIN
-	ICOSPHERE  name=world  center=0,0,0  radius=100  # for boundary crossing
+	ICOSPHERE  --name  world   --center  0  0  0   --radius  100  # for boundary crossing
 SURFACE_END
 
-REGION world     +world
-REGION void      -world
+REGION  --name  world   --equation  +world
+REGION  --name  void    --equation  -world
