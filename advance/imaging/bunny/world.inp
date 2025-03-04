@@ -4,9 +4,9 @@ GEO_GLOBAL
 
 # Surfaces
 SURFACE_BEGIN
-    MODEL name=target    file=model/Stanford_Bunny.stl    # cm
+    MODEL  --name   target  --file  model/Stanford_Bunny.stl    # cm
 SURFACE_END
 
 # Region
-REGION target  target 
-REGION void   -target
+REGION   --name  target  --equation   target 
+REGION   --name  void    --equation  -target

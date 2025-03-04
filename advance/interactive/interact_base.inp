@@ -4,14 +4,16 @@ ENTRY eprob 1
 ENTRY dbin  1
 ENTRY dprob 1
 
-BEAM_GLOBAL mode=macro nps=1e9
+BEAM_GLOBAL  --mode  macro  --nps  1e9
 
-BEAM_CUBIC    name=beam             \
-              pid=0                 \
-			  position=$POS$        \ 
-			  size=10,10,0          \  # 10x10 square
-              type=linear           \
-			  weight=1              \
-			  direction=$DIR$       \ 
-			  energy=ebin,eprob     \
-			  divergence=dbin,dprob
+BEAM_CUBIC   --name      beam        \
+             --part      photon      \
+			 --position  $POS$       \ 
+			 --size      10 10 0     \  # 10x10 square
+             --type      linear      \
+			 --weight    1           \
+			 --direction $DIR$       \
+             --ebin      1           \
+             --eprob     1           \
+             --dbin      1           \
+             --dprob     1

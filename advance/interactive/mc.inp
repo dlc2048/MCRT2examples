@@ -14,48 +14,48 @@
 # [depo_*.png] is the energy deposition map by X-ray beam 
 # which is rotated by '*' degree
 
-CUDA_SETTINGS block_per_sm=128 buffer_ratio=0.6
+CUDA_SETTINGS  --block_per_sm  128  --buffer_ratio  0.6
 
-ELECTRON transport_cutoff=0.1  production_cutoff=0.1
-POSITRON transport_cutoff=0.1  production_cutoff=0.1
-PHOTON   transport_cutoff=0.01 production_cutof=0.01 compton_mode=egsnrc
+ELECTRON  --transport_cutoff  0.1    --production_cutoff  0.1
+POSITRON  --transport_cutoff  0.1    --production_cutoff  0.1
+PHOTON    --transport_cutoff  0.01   --production_cutoff 0.01  --compton_mode  egsnrc
 
-NEUTRON      activate=0
-GENERIC_ION  activate=0
-NEUTRON_HIGH activate=0
+NEUTRON        --activate  false
+GENERIC_ION    --activate  false
 
-COMPOUND vacuum    0.0
-COMPOUND hydrogen  0.08988 101      99.98 1002     0.02
-COMPOUND oxygen    1.141   8016     99.56 8017     0.44
-COMPOUND water     1.0     hydrogen    -2 oxygen     -1
+COMPOUND  --name  vacuum   --density  0.0   --composition  
+COMPOUND  --name  water    --density  1.0   --composition  1000  -2   8000  -1
 
-ASSIGN region=phantom     compound=water
-ASSIGN region=void        compound=vacuum
+ASSIGN  --region  phantom   --compound  water
+ASSIGN  --region  void      --compound  vacuum
 
-ENTRY ebin  1
-ENTRY eprob 1
-ENTRY dbin  1
-ENTRY dprob 1
+BEAM_GLOBAL  --mode  macro  --nps  1e9
 
-BEAM_GLOBAL mode=macro nps=1000000000
+BEAM_CUBIC   --name      beam        \
+             --part      photon      \
+			 --position  0  0  -30   \ 
+			 --size      10 10 0     \  # 10x10 square
+             --type      linear      \
+			 --weight    1           \
+			 --direction 0  0  1     \
+             --ebin      1           \
+             --eprob     1           \
+             --dbin      1           \
+             --dprob     1
 
-BEAM_CUBIC    name=beam             \
-              pid=0                 \
-			  position=0,0,-30      \ 
-			  size=10,10,0          \  # 10x10 square
-              type=linear           \
-			  weight=1              \
-			  direction=0,0,1       \
-			  energy=ebin,eprob     \
-			  divergence=dbin,dprob
-
-$RANGE$ 100
+$RANGE$  100
+$DRANGE$ 20 
+$NBIN$   100
 
 # flux
-MESH_TRACK    name=xray  pid=0  nx=100 ny=100 nz=100 xrange=-$RANGE$,$RANGE$ yrange=-$RANGE$,$RANGE$ zrange=-$RANGE$,$RANGE$ \
-              erange=0,10  escale=linear  ne=1
+MESH_TRACK   --name   xray              --part  photon  \
+             --xrange -$RANGE$ $RANGE$  --nx    $NBIN$  \
+             --yrange -$RANGE$ $RANGE$  --ny    $NBIN$  \
+             --zrange -$RANGE$ $RANGE$  --nz    $NBIN$  \
+             --erange  0  10            --ne    1       --escale  linear 
               
 # dose
-MESH_DENSITY  name=depo_gamma pid=0  type=depo nx=100 ny=100 nz=100 xrange=-20,20 yrange=-20,20 zrange=-20,20
-MESH_DENSITY  name=depo_elect pid=-1 type=depo nx=100 ny=100 nz=100 xrange=-20,20 yrange=-20,20 zrange=-20,20
-MESH_DENSITY  name=depo_posit pid=+1 type=depo nx=100 ny=100 nz=100 xrange=-20,20 yrange=-20,20 zrange=-20,20
+MESH_DENSITY  --name    depo   --part  all  --type  depo    \
+              --xrange  -$DRANGE$ $DRANGE$  --nx    $NBIN$  \
+              --yrange  -$DRANGE$ $DRANGE$  --ny    $NBIN$  \
+              --zrange  -$DRANGE$ $DRANGE$  --nz    $NBIN$  

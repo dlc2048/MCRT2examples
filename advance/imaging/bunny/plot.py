@@ -3,9 +3,9 @@ import numpy as np
 
 from rt2.scoring import MeshTrack
 
-xray    = MeshTrack('mc_image.mtr').extract()
+xray = MeshTrack('mc_image.mtr').extract()
 
-xray_img,    xray_unc,    xray_extent    = xray.image(-10, axis=2)
+xray_img, xray_unc, xray_extent = xray.image(-10, axis=2)
 
 plt.figure()
 plt.title('XRAY')

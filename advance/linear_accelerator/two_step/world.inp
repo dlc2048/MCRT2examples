@@ -1,4 +1,4 @@
-# Please read descriptions in 'mc_first.inp' file for more detail.
+# Please read descriptions in 'mc.inp' file for more detail.
 
 # JAW control X (degree)
 $JAWX1$ 7.5
@@ -132,211 +132,212 @@ $BF58M$ 0
 $BF59M$ 0
 $BO60M$ 0
 
-$MM_TO_CM$ 0.1,0.1,0.1  # mm to cm
+$MM_TO_CM$ 0.1  0.1  0.1  # mm to cm
 
 # FF init
-ROT_DEFI name=move_FF    axis=x delta=0,0,87.57
+ROT_DEFI --name  move_FF    --axis  x  --delta  0  0  87.57
 
 # JAW init
-ROT_DEFI name=move_JAW   axis=x delta=0,0,100
+ROT_DEFI --name  move_JAW   --axis  x  --delta  0  0  100
 
 # JAWX control
-ROT_DEFI name=rot_JAWX1  axis=y theta=-$JAWX1$
-ROT_DEFI name=rot_JAWX2  axis=y theta=$JAWX2$
+ROT_DEFI --name  rot_JAWX1  --axis  y  --theta  -$JAWX1$
+ROT_DEFI --name  rot_JAWX2  --axis  y  --theta   $JAWX2$
 
 # JAWY control
-ROT_DEFI name=rot_JAWY1  axis=x theta=$JAWY1$
-ROT_DEFI name=rot_JAWY2  axis=x theta=-$JAWY2$
+ROT_DEFI --name  rot_JAWY1  --axis  x  --theta   $JAWY1$
+ROT_DEFI --name  rot_JAWY2  --axis  x  --theta  -$JAWY2$
 
 # MLC init
-ROT_DEFI name=tilt_AO_01 axis=x delta=8,-9.945,49  theta=-11.034209
-ROT_DEFI name=tilt_AF_02 axis=x delta=8,-9.435,49  theta=-10.48121814
-ROT_DEFI name=tilt_AF_03 axis=x delta=8,-8.925,49  theta=-9.92624551
-ROT_DEFI name=tilt_AF_04 axis=x delta=8,-8.415,49  theta=-9.3693851
-ROT_DEFI name=tilt_AF_05 axis=x delta=8,-7.905,49  theta=-8.81073299
-ROT_DEFI name=tilt_AF_06 axis=x delta=8,-7.395,49  theta=-8.25038723
-ROT_DEFI name=tilt_AF_07 axis=x delta=8,-6.885,49  theta=-7.68844777
-ROT_DEFI name=tilt_AF_08 axis=x delta=8,-6.375,49  theta=-7.12501635
-ROT_DEFI name=tilt_AF_09 axis=x delta=8,-5.865,49  theta=-6.5601964
-ROT_DEFI name=tilt_AF_10 axis=x delta=8,-5.355,49  theta=-5.99409295
-ROT_DEFI name=tilt_AT_11 axis=x delta=8,-4.9725,49 theta=-5.56873708
-ROT_DEFI name=tilt_AI_12 axis=x delta=8,-4.7175,49 theta=-5.28482109
-ROT_DEFI name=tilt_AT_13 axis=x delta=8,-4.4625,49 theta=-5.0006446
-ROT_DEFI name=tilt_AI_14 axis=x delta=8,-4.2075,49 theta=-4.71622123
-ROT_DEFI name=tilt_AT_15 axis=x delta=8,-3.9525,49 theta=-4.43156472
-ROT_DEFI name=tilt_AI_16 axis=x delta=8,-3.6975,49 theta=-4.14668883
-ROT_DEFI name=tilt_AT_17 axis=x delta=8,-3.4425,49 theta=-3.86160741
-ROT_DEFI name=tilt_AI_18 axis=x delta=8,-3.1875,49 theta=-3.57633437
-ROT_DEFI name=tilt_AT_19 axis=x delta=8,-2.9325,49 theta=-3.29088369
-ROT_DEFI name=tilt_AI_20 axis=x delta=8,-2.6775,49 theta=-3.00526936
-ROT_DEFI name=tilt_AT_21 axis=x delta=8,-2.4225,49 theta=-2.71950546
-ROT_DEFI name=tilt_AI_22 axis=x delta=8,-2.1675,49 theta=-2.4336061
-ROT_DEFI name=tilt_AT_23 axis=x delta=8,-1.9125,49 theta=-2.14758543
-ROT_DEFI name=tilt_AI_24 axis=x delta=8,-1.6575,49 theta=-1.86145763
-ROT_DEFI name=tilt_AT_25 axis=x delta=8,-1.4025,49 theta=-1.57523693
-ROT_DEFI name=tilt_AI_26 axis=x delta=8,-1.1475,49 theta=-1.28893756
-ROT_DEFI name=tilt_AT_27 axis=x delta=8,-0.8925,49 theta=-1.0025738
-ROT_DEFI name=tilt_AI_28 axis=x delta=8,-0.6375,49 theta=-0.71615995
-ROT_DEFI name=tilt_AT_29 axis=x delta=8,-0.3825,49 theta=-0.42971029
-ROT_DEFI name=tilt_AI_30 axis=x delta=8,-0.1275,49 theta=-0.14323915
-ROT_DEFI name=tilt_AT_31 axis=x delta=8,+0.1275,49 theta=+0.14323915
-ROT_DEFI name=tilt_AI_32 axis=x delta=8,+0.3825,49 theta=+0.42971029
-ROT_DEFI name=tilt_AT_33 axis=x delta=8,+0.6375,49 theta=+0.71615995
-ROT_DEFI name=tilt_AI_34 axis=x delta=8,+0.8925,49 theta=+1.0025738
-ROT_DEFI name=tilt_AT_35 axis=x delta=8,+1.1475,49 theta=+1.28893756
-ROT_DEFI name=tilt_AI_36 axis=x delta=8,+1.4025,49 theta=+1.57523693
-ROT_DEFI name=tilt_AT_37 axis=x delta=8,+1.6575,49 theta=+1.86145763
-ROT_DEFI name=tilt_AI_38 axis=x delta=8,+1.9125,49 theta=+2.14758543
-ROT_DEFI name=tilt_AT_39 axis=x delta=8,+2.1675,49 theta=+2.4336061
-ROT_DEFI name=tilt_AI_40 axis=x delta=8,+2.4225,49 theta=+2.71950546
-ROT_DEFI name=tilt_AT_41 axis=x delta=8,+2.6775,49 theta=+3.00526936
-ROT_DEFI name=tilt_AI_42 axis=x delta=8,+2.9325,49 theta=+3.29088369
-ROT_DEFI name=tilt_AT_43 axis=x delta=8,+3.1875,49 theta=+3.57633437
-ROT_DEFI name=tilt_AI_44 axis=x delta=8,+3.4425,49 theta=+3.86160741
-ROT_DEFI name=tilt_AT_45 axis=x delta=8,+3.6975,49 theta=+4.14668883
-ROT_DEFI name=tilt_AI_46 axis=x delta=8,+3.9525,49 theta=+4.43156472
-ROT_DEFI name=tilt_AT_47 axis=x delta=8,+4.2075,49 theta=+4.71622123
-ROT_DEFI name=tilt_AI_48 axis=x delta=8,+4.4625,49 theta=+5.0006446
-ROT_DEFI name=tilt_AT_49 axis=x delta=8,+4.7175,49 theta=+5.28482109
-ROT_DEFI name=tilt_AI_50 axis=x delta=8,+4.9725,49 theta=+5.56873708
-ROT_DEFI name=tilt_AF_51 axis=x delta=8,+5.355,49  theta=+5.99409295
-ROT_DEFI name=tilt_AF_52 axis=x delta=8,+5.865,49  theta=+6.5601964
-ROT_DEFI name=tilt_AF_53 axis=x delta=8,+6.375,49  theta=+7.12501635
-ROT_DEFI name=tilt_AF_54 axis=x delta=8,+6.885,49  theta=+7.68844777
-ROT_DEFI name=tilt_AF_55 axis=x delta=8,+7.395,49  theta=+8.25038723
-ROT_DEFI name=tilt_AF_56 axis=x delta=8,+7.905,49  theta=+8.81073299
-ROT_DEFI name=tilt_AF_57 axis=x delta=8,+8.415,49  theta=+9.3693851
-ROT_DEFI name=tilt_AF_58 axis=x delta=8,+8.925,49  theta=+9.92624551
-ROT_DEFI name=tilt_AF_59 axis=x delta=8,+9.435,49  theta=+10.48121814
-ROT_DEFI name=tilt_AO_60 axis=x delta=8,+9.945,49  theta=+11.034209
+ROT_DEFI  --name  tilt_AO_01  --axis  x  --delta  8  -9.945  49  --theta  -11.034209
+ROT_DEFI  --name  tilt_AF_02  --axis  x  --delta  8  -9.435  49  --theta  -10.48121814
+ROT_DEFI  --name  tilt_AF_03  --axis  x  --delta  8  -8.925  49  --theta  -9.92624551
+ROT_DEFI  --name  tilt_AF_04  --axis  x  --delta  8  -8.415  49  --theta  -9.3693851
+ROT_DEFI  --name  tilt_AF_05  --axis  x  --delta  8  -7.905  49  --theta  -8.81073299
+ROT_DEFI  --name  tilt_AF_06  --axis  x  --delta  8  -7.395  49  --theta  -8.25038723
+ROT_DEFI  --name  tilt_AF_07  --axis  x  --delta  8  -6.885  49  --theta  -7.68844777
+ROT_DEFI  --name  tilt_AF_08  --axis  x  --delta  8  -6.375  49  --theta  -7.12501635
+ROT_DEFI  --name  tilt_AF_09  --axis  x  --delta  8  -5.865  49  --theta  -6.5601964
+ROT_DEFI  --name  tilt_AF_10  --axis  x  --delta  8  -5.355  49  --theta  -5.99409295
+ROT_DEFI  --name  tilt_AT_11  --axis  x  --delta  8  -4.9725 49  --theta  -5.56873708
+ROT_DEFI  --name  tilt_AI_12  --axis  x  --delta  8  -4.7175 49  --theta  -5.28482109
+ROT_DEFI  --name  tilt_AT_13  --axis  x  --delta  8  -4.4625 49  --theta  -5.0006446
+ROT_DEFI  --name  tilt_AI_14  --axis  x  --delta  8  -4.2075 49  --theta  -4.71622123
+ROT_DEFI  --name  tilt_AT_15  --axis  x  --delta  8  -3.9525 49  --theta  -4.43156472
+ROT_DEFI  --name  tilt_AI_16  --axis  x  --delta  8  -3.6975 49  --theta  -4.14668883
+ROT_DEFI  --name  tilt_AT_17  --axis  x  --delta  8  -3.4425 49  --theta  -3.86160741
+ROT_DEFI  --name  tilt_AI_18  --axis  x  --delta  8  -3.1875 49  --theta  -3.57633437
+ROT_DEFI  --name  tilt_AT_19  --axis  x  --delta  8  -2.9325 49  --theta  -3.29088369
+ROT_DEFI  --name  tilt_AI_20  --axis  x  --delta  8  -2.6775 49  --theta  -3.00526936
+ROT_DEFI  --name  tilt_AT_21  --axis  x  --delta  8  -2.4225 49  --theta  -2.71950546
+ROT_DEFI  --name  tilt_AI_22  --axis  x  --delta  8  -2.1675 49  --theta  -2.4336061
+ROT_DEFI  --name  tilt_AT_23  --axis  x  --delta  8  -1.9125 49  --theta  -2.14758543
+ROT_DEFI  --name  tilt_AI_24  --axis  x  --delta  8  -1.6575 49  --theta  -1.86145763
+ROT_DEFI  --name  tilt_AT_25  --axis  x  --delta  8  -1.4025 49  --theta  -1.57523693
+ROT_DEFI  --name  tilt_AI_26  --axis  x  --delta  8  -1.1475 49  --theta  -1.28893756
+ROT_DEFI  --name  tilt_AT_27  --axis  x  --delta  8  -0.8925 49  --theta  -1.0025738
+ROT_DEFI  --name  tilt_AI_28  --axis  x  --delta  8  -0.6375 49  --theta  -0.71615995
+ROT_DEFI  --name  tilt_AT_29  --axis  x  --delta  8  -0.3825 49  --theta  -0.42971029
+ROT_DEFI  --name  tilt_AI_30  --axis  x  --delta  8  -0.1275 49  --theta  -0.14323915
+ROT_DEFI  --name  tilt_AT_31  --axis  x  --delta  8  +0.1275 49  --theta  +0.14323915
+ROT_DEFI  --name  tilt_AI_32  --axis  x  --delta  8  +0.3825 49  --theta  +0.42971029
+ROT_DEFI  --name  tilt_AT_33  --axis  x  --delta  8  +0.6375 49  --theta  +0.71615995
+ROT_DEFI  --name  tilt_AI_34  --axis  x  --delta  8  +0.8925 49  --theta  +1.0025738
+ROT_DEFI  --name  tilt_AT_35  --axis  x  --delta  8  +1.1475 49  --theta  +1.28893756
+ROT_DEFI  --name  tilt_AI_36  --axis  x  --delta  8  +1.4025 49  --theta  +1.57523693
+ROT_DEFI  --name  tilt_AT_37  --axis  x  --delta  8  +1.6575 49  --theta  +1.86145763
+ROT_DEFI  --name  tilt_AI_38  --axis  x  --delta  8  +1.9125 49  --theta  +2.14758543
+ROT_DEFI  --name  tilt_AT_39  --axis  x  --delta  8  +2.1675 49  --theta  +2.4336061
+ROT_DEFI  --name  tilt_AI_40  --axis  x  --delta  8  +2.4225 49  --theta  +2.71950546
+ROT_DEFI  --name  tilt_AT_41  --axis  x  --delta  8  +2.6775 49  --theta  +3.00526936
+ROT_DEFI  --name  tilt_AI_42  --axis  x  --delta  8  +2.9325 49  --theta  +3.29088369
+ROT_DEFI  --name  tilt_AT_43  --axis  x  --delta  8  +3.1875 49  --theta  +3.57633437
+ROT_DEFI  --name  tilt_AI_44  --axis  x  --delta  8  +3.4425 49  --theta  +3.86160741
+ROT_DEFI  --name  tilt_AT_45  --axis  x  --delta  8  +3.6975 49  --theta  +4.14668883
+ROT_DEFI  --name  tilt_AI_46  --axis  x  --delta  8  +3.9525 49  --theta  +4.43156472
+ROT_DEFI  --name  tilt_AT_47  --axis  x  --delta  8  +4.2075 49  --theta  +4.71622123
+ROT_DEFI  --name  tilt_AI_48  --axis  x  --delta  8  +4.4625 49  --theta  +5.0006446
+ROT_DEFI  --name  tilt_AT_49  --axis  x  --delta  8  +4.7175 49  --theta  +5.28482109
+ROT_DEFI  --name  tilt_AI_50  --axis  x  --delta  8  +4.9725 49  --theta  +5.56873708
+ROT_DEFI  --name  tilt_AF_51  --axis  x  --delta  8  +5.355  49  --theta  +5.99409295
+ROT_DEFI  --name  tilt_AF_52  --axis  x  --delta  8  +5.865  49  --theta  +6.5601964
+ROT_DEFI  --name  tilt_AF_53  --axis  x  --delta  8  +6.375  49  --theta  +7.12501635
+ROT_DEFI  --name  tilt_AF_54  --axis  x  --delta  8  +6.885  49  --theta  +7.68844777
+ROT_DEFI  --name  tilt_AF_55  --axis  x  --delta  8  +7.395  49  --theta  +8.25038723
+ROT_DEFI  --name  tilt_AF_56  --axis  x  --delta  8  +7.905  49  --theta  +8.81073299
+ROT_DEFI  --name  tilt_AF_57  --axis  x  --delta  8  +8.415  49  --theta  +9.3693851
+ROT_DEFI  --name  tilt_AF_58  --axis  x  --delta  8  +8.925  49  --theta  +9.92624551
+ROT_DEFI  --name  tilt_AF_59  --axis  x  --delta  8  +9.435  49  --theta  +10.48121814
+ROT_DEFI  --name  tilt_AO_60  --axis  x  --delta  8  +9.945  49  --theta  +11.034209
 
 # MLC B rotation
-ROT_DEFI name=A_TO_B     axis=z                    theta=180.0
+ROT_DEFI  --name  A_TO_B     --axis  z                    --theta  180.0
 
 # MLC leaf position
-ROT_DEFI name=move_AO_01 axis=x delta=$AO01M$,0,0
-ROT_DEFI name=move_AF_02 axis=x delta=$AF02M$,0,0
-ROT_DEFI name=move_AF_03 axis=x delta=$AF03M$,0,0
-ROT_DEFI name=move_AF_04 axis=x delta=$AF04M$,0,0
-ROT_DEFI name=move_AF_05 axis=x delta=$AF05M$,0,0
-ROT_DEFI name=move_AF_06 axis=x delta=$AF06M$,0,0
-ROT_DEFI name=move_AF_07 axis=x delta=$AF07M$,0,0
-ROT_DEFI name=move_AF_08 axis=x delta=$AF08M$,0,0
-ROT_DEFI name=move_AF_09 axis=x delta=$AF09M$,0,0
-ROT_DEFI name=move_AF_10 axis=x delta=$AF10M$,0,0
-ROT_DEFI name=move_AT_11 axis=x delta=$AT11M$,0,0
-ROT_DEFI name=move_AI_12 axis=x delta=$AI12M$,0,0
-ROT_DEFI name=move_AT_13 axis=x delta=$AT13M$,0,0
-ROT_DEFI name=move_AI_14 axis=x delta=$AI14M$,0,0
-ROT_DEFI name=move_AT_15 axis=x delta=$AT15M$,0,0
-ROT_DEFI name=move_AI_16 axis=x delta=$AI16M$,0,0
-ROT_DEFI name=move_AT_17 axis=x delta=$AT17M$,0,0
-ROT_DEFI name=move_AI_18 axis=x delta=$AI18M$,0,0
-ROT_DEFI name=move_AT_19 axis=x delta=$AT19M$,0,0
-ROT_DEFI name=move_AI_20 axis=x delta=$AI20M$,0,0
-ROT_DEFI name=move_AT_21 axis=x delta=$AT21M$,0,0
-ROT_DEFI name=move_AI_22 axis=x delta=$AI22M$,0,0
-ROT_DEFI name=move_AT_23 axis=x delta=$AT23M$,0,0
-ROT_DEFI name=move_AI_24 axis=x delta=$AI24M$,0,0
-ROT_DEFI name=move_AT_25 axis=x delta=$AT25M$,0,0
-ROT_DEFI name=move_AI_26 axis=x delta=$AI26M$,0,0
-ROT_DEFI name=move_AT_27 axis=x delta=$AT27M$,0,0
-ROT_DEFI name=move_AI_28 axis=x delta=$AI28M$,0,0
-ROT_DEFI name=move_AT_29 axis=x delta=$AT29M$,0,0
-ROT_DEFI name=move_AI_30 axis=x delta=$AI30M$,0,0
-ROT_DEFI name=move_AT_31 axis=x delta=$AT31M$,0,0
-ROT_DEFI name=move_AI_32 axis=x delta=$AI32M$,0,0
-ROT_DEFI name=move_AT_33 axis=x delta=$AT33M$,0,0
-ROT_DEFI name=move_AI_34 axis=x delta=$AT34M$,0,0
-ROT_DEFI name=move_AT_35 axis=x delta=$AI35M$,0,0
-ROT_DEFI name=move_AI_36 axis=x delta=$AT36M$,0,0
-ROT_DEFI name=move_AT_37 axis=x delta=$AI37M$,0,0
-ROT_DEFI name=move_AI_38 axis=x delta=$AT38M$,0,0
-ROT_DEFI name=move_AT_39 axis=x delta=$AI39M$,0,0
-ROT_DEFI name=move_AI_40 axis=x delta=$AT40M$,0,0
-ROT_DEFI name=move_AT_41 axis=x delta=$AI41M$,0,0
-ROT_DEFI name=move_AI_42 axis=x delta=$AT42M$,0,0
-ROT_DEFI name=move_AT_43 axis=x delta=$AI43M$,0,0
-ROT_DEFI name=move_AI_44 axis=x delta=$AT44M$,0,0
-ROT_DEFI name=move_AT_45 axis=x delta=$AI45M$,0,0
-ROT_DEFI name=move_AI_46 axis=x delta=$AT46M$,0,0
-ROT_DEFI name=move_AT_47 axis=x delta=$AI47M$,0,0
-ROT_DEFI name=move_AI_48 axis=x delta=$AT48M$,0,0
-ROT_DEFI name=move_AT_49 axis=x delta=$AI49M$,0,0
-ROT_DEFI name=move_AI_50 axis=x delta=$AT50M$,0,0
-ROT_DEFI name=move_AF_51 axis=x delta=$AF51M$,0,0
-ROT_DEFI name=move_AF_52 axis=x delta=$AF52M$,0,0
-ROT_DEFI name=move_AF_53 axis=x delta=$AF53M$,0,0
-ROT_DEFI name=move_AF_54 axis=x delta=$AF54M$,0,0
-ROT_DEFI name=move_AF_55 axis=x delta=$AF55M$,0,0
-ROT_DEFI name=move_AF_56 axis=x delta=$AF56M$,0,0
-ROT_DEFI name=move_AF_57 axis=x delta=$AF57M$,0,0
-ROT_DEFI name=move_AF_58 axis=x delta=$AF58M$,0,0
-ROT_DEFI name=move_AF_59 axis=x delta=$AF59M$,0,0
-ROT_DEFI name=move_AO_60 axis=x delta=$AO60M$,0,0
+ROT_DEFI  --name  move_AO_01  --axis  x  --delta  $AO01M$  0  0
+ROT_DEFI  --name  move_AF_02  --axis  x  --delta  $AF02M$  0  0
+ROT_DEFI  --name  move_AF_03  --axis  x  --delta  $AF03M$  0  0
+ROT_DEFI  --name  move_AF_04  --axis  x  --delta  $AF04M$  0  0
+ROT_DEFI  --name  move_AF_05  --axis  x  --delta  $AF05M$  0  0
+ROT_DEFI  --name  move_AF_06  --axis  x  --delta  $AF06M$  0  0
+ROT_DEFI  --name  move_AF_07  --axis  x  --delta  $AF07M$  0  0
+ROT_DEFI  --name  move_AF_08  --axis  x  --delta  $AF08M$  0  0
+ROT_DEFI  --name  move_AF_09  --axis  x  --delta  $AF09M$  0  0
+ROT_DEFI  --name  move_AF_10  --axis  x  --delta  $AF10M$  0  0
+ROT_DEFI  --name  move_AT_11  --axis  x  --delta  $AT11M$  0  0
+ROT_DEFI  --name  move_AI_12  --axis  x  --delta  $AI12M$  0  0
+ROT_DEFI  --name  move_AT_13  --axis  x  --delta  $AT13M$  0  0
+ROT_DEFI  --name  move_AI_14  --axis  x  --delta  $AI14M$  0  0
+ROT_DEFI  --name  move_AT_15  --axis  x  --delta  $AT15M$  0  0
+ROT_DEFI  --name  move_AI_16  --axis  x  --delta  $AI16M$  0  0
+ROT_DEFI  --name  move_AT_17  --axis  x  --delta  $AT17M$  0  0
+ROT_DEFI  --name  move_AI_18  --axis  x  --delta  $AI18M$  0  0
+ROT_DEFI  --name  move_AT_19  --axis  x  --delta  $AT19M$  0  0
+ROT_DEFI  --name  move_AI_20  --axis  x  --delta  $AI20M$  0  0
+ROT_DEFI  --name  move_AT_21  --axis  x  --delta  $AT21M$  0  0
+ROT_DEFI  --name  move_AI_22  --axis  x  --delta  $AI22M$  0  0
+ROT_DEFI  --name  move_AT_23  --axis  x  --delta  $AT23M$  0  0
+ROT_DEFI  --name  move_AI_24  --axis  x  --delta  $AI24M$  0  0
+ROT_DEFI  --name  move_AT_25  --axis  x  --delta  $AT25M$  0  0
+ROT_DEFI  --name  move_AI_26  --axis  x  --delta  $AI26M$  0  0
+ROT_DEFI  --name  move_AT_27  --axis  x  --delta  $AT27M$  0  0
+ROT_DEFI  --name  move_AI_28  --axis  x  --delta  $AI28M$  0  0
+ROT_DEFI  --name  move_AT_29  --axis  x  --delta  $AT29M$  0  0
+ROT_DEFI  --name  move_AI_30  --axis  x  --delta  $AI30M$  0  0
+ROT_DEFI  --name  move_AT_31  --axis  x  --delta  $AT31M$  0  0
+ROT_DEFI  --name  move_AI_32  --axis  x  --delta  $AI32M$  0  0
+ROT_DEFI  --name  move_AT_33  --axis  x  --delta  $AT33M$  0  0
+ROT_DEFI  --name  move_AI_34  --axis  x  --delta  $AT34M$  0  0
+ROT_DEFI  --name  move_AT_35  --axis  x  --delta  $AI35M$  0  0
+ROT_DEFI  --name  move_AI_36  --axis  x  --delta  $AT36M$  0  0
+ROT_DEFI  --name  move_AT_37  --axis  x  --delta  $AI37M$  0  0
+ROT_DEFI  --name  move_AI_38  --axis  x  --delta  $AT38M$  0  0
+ROT_DEFI  --name  move_AT_39  --axis  x  --delta  $AI39M$  0  0
+ROT_DEFI  --name  move_AI_40  --axis  x  --delta  $AT40M$  0  0
+ROT_DEFI  --name  move_AT_41  --axis  x  --delta  $AI41M$  0  0
+ROT_DEFI  --name  move_AI_42  --axis  x  --delta  $AT42M$  0  0
+ROT_DEFI  --name  move_AT_43  --axis  x  --delta  $AI43M$  0  0
+ROT_DEFI  --name  move_AI_44  --axis  x  --delta  $AT44M$  0  0
+ROT_DEFI  --name  move_AT_45  --axis  x  --delta  $AI45M$  0  0
+ROT_DEFI  --name  move_AI_46  --axis  x  --delta  $AT46M$  0  0
+ROT_DEFI  --name  move_AT_47  --axis  x  --delta  $AI47M$  0  0
+ROT_DEFI  --name  move_AI_48  --axis  x  --delta  $AT48M$  0  0
+ROT_DEFI  --name  move_AT_49  --axis  x  --delta  $AI49M$  0  0
+ROT_DEFI  --name  move_AI_50  --axis  x  --delta  $AT50M$  0  0
+ROT_DEFI  --name  move_AF_51  --axis  x  --delta  $AF51M$  0  0
+ROT_DEFI  --name  move_AF_52  --axis  x  --delta  $AF52M$  0  0
+ROT_DEFI  --name  move_AF_53  --axis  x  --delta  $AF53M$  0  0
+ROT_DEFI  --name  move_AF_54  --axis  x  --delta  $AF54M$  0  0
+ROT_DEFI  --name  move_AF_55  --axis  x  --delta  $AF55M$  0  0
+ROT_DEFI  --name  move_AF_56  --axis  x  --delta  $AF56M$  0  0
+ROT_DEFI  --name  move_AF_57  --axis  x  --delta  $AF57M$  0  0
+ROT_DEFI  --name  move_AF_58  --axis  x  --delta  $AF58M$  0  0
+ROT_DEFI  --name  move_AF_59  --axis  x  --delta  $AF59M$  0  0
+ROT_DEFI  --name  move_AO_60  --axis  x  --delta  $AO60M$  0  0
 
-ROT_DEFI name=move_BO_01 axis=x delta=$BO01M$,0,0
-ROT_DEFI name=move_BF_02 axis=x delta=$BF02M$,0,0
-ROT_DEFI name=move_BF_03 axis=x delta=$BF03M$,0,0
-ROT_DEFI name=move_BF_04 axis=x delta=$BF04M$,0,0
-ROT_DEFI name=move_BF_05 axis=x delta=$BF05M$,0,0
-ROT_DEFI name=move_BF_06 axis=x delta=$BF06M$,0,0
-ROT_DEFI name=move_BF_07 axis=x delta=$BF07M$,0,0
-ROT_DEFI name=move_BF_08 axis=x delta=$BF08M$,0,0
-ROT_DEFI name=move_BF_09 axis=x delta=$BF09M$,0,0
-ROT_DEFI name=move_BF_10 axis=x delta=$BF10M$,0,0
-ROT_DEFI name=move_BT_11 axis=x delta=$BT11M$,0,0
-ROT_DEFI name=move_BI_12 axis=x delta=$BI12M$,0,0
-ROT_DEFI name=move_BT_13 axis=x delta=$BT13M$,0,0
-ROT_DEFI name=move_BI_14 axis=x delta=$BI14M$,0,0
-ROT_DEFI name=move_BT_15 axis=x delta=$BT15M$,0,0
-ROT_DEFI name=move_BI_16 axis=x delta=$BI16M$,0,0
-ROT_DEFI name=move_BT_17 axis=x delta=$BT17M$,0,0
-ROT_DEFI name=move_BI_18 axis=x delta=$BI18M$,0,0
-ROT_DEFI name=move_BT_19 axis=x delta=$BT19M$,0,0
-ROT_DEFI name=move_BI_20 axis=x delta=$BI20M$,0,0
-ROT_DEFI name=move_BT_21 axis=x delta=$BT21M$,0,0
-ROT_DEFI name=move_BI_22 axis=x delta=$BI22M$,0,0
-ROT_DEFI name=move_BT_23 axis=x delta=$BT23M$,0,0
-ROT_DEFI name=move_BI_24 axis=x delta=$BI24M$,0,0
-ROT_DEFI name=move_BT_25 axis=x delta=$BT25M$,0,0
-ROT_DEFI name=move_BI_26 axis=x delta=$BI26M$,0,0
-ROT_DEFI name=move_BT_27 axis=x delta=$BT27M$,0,0
-ROT_DEFI name=move_BI_28 axis=x delta=$BI28M$,0,0
-ROT_DEFI name=move_BT_29 axis=x delta=$BT29M$,0,0
-ROT_DEFI name=move_BI_30 axis=x delta=$BI30M$,0,0
-ROT_DEFI name=move_BT_31 axis=x delta=$BT31M$,0,0
-ROT_DEFI name=move_BI_32 axis=x delta=$BI32M$,0,0
-ROT_DEFI name=move_BT_33 axis=x delta=$BT33M$,0,0
-ROT_DEFI name=move_BI_34 axis=x delta=$BT34M$,0,0
-ROT_DEFI name=move_BT_35 axis=x delta=$BI35M$,0,0
-ROT_DEFI name=move_BI_36 axis=x delta=$BT36M$,0,0
-ROT_DEFI name=move_BT_37 axis=x delta=$BI37M$,0,0
-ROT_DEFI name=move_BI_38 axis=x delta=$BT38M$,0,0
-ROT_DEFI name=move_BT_39 axis=x delta=$BI39M$,0,0
-ROT_DEFI name=move_BI_40 axis=x delta=$BT40M$,0,0
-ROT_DEFI name=move_BT_41 axis=x delta=$BI41M$,0,0
-ROT_DEFI name=move_BI_42 axis=x delta=$BT42M$,0,0
-ROT_DEFI name=move_BT_43 axis=x delta=$BI43M$,0,0
-ROT_DEFI name=move_BI_44 axis=x delta=$BT44M$,0,0
-ROT_DEFI name=move_BT_45 axis=x delta=$BI45M$,0,0
-ROT_DEFI name=move_BI_46 axis=x delta=$BT46M$,0,0
-ROT_DEFI name=move_BT_47 axis=x delta=$BI47M$,0,0
-ROT_DEFI name=move_BI_48 axis=x delta=$BT48M$,0,0
-ROT_DEFI name=move_BT_49 axis=x delta=$BI49M$,0,0
-ROT_DEFI name=move_BI_50 axis=x delta=$BT50M$,0,0
-ROT_DEFI name=move_BF_51 axis=x delta=$BF51M$,0,0
-ROT_DEFI name=move_BF_52 axis=x delta=$BF52M$,0,0
-ROT_DEFI name=move_BF_53 axis=x delta=$BF53M$,0,0
-ROT_DEFI name=move_BF_54 axis=x delta=$BF54M$,0,0
-ROT_DEFI name=move_BF_55 axis=x delta=$BF55M$,0,0
-ROT_DEFI name=move_BF_56 axis=x delta=$BF56M$,0,0
-ROT_DEFI name=move_BF_57 axis=x delta=$BF57M$,0,0
-ROT_DEFI name=move_BF_58 axis=x delta=$BF58M$,0,0
-ROT_DEFI name=move_BF_59 axis=x delta=$BF59M$,0,0
-ROT_DEFI name=move_BO_60 axis=x delta=$BO60M$,0,0
+ROT_DEFI  --name  move_BO_01  --axis  x  --delta  $BO01M$  0  0
+ROT_DEFI  --name  move_BF_02  --axis  x  --delta  $BF02M$  0  0
+ROT_DEFI  --name  move_BF_03  --axis  x  --delta  $BF03M$  0  0
+ROT_DEFI  --name  move_BF_04  --axis  x  --delta  $BF04M$  0  0
+ROT_DEFI  --name  move_BF_05  --axis  x  --delta  $BF05M$  0  0
+ROT_DEFI  --name  move_BF_06  --axis  x  --delta  $BF06M$  0  0
+ROT_DEFI  --name  move_BF_07  --axis  x  --delta  $BF07M$  0  0
+ROT_DEFI  --name  move_BF_08  --axis  x  --delta  $BF08M$  0  0
+ROT_DEFI  --name  move_BF_09  --axis  x  --delta  $BF09M$  0  0
+ROT_DEFI  --name  move_BF_10  --axis  x  --delta  $BF10M$  0  0
+ROT_DEFI  --name  move_BT_11  --axis  x  --delta  $BT11M$  0  0
+ROT_DEFI  --name  move_BI_12  --axis  x  --delta  $BI12M$  0  0
+ROT_DEFI  --name  move_BT_13  --axis  x  --delta  $BT13M$  0  0
+ROT_DEFI  --name  move_BI_14  --axis  x  --delta  $BI14M$  0  0
+ROT_DEFI  --name  move_BT_15  --axis  x  --delta  $BT15M$  0  0
+ROT_DEFI  --name  move_BI_16  --axis  x  --delta  $BI16M$  0  0
+ROT_DEFI  --name  move_BT_17  --axis  x  --delta  $BT17M$  0  0
+ROT_DEFI  --name  move_BI_18  --axis  x  --delta  $BI18M$  0  0
+ROT_DEFI  --name  move_BT_19  --axis  x  --delta  $BT19M$  0  0
+ROT_DEFI  --name  move_BI_20  --axis  x  --delta  $BI20M$  0  0
+ROT_DEFI  --name  move_BT_21  --axis  x  --delta  $BT21M$  0  0
+ROT_DEFI  --name  move_BI_22  --axis  x  --delta  $BI22M$  0  0
+ROT_DEFI  --name  move_BT_23  --axis  x  --delta  $BT23M$  0  0
+ROT_DEFI  --name  move_BI_24  --axis  x  --delta  $BI24M$  0  0
+ROT_DEFI  --name  move_BT_25  --axis  x  --delta  $BT25M$  0  0
+ROT_DEFI  --name  move_BI_26  --axis  x  --delta  $BI26M$  0  0
+ROT_DEFI  --name  move_BT_27  --axis  x  --delta  $BT27M$  0  0
+ROT_DEFI  --name  move_BI_28  --axis  x  --delta  $BI28M$  0  0
+ROT_DEFI  --name  move_BT_29  --axis  x  --delta  $BT29M$  0  0
+ROT_DEFI  --name  move_BI_30  --axis  x  --delta  $BI30M$  0  0
+ROT_DEFI  --name  move_BT_31  --axis  x  --delta  $BT31M$  0  0
+ROT_DEFI  --name  move_BI_32  --axis  x  --delta  $BI32M$  0  0
+ROT_DEFI  --name  move_BT_33  --axis  x  --delta  $BT33M$  0  0
+ROT_DEFI  --name  move_BI_34  --axis  x  --delta  $BT34M$  0  0
+ROT_DEFI  --name  move_BT_35  --axis  x  --delta  $BI35M$  0  0
+ROT_DEFI  --name  move_BI_36  --axis  x  --delta  $BT36M$  0  0
+ROT_DEFI  --name  move_BT_37  --axis  x  --delta  $BI37M$  0  0
+ROT_DEFI  --name  move_BI_38  --axis  x  --delta  $BT38M$  0  0
+ROT_DEFI  --name  move_BT_39  --axis  x  --delta  $BI39M$  0  0
+ROT_DEFI  --name  move_BI_40  --axis  x  --delta  $BT40M$  0  0
+ROT_DEFI  --name  move_BT_41  --axis  x  --delta  $BI41M$  0  0
+ROT_DEFI  --name  move_BI_42  --axis  x  --delta  $BT42M$  0  0
+ROT_DEFI  --name  move_BT_43  --axis  x  --delta  $BI43M$  0  0
+ROT_DEFI  --name  move_BI_44  --axis  x  --delta  $BT44M$  0  0
+ROT_DEFI  --name  move_BT_45  --axis  x  --delta  $BI45M$  0  0
+ROT_DEFI  --name  move_BI_46  --axis  x  --delta  $BT46M$  0  0
+ROT_DEFI  --name  move_BT_47  --axis  x  --delta  $BI47M$  0  0
+ROT_DEFI  --name  move_BI_48  --axis  x  --delta  $BT48M$  0  0
+ROT_DEFI  --name  move_BT_49  --axis  x  --delta  $BI49M$  0  0
+ROT_DEFI  --name  move_BI_50  --axis  x  --delta  $BT50M$  0  0
+ROT_DEFI  --name  move_BF_51  --axis  x  --delta  $BF51M$  0  0
+ROT_DEFI  --name  move_BF_52  --axis  x  --delta  $BF52M$  0  0
+ROT_DEFI  --name  move_BF_53  --axis  x  --delta  $BF53M$  0  0
+ROT_DEFI  --name  move_BF_54  --axis  x  --delta  $BF54M$  0  0
+ROT_DEFI  --name  move_BF_55  --axis  x  --delta  $BF55M$  0  0
+ROT_DEFI  --name  move_BF_56  --axis  x  --delta  $BF56M$  0  0
+ROT_DEFI  --name  move_BF_57  --axis  x  --delta  $BF57M$  0  0
+ROT_DEFI  --name  move_BF_58  --axis  x  --delta  $BF58M$  0  0
+ROT_DEFI  --name  move_BF_59  --axis  x  --delta  $BF59M$  0  0
+ROT_DEFI  --name  move_BO_60  --axis  x  --delta  $BO60M$  0  0
 
-ENTRY PRIM_COLL_COORD  \
+
+$PRIM_COLL_COORD$  \
 	0.31   -0.047  \
 	0.31    2.44   \
 	3.58    2.44   \
@@ -344,668 +345,669 @@ ENTRY PRIM_COLL_COORD  \
 	2.55   -4.07   \
 	2.55   -7.53   \
 	2.17   -7.53   \ 
+    
 
 SURFACE_BEGIN
 	# phantom
-	CUBE  name=phantom  center=0,0,-50  size=100,100,100
+	CUBE  --name  phantom  --center  0  0  -50  --size  100  100  100
 	# primary collimator
-	TOROID   name=PRIM_COLL center=0,0,100    entry=PRIM_COLL_COORD
-	UVSPHERE name=PRIM_VOID center=0,0,99.73  radius=1.24
+	TOROID   --name  PRIM_COLL  --center  0  0  100     --entry  $PRIM_COLL_COORD$
+	UVSPHERE --name  PRIM_VOID  --center  0  0  99.73   --radius 1.24
 	# target
-	CYLINDER name=TARGET_W  center=0,0,100 radius=1 height=0,0,0.0889
-	CYLINDER name=TARGET_CU center=0,0,100 radius=1 height=0,0,-0.1575
+	CYLINDER --name  TARGET_W   --center  0  0  100     --radius  1  --height  0  0   0.0889
+	CYLINDER --name  TARGET_CU  --center  0  0  100     --radius  1  --height  0  0  -0.1575
 	# flattening filter
-	TRANSFORM_BEGIN target=move_FF
-		MODEL   name=FF file=../models/FF/FF_6X.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_FF
+		MODEL   --name  FF  --file  ../models/FF/FF_6X.off  --scale  $MM_TO_CM$
 	TRANSFORM_END
 	# jaws
-	TRANSFORM_BEGIN target=move_JAW
-		TRANSFORM_BEGIN target=rot_JAWX1
-			CUBE  name=jawx1  center=4.58,0,-40.53  size=9.16,20,7.8
+	TRANSFORM_BEGIN  --target  move_JAW
+		TRANSFORM_BEGIN  --target  rot_JAWX1
+			CUBE  --name  jawx1  --center   4.58  0  -40.53  --size  9.16  20  7.8
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=rot_JAWX2
-			CUBE  name=jawx2  center=-4.58,0,-40.53 size=9.16,20,7.8
+		TRANSFORM_BEGIN  --target  rot_JAWX2
+			CUBE  --name  jawx2  --center  -4.58  0  -40.53  --size  9.16  20  7.8
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=rot_JAWY1
-			CUBE  name=jawy1  center=0,4.58,-31.78  size=20,9.16,7.8
+		TRANSFORM_BEGIN  --target  rot_JAWY1
+			CUBE  --name  jawy1  --center   0  4.58  -31.78  --size  20  9.16  7.8
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=rot_JAWY2
-			CUBE  name=jawy2  center=0,-4.58,-31.78 size=20,9.16,7.8
+		TRANSFORM_BEGIN  --target  rot_JAWY2
+			CUBE  --name  jawy2  --center   0 -4.58  -31.78  --size  20  9.16  7.8
 		TRANSFORM_END
 	TRANSFORM_END
 	# MLC
-	TRANSFORM_BEGIN target=move_AO_01
-		TRANSFORM_BEGIN target=tilt_AO_01
-			MODEL    name=AO_01 file=../models/MLC/MLC_OUTBOARD_1.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AO_01
+		TRANSFORM_BEGIN  --target  tilt_AO_01
+			MODEL     --name  AO_01  --file  ../models/MLC/MLC_OUTBOARD_1.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_02
-		TRANSFORM_BEGIN target=tilt_AF_02
-			MODEL    name=AF_02 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_02
+		TRANSFORM_BEGIN  --target  tilt_AF_02
+			MODEL     --name  AF_02  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_03
-		TRANSFORM_BEGIN target=tilt_AF_03
-			MODEL    name=AF_03 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_03
+		TRANSFORM_BEGIN  --target  tilt_AF_03
+			MODEL     --name  AF_03  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_04
-		TRANSFORM_BEGIN target=tilt_AF_04
-			MODEL    name=AF_04 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_04
+		TRANSFORM_BEGIN  --target  tilt_AF_04
+			MODEL     --name  AF_04  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_05
-		TRANSFORM_BEGIN target=tilt_AF_05
-			MODEL    name=AF_05 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_05
+		TRANSFORM_BEGIN  --target  tilt_AF_05
+			MODEL     --name  AF_05  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_06
-		TRANSFORM_BEGIN target=tilt_AF_06
-			MODEL    name=AF_06 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_06
+		TRANSFORM_BEGIN  --target  tilt_AF_06
+			MODEL     --name  AF_06  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_07
-		TRANSFORM_BEGIN target=tilt_AF_07
-			MODEL    name=AF_07 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_07
+		TRANSFORM_BEGIN  --target  tilt_AF_07
+			MODEL     --name  AF_07  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_08
-		TRANSFORM_BEGIN target=tilt_AF_08
-			MODEL    name=AF_08 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_08
+		TRANSFORM_BEGIN  --target  tilt_AF_08
+			MODEL     --name  AF_08  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_09
-		TRANSFORM_BEGIN target=tilt_AF_09
-			MODEL    name=AF_09 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_09
+		TRANSFORM_BEGIN  --target  tilt_AF_09
+			MODEL     --name  AF_09  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_10
-		TRANSFORM_BEGIN target=tilt_AF_10
-			MODEL    name=AF_10 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_10
+		TRANSFORM_BEGIN  --target  tilt_AF_10
+			MODEL     --name  AF_10  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_11
-		TRANSFORM_BEGIN target=tilt_AT_11
-			MODEL    name=AT_11 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_11
+		TRANSFORM_BEGIN  --target  tilt_AT_11
+			MODEL     --name  AT_11  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_12
-		TRANSFORM_BEGIN target=tilt_AI_12
-			MODEL    name=AI_12 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_12
+		TRANSFORM_BEGIN  --target  tilt_AI_12
+			MODEL     --name  AI_12  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_13
-		TRANSFORM_BEGIN target=tilt_AT_13
-			MODEL    name=AT_13 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_13
+		TRANSFORM_BEGIN  --target  tilt_AT_13
+			MODEL     --name  AT_13  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_14
-		TRANSFORM_BEGIN target=tilt_AI_14
-			MODEL    name=AI_14 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_14
+		TRANSFORM_BEGIN  --target  tilt_AI_14
+			MODEL     --name  AI_14  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_15
-		TRANSFORM_BEGIN target=tilt_AT_15
-			MODEL    name=AT_15 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_15
+		TRANSFORM_BEGIN  --target  tilt_AT_15
+			MODEL     --name  AT_15  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_16
-		TRANSFORM_BEGIN target=tilt_AI_16
-			MODEL    name=AI_16 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_16
+		TRANSFORM_BEGIN  --target  tilt_AI_16
+			MODEL     --name  AI_16  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_17
-		TRANSFORM_BEGIN target=tilt_AT_17
-			MODEL    name=AT_17 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_17
+		TRANSFORM_BEGIN  --target  tilt_AT_17
+			MODEL     --name  AT_17  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_18
-		TRANSFORM_BEGIN target=tilt_AI_18
-			MODEL    name=AI_18 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_18
+		TRANSFORM_BEGIN  --target  tilt_AI_18
+			MODEL     --name  AI_18  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_19
-		TRANSFORM_BEGIN target=tilt_AT_19
-			MODEL    name=AT_19 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_19
+		TRANSFORM_BEGIN  --target  tilt_AT_19
+			MODEL     --name  AT_19  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_20
-		TRANSFORM_BEGIN target=tilt_AI_20
-			MODEL    name=AI_20 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_20
+		TRANSFORM_BEGIN  --target  tilt_AI_20
+			MODEL     --name  AI_20  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_21
-		TRANSFORM_BEGIN target=tilt_AT_21
-			MODEL    name=AT_21 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_21
+		TRANSFORM_BEGIN  --target  tilt_AT_21
+			MODEL     --name  AT_21  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_22
-		TRANSFORM_BEGIN target=tilt_AI_22
-			MODEL    name=AI_22 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_22
+		TRANSFORM_BEGIN  --target  tilt_AI_22
+			MODEL     --name  AI_22  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_23
-		TRANSFORM_BEGIN target=tilt_AT_23
-			MODEL    name=AT_23 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_23
+		TRANSFORM_BEGIN  --target  tilt_AT_23
+			MODEL     --name  AT_23  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_24
-		TRANSFORM_BEGIN target=tilt_AI_24
-			MODEL    name=AI_24 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_24
+		TRANSFORM_BEGIN  --target  tilt_AI_24
+			MODEL     --name  AI_24  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_25
-		TRANSFORM_BEGIN target=tilt_AT_25
-			MODEL    name=AT_25 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_25
+		TRANSFORM_BEGIN  --target  tilt_AT_25
+			MODEL     --name  AT_25  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_26
-		TRANSFORM_BEGIN target=tilt_AI_26
-			MODEL    name=AI_26 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_26
+		TRANSFORM_BEGIN  --target  tilt_AI_26
+			MODEL     --name  AI_26  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_27
-		TRANSFORM_BEGIN target=tilt_AT_27
-			MODEL    name=AT_27 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_27
+		TRANSFORM_BEGIN  --target  tilt_AT_27
+			MODEL     --name  AT_27  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_28
-		TRANSFORM_BEGIN target=tilt_AI_28
-			MODEL    name=AI_28 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_28
+		TRANSFORM_BEGIN  --target  tilt_AI_28
+			MODEL     --name  AI_28  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_29
-		TRANSFORM_BEGIN target=tilt_AT_29
-			MODEL    name=AT_29 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_29
+		TRANSFORM_BEGIN  --target  tilt_AT_29
+			MODEL     --name  AT_29  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_30
-		TRANSFORM_BEGIN target=tilt_AI_30
-			MODEL    name=AI_30 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_30
+		TRANSFORM_BEGIN  --target  tilt_AI_30
+			MODEL     --name  AI_30  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_31
-		TRANSFORM_BEGIN target=tilt_AT_31
-			MODEL    name=AT_31 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_31
+		TRANSFORM_BEGIN  --target  tilt_AT_31
+			MODEL     --name  AT_31  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_32
-		TRANSFORM_BEGIN target=tilt_AI_32
-			MODEL    name=AI_32 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_32
+		TRANSFORM_BEGIN  --target  tilt_AI_32
+			MODEL     --name  AI_32  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_33
-		TRANSFORM_BEGIN target=tilt_AT_33
-			MODEL    name=AT_33 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_33
+		TRANSFORM_BEGIN  --target  tilt_AT_33
+			MODEL     --name  AT_33  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_34
-		TRANSFORM_BEGIN target=tilt_AI_34
-			MODEL    name=AI_34 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_34
+		TRANSFORM_BEGIN  --target  tilt_AI_34
+			MODEL     --name  AI_34  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_35
-		TRANSFORM_BEGIN target=tilt_AT_35
-			MODEL    name=AT_35 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_35
+		TRANSFORM_BEGIN  --target  tilt_AT_35
+			MODEL     --name  AT_35  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_36
-		TRANSFORM_BEGIN target=tilt_AI_36
-			MODEL    name=AI_36 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_36
+		TRANSFORM_BEGIN  --target  tilt_AI_36
+			MODEL     --name  AI_36  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_37
-		TRANSFORM_BEGIN target=tilt_AT_37
-			MODEL    name=AT_37 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_37
+		TRANSFORM_BEGIN  --target  tilt_AT_37
+			MODEL     --name  AT_37  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_38
-		TRANSFORM_BEGIN target=tilt_AI_38
-			MODEL    name=AI_38 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_38
+		TRANSFORM_BEGIN  --target  tilt_AI_38
+			MODEL     --name  AI_38  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_39
-		TRANSFORM_BEGIN target=tilt_AT_39
-			MODEL    name=AT_39 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_39
+		TRANSFORM_BEGIN  --target  tilt_AT_39
+			MODEL     --name  AT_39  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_40
-		TRANSFORM_BEGIN target=tilt_AI_40
-			MODEL    name=AI_40 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_40
+		TRANSFORM_BEGIN  --target  tilt_AI_40
+			MODEL     --name  AI_40  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_41
-		TRANSFORM_BEGIN target=tilt_AT_41
-			MODEL    name=AT_41 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_41
+		TRANSFORM_BEGIN  --target  tilt_AT_41
+			MODEL     --name  AT_41  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_42
-		TRANSFORM_BEGIN target=tilt_AI_42
-			MODEL    name=AI_42 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_42
+		TRANSFORM_BEGIN  --target  tilt_AI_42
+			MODEL     --name  AI_42  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_43
-		TRANSFORM_BEGIN target=tilt_AT_43
-			MODEL    name=AT_43 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_43
+		TRANSFORM_BEGIN  --target  tilt_AT_43
+			MODEL     --name  AT_43  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_44
-		TRANSFORM_BEGIN target=tilt_AI_44
-			MODEL    name=AI_44 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_44
+		TRANSFORM_BEGIN  --target  tilt_AI_44
+			MODEL     --name  AI_44  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_45
-		TRANSFORM_BEGIN target=tilt_AT_45
-			MODEL    name=AT_45 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_45
+		TRANSFORM_BEGIN  --target  tilt_AT_45
+			MODEL     --name  AT_45  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_46
-		TRANSFORM_BEGIN target=tilt_AI_46
-			MODEL    name=AI_46 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_46
+		TRANSFORM_BEGIN  --target  tilt_AI_46
+			MODEL     --name  AI_46  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_47
-		TRANSFORM_BEGIN target=tilt_AT_47
-			MODEL    name=AT_47 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_47
+		TRANSFORM_BEGIN  --target  tilt_AT_47
+			MODEL     --name  AT_47  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_48
-		TRANSFORM_BEGIN target=tilt_AI_48
-			MODEL    name=AI_48 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_48
+		TRANSFORM_BEGIN  --target  tilt_AI_48
+			MODEL     --name  AI_48  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AT_49
-		TRANSFORM_BEGIN target=tilt_AT_49
-			MODEL    name=AT_49 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AT_49
+		TRANSFORM_BEGIN  --target  tilt_AT_49
+			MODEL     --name  AT_49  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AI_50
-		TRANSFORM_BEGIN target=tilt_AI_50
-			MODEL    name=AI_50 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AI_50
+		TRANSFORM_BEGIN  --target  tilt_AI_50
+			MODEL     --name  AI_50  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_51
-		TRANSFORM_BEGIN target=tilt_AF_51
-			MODEL    name=AF_51 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_51
+		TRANSFORM_BEGIN  --target  tilt_AF_51
+			MODEL     --name  AF_51  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_52
-		TRANSFORM_BEGIN target=tilt_AF_52
-			MODEL    name=AF_52 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_52
+		TRANSFORM_BEGIN  --target  tilt_AF_52
+			MODEL     --name  AF_52  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_53
-		TRANSFORM_BEGIN target=tilt_AF_53
-			MODEL    name=AF_53 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_53
+		TRANSFORM_BEGIN  --target  tilt_AF_53
+			MODEL     --name  AF_53  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_54
-		TRANSFORM_BEGIN target=tilt_AF_54
-			MODEL    name=AF_54 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_54
+		TRANSFORM_BEGIN  --target  tilt_AF_54
+			MODEL     --name  AF_54  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_55
-		TRANSFORM_BEGIN target=tilt_AF_55
-			MODEL    name=AF_55 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_55
+		TRANSFORM_BEGIN  --target  tilt_AF_55
+			MODEL     --name  AF_55  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_56
-		TRANSFORM_BEGIN target=tilt_AF_56
-			MODEL    name=AF_56 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_56
+		TRANSFORM_BEGIN  --target  tilt_AF_56
+			MODEL     --name  AF_56  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_57
-		TRANSFORM_BEGIN target=tilt_AF_57
-			MODEL    name=AF_57 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_57
+		TRANSFORM_BEGIN  --target  tilt_AF_57
+			MODEL     --name  AF_57  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_58
-		TRANSFORM_BEGIN target=tilt_AF_58
-			MODEL    name=AF_58 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_58
+		TRANSFORM_BEGIN  --target  tilt_AF_58
+			MODEL     --name  AF_58  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AF_59
-		TRANSFORM_BEGIN target=tilt_AF_59
-			MODEL    name=AF_59 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AF_59
+		TRANSFORM_BEGIN  --target  tilt_AF_59
+			MODEL     --name  AF_59  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=move_AO_60
-		TRANSFORM_BEGIN target=tilt_AO_60
-			MODEL    name=AO_60 file=../models/MLC/MLC_OUTBOARD_60.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  move_AO_60
+		TRANSFORM_BEGIN  --target  tilt_AO_60
+			MODEL     --name  AO_60  --file  ../models/MLC/MLC_OUTBOARD_60.off  --scale  $MM_TO_CM$
 		TRANSFORM_END
 	TRANSFORM_END
-	TRANSFORM_BEGIN target=A_TO_B
-		TRANSFORM_BEGIN target=move_AO_01
-			TRANSFORM_BEGIN target=tilt_AO_01
-				MODEL    name=BO_01 file=../models/MLC/MLC_OUTBOARD_1.off scale=$MM_TO_CM$
+	TRANSFORM_BEGIN  --target  A_TO_B
+		TRANSFORM_BEGIN  --target  move_AO_01
+			TRANSFORM_BEGIN  --target  tilt_AO_01
+				MODEL     --name  BO_01  --file  ../models/MLC/MLC_OUTBOARD_1.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_02
-			TRANSFORM_BEGIN target=tilt_AF_02
-				MODEL    name=BF_02 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_02
+			TRANSFORM_BEGIN  --target  tilt_AF_02
+				MODEL     --name  BF_02  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_03
-			TRANSFORM_BEGIN target=tilt_AF_03
-				MODEL    name=BF_03 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_03
+			TRANSFORM_BEGIN  --target  tilt_AF_03
+				MODEL     --name  BF_03  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_04
-			TRANSFORM_BEGIN target=tilt_AF_04
-				MODEL    name=BF_04 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_04
+			TRANSFORM_BEGIN  --target  tilt_AF_04
+				MODEL     --name  BF_04  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_05
-			TRANSFORM_BEGIN target=tilt_AF_05
-				MODEL    name=BF_05 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_05
+			TRANSFORM_BEGIN  --target  tilt_AF_05
+				MODEL     --name  BF_05  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_06
-			TRANSFORM_BEGIN target=tilt_AF_06
-				MODEL    name=BF_06 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_06
+			TRANSFORM_BEGIN  --target  tilt_AF_06
+				MODEL     --name  BF_06  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_07
-			TRANSFORM_BEGIN target=tilt_AF_07
-				MODEL    name=BF_07 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_07
+			TRANSFORM_BEGIN  --target  tilt_AF_07
+				MODEL     --name  BF_07  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_08
-			TRANSFORM_BEGIN target=tilt_AF_08
-				MODEL    name=BF_08 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_08
+			TRANSFORM_BEGIN  --target  tilt_AF_08
+				MODEL     --name  BF_08  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_09
-			TRANSFORM_BEGIN target=tilt_AF_09
-				MODEL    name=BF_09 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_09
+			TRANSFORM_BEGIN  --target  tilt_AF_09
+				MODEL     --name  BF_09  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_10
-			TRANSFORM_BEGIN target=tilt_AF_10
-				MODEL    name=BF_10 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_10
+			TRANSFORM_BEGIN  --target  tilt_AF_10
+				MODEL     --name  BF_10  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_11
-			TRANSFORM_BEGIN target=tilt_AT_11
-				MODEL    name=BT_11 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_11
+			TRANSFORM_BEGIN  --target  tilt_AT_11
+				MODEL     --name  BT_11  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_12
-			TRANSFORM_BEGIN target=tilt_AI_12
-				MODEL    name=BI_12 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_12
+			TRANSFORM_BEGIN  --target  tilt_AI_12
+				MODEL     --name  BI_12  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_13
-			TRANSFORM_BEGIN target=tilt_AT_13
-				MODEL    name=BT_13 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_13
+			TRANSFORM_BEGIN  --target  tilt_AT_13
+				MODEL     --name  BT_13  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_14
-			TRANSFORM_BEGIN target=tilt_AI_14
-				MODEL    name=BI_14 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_14
+			TRANSFORM_BEGIN  --target  tilt_AI_14
+				MODEL     --name  BI_14  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_15
-			TRANSFORM_BEGIN target=tilt_AT_15
-				MODEL    name=BT_15 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_15
+			TRANSFORM_BEGIN  --target  tilt_AT_15
+				MODEL     --name  BT_15  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_16
-			TRANSFORM_BEGIN target=tilt_AI_16
-				MODEL    name=BI_16 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_16
+			TRANSFORM_BEGIN  --target  tilt_AI_16
+				MODEL     --name  BI_16  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_17
-			TRANSFORM_BEGIN target=tilt_AT_17
-				MODEL    name=BT_17 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_17
+			TRANSFORM_BEGIN  --target  tilt_AT_17
+				MODEL     --name  BT_17  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_18
-			TRANSFORM_BEGIN target=tilt_AI_18
-				MODEL    name=BI_18 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_18
+			TRANSFORM_BEGIN  --target  tilt_AI_18
+				MODEL     --name  BI_18  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_19
-			TRANSFORM_BEGIN target=tilt_AT_19
-				MODEL    name=BT_19 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_19
+			TRANSFORM_BEGIN  --target  tilt_AT_19
+				MODEL     --name  BT_19  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_20
-			TRANSFORM_BEGIN target=tilt_AI_20
-				MODEL    name=BI_20 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_20
+			TRANSFORM_BEGIN  --target  tilt_AI_20
+				MODEL     --name  BI_20  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_21
-			TRANSFORM_BEGIN target=tilt_AT_21
-				MODEL    name=BT_21 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_21
+			TRANSFORM_BEGIN  --target  tilt_AT_21
+				MODEL     --name  BT_21  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_22
-			TRANSFORM_BEGIN target=tilt_AI_22
-				MODEL    name=BI_22 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_22
+			TRANSFORM_BEGIN  --target  tilt_AI_22
+				MODEL     --name  BI_22  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_23
-			TRANSFORM_BEGIN target=tilt_AT_23
-				MODEL    name=BT_23 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_23
+			TRANSFORM_BEGIN  --target  tilt_AT_23
+				MODEL     --name  BT_23  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_24
-			TRANSFORM_BEGIN target=tilt_AI_24
-				MODEL    name=BI_24 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_24
+			TRANSFORM_BEGIN  --target  tilt_AI_24
+				MODEL     --name  BI_24  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_25
-			TRANSFORM_BEGIN target=tilt_AT_25
-				MODEL    name=BT_25 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_25
+			TRANSFORM_BEGIN  --target  tilt_AT_25
+				MODEL     --name  BT_25  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_26
-			TRANSFORM_BEGIN target=tilt_AI_26
-				MODEL    name=BI_26 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_26
+			TRANSFORM_BEGIN  --target  tilt_AI_26
+				MODEL     --name  BI_26  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_27
-			TRANSFORM_BEGIN target=tilt_AT_27
-				MODEL    name=BT_27 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_27
+			TRANSFORM_BEGIN  --target  tilt_AT_27
+				MODEL     --name  BT_27  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_28
-			TRANSFORM_BEGIN target=tilt_AI_28
-				MODEL    name=BI_28 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_28
+			TRANSFORM_BEGIN  --target  tilt_AI_28
+				MODEL     --name  BI_28  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_29
-			TRANSFORM_BEGIN target=tilt_AT_29
-				MODEL    name=BT_29 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_29
+			TRANSFORM_BEGIN  --target  tilt_AT_29
+				MODEL     --name  BT_29  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_30
-			TRANSFORM_BEGIN target=tilt_AI_30
-				MODEL    name=BI_30 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_30
+			TRANSFORM_BEGIN  --target  tilt_AI_30
+				MODEL     --name  BI_30  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_31
-			TRANSFORM_BEGIN target=tilt_AT_31
-				MODEL    name=BT_31 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_31
+			TRANSFORM_BEGIN  --target  tilt_AT_31
+				MODEL     --name  BT_31  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_32
-			TRANSFORM_BEGIN target=tilt_AI_32
-				MODEL    name=BI_32 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_32
+			TRANSFORM_BEGIN  --target  tilt_AI_32
+				MODEL     --name  BI_32  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_33
-			TRANSFORM_BEGIN target=tilt_AT_33
-				MODEL    name=BT_33 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_33
+			TRANSFORM_BEGIN  --target  tilt_AT_33
+				MODEL     --name  BT_33  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_34
-			TRANSFORM_BEGIN target=tilt_AI_34
-				MODEL    name=BI_34 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_34
+			TRANSFORM_BEGIN  --target  tilt_AI_34
+				MODEL     --name  BI_34  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_35
-			TRANSFORM_BEGIN target=tilt_AT_35
-				MODEL    name=BT_35 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_35
+			TRANSFORM_BEGIN  --target  tilt_AT_35
+				MODEL     --name  BT_35  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_36
-			TRANSFORM_BEGIN target=tilt_AI_36
-				MODEL    name=BI_36 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_36
+			TRANSFORM_BEGIN  --target  tilt_AI_36
+				MODEL     --name  BI_36  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_37
-			TRANSFORM_BEGIN target=tilt_AT_37
-				MODEL    name=BT_37 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_37
+			TRANSFORM_BEGIN  --target  tilt_AT_37
+				MODEL     --name  BT_37  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_38
-			TRANSFORM_BEGIN target=tilt_AI_38
-				MODEL    name=BI_38 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_38
+			TRANSFORM_BEGIN  --target  tilt_AI_38
+				MODEL     --name  BI_38  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_39
-			TRANSFORM_BEGIN target=tilt_AT_39
-				MODEL    name=BT_39 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_39
+			TRANSFORM_BEGIN  --target  tilt_AT_39
+				MODEL     --name  BT_39  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_40
-			TRANSFORM_BEGIN target=tilt_AI_40
-				MODEL    name=BI_40 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_40
+			TRANSFORM_BEGIN  --target  tilt_AI_40
+				MODEL     --name  BI_40  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_41
-			TRANSFORM_BEGIN target=tilt_AT_41
-				MODEL    name=BT_41 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_41
+			TRANSFORM_BEGIN  --target  tilt_AT_41
+				MODEL     --name  BT_41  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_42
-			TRANSFORM_BEGIN target=tilt_AI_42
-				MODEL    name=BI_42 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_42
+			TRANSFORM_BEGIN  --target  tilt_AI_42
+				MODEL     --name  BI_42  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_43
-			TRANSFORM_BEGIN target=tilt_AT_43
-				MODEL    name=BT_43 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_43
+			TRANSFORM_BEGIN  --target  tilt_AT_43
+				MODEL     --name  BT_43  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_44
-			TRANSFORM_BEGIN target=tilt_AI_44
-				MODEL    name=BI_44 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_44
+			TRANSFORM_BEGIN  --target  tilt_AI_44
+				MODEL     --name  BI_44  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_45
-			TRANSFORM_BEGIN target=tilt_AT_45
-				MODEL    name=BT_45 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_45
+			TRANSFORM_BEGIN  --target  tilt_AT_45
+				MODEL     --name  BT_45  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_46
-			TRANSFORM_BEGIN target=tilt_AI_46
-				MODEL    name=BI_46 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_46
+			TRANSFORM_BEGIN  --target  tilt_AI_46
+				MODEL     --name  BI_46  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_47
-			TRANSFORM_BEGIN target=tilt_AT_47
-				MODEL    name=BT_47 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_47
+			TRANSFORM_BEGIN  --target  tilt_AT_47
+				MODEL     --name  BT_47  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_48
-			TRANSFORM_BEGIN target=tilt_AI_48
-				MODEL    name=BI_48 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_48
+			TRANSFORM_BEGIN  --target  tilt_AI_48
+				MODEL     --name  BI_48  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AT_49
-			TRANSFORM_BEGIN target=tilt_AT_49
-				MODEL    name=BT_49 file=../models/MLC/MLC_HALF_LEAF_TARGET.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AT_49
+			TRANSFORM_BEGIN  --target  tilt_AT_49
+				MODEL     --name  BT_49  --file  ../models/MLC/MLC_HALF_LEAF_TARGET.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AI_50
-			TRANSFORM_BEGIN target=tilt_AI_50
-				MODEL    name=BI_50 file=../models/MLC/MLC_HALF_LEAF_ISOCENTER.off    scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AI_50
+			TRANSFORM_BEGIN  --target  tilt_AI_50
+				MODEL     --name  BI_50  --file  ../models/MLC/MLC_HALF_LEAF_ISOCENTER.off     --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_51
-			TRANSFORM_BEGIN target=tilt_AF_51
-				MODEL    name=BF_51 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_51
+			TRANSFORM_BEGIN  --target  tilt_AF_51
+				MODEL     --name  BF_51  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_52
-			TRANSFORM_BEGIN target=tilt_AF_52
-				MODEL    name=BF_52 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_52
+			TRANSFORM_BEGIN  --target  tilt_AF_52
+				MODEL     --name  BF_52  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_53
-			TRANSFORM_BEGIN target=tilt_AF_53
-				MODEL    name=BF_53 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_53
+			TRANSFORM_BEGIN  --target  tilt_AF_53
+				MODEL     --name  BF_53  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_54
-			TRANSFORM_BEGIN target=tilt_AF_54
-				MODEL    name=BF_54 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_54
+			TRANSFORM_BEGIN  --target  tilt_AF_54
+				MODEL     --name  BF_54  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_55
-			TRANSFORM_BEGIN target=tilt_AF_55
-				MODEL    name=BF_55 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_55
+			TRANSFORM_BEGIN  --target  tilt_AF_55
+				MODEL     --name  BF_55  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_56
-			TRANSFORM_BEGIN target=tilt_AF_56
-				MODEL    name=BF_56 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_56
+			TRANSFORM_BEGIN  --target  tilt_AF_56
+				MODEL     --name  BF_56  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_57
-			TRANSFORM_BEGIN target=tilt_AF_57
-				MODEL    name=BF_57 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_57
+			TRANSFORM_BEGIN  --target  tilt_AF_57
+				MODEL     --name  BF_57  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_58
-			TRANSFORM_BEGIN target=tilt_AF_58
-				MODEL    name=BF_58 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_58
+			TRANSFORM_BEGIN  --target  tilt_AF_58
+				MODEL     --name  BF_58  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AF_59
-			TRANSFORM_BEGIN target=tilt_AF_59
-				MODEL    name=BF_59 file=../models/MLC/MLC_FULL_LEAF.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AF_59
+			TRANSFORM_BEGIN  --target  tilt_AF_59
+				MODEL     --name  BF_59  --file  ../models/MLC/MLC_FULL_LEAF.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
-		TRANSFORM_BEGIN target=move_AO_60
-			TRANSFORM_BEGIN target=tilt_AO_60
-				MODEL    name=BO_60 file=../models/MLC/MLC_OUTBOARD_60.off scale=$MM_TO_CM$
+		TRANSFORM_BEGIN  --target  move_AO_60
+			TRANSFORM_BEGIN  --target  tilt_AO_60
+				MODEL     --name  BO_60  --file  ../models/MLC/MLC_OUTBOARD_60.off  --scale  $MM_TO_CM$
 			TRANSFORM_END
 		TRANSFORM_END
 	TRANSFORM_END
 SURFACE_END
 
-REGION prim_coll PRIM_COLL & -PRIM_VOID
-REGION target_w  TARGET_W
-REGION target_cu TARGET_CU
-REGION ff        FF
-REGION jaws      jawx1 | jawx2 | jawy1 | jawy2
-REGION mlc   	 AO_01 | AF_02 | AF_03 | AF_04 | AF_05 | AF_06 | \
-				 AF_07 | AF_08 | AF_09 | AF_10 |                 \
-				 AT_11 | AI_12 | AT_13 | AI_14 | AT_15 | AI_16 | \
-				 AT_17 | AI_18 | AT_19 | AI_20 | AT_21 | AI_22 | \
-				 AT_23 | AI_24 | AT_25 | AI_26 | AT_27 | AI_28 | \
-				 AT_29 | AI_30 |                                 \
-				 AT_31 | AI_32 | AT_33 | AI_34 | AT_35 | AI_36 | \
-				 AT_37 | AI_38 | AT_39 | AI_40 | AT_41 | AI_42 | \
-				 AT_43 | AI_44 | AT_45 | AI_46 | AT_47 | AI_48 | \
-				 AT_49 | AI_50 |                                 \
-				 AF_51 | AF_52 | AF_53 | AF_54 | AF_55 | AF_56 | \
-				 AF_57 | AF_58 | AF_59 | AO_60 |                 \
-				 BO_01 | BF_02 | BF_03 | BF_04 | BF_05 | BF_06 | \
-				 BF_07 | BF_08 | BF_09 | BF_10 |                 \
-				 BT_11 | BI_12 | BT_13 | BI_14 | BT_15 | BI_16 | \
-				 BT_17 | BI_18 | BT_19 | BI_20 | BT_21 | BI_22 | \
-				 BT_23 | BI_24 | BT_25 | BI_26 | BT_27 | BI_28 | \
-				 BT_29 | BI_30 |                                 \
-				 BT_31 | BI_32 | BT_33 | BI_34 | BT_35 | BI_36 | \
-				 BT_37 | BI_38 | BT_39 | BI_40 | BT_41 | BI_42 | \
-				 BT_43 | BI_44 | BT_45 | BI_46 | BT_47 | BI_48 | \
-				 BT_49 | BI_50 |                                 \
-				 BF_51 | BF_52 | BF_53 | BF_54 | BF_55 | BF_56 | \
-				 BF_57 | BF_58 | BF_59 | BO_60
-REGION phantom   phantom				 
-REGION void      -@mlc & -@phantom & -@ff & -@target_w & -@target_cu & -@prim_coll & -@jaws
+REGION  --name  prim_coll  --equation  PRIM_COLL & -PRIM_VOID
+REGION  --name  target_w   --equation  TARGET_W
+REGION  --name  target_cu  --equation  TARGET_CU
+REGION  --name  ff         --equation  FF
+REGION  --name  jaws       --equation  jawx1 | jawx2 | jawy1 | jawy2
+REGION  --name  mlc   	   --equation  AO_01 | AF_02 | AF_03 | AF_04 | AF_05 | AF_06 | \
+                                       AF_07 | AF_08 | AF_09 | AF_10 |                 \
+                                       AT_11 | AI_12 | AT_13 | AI_14 | AT_15 | AI_16 | \
+                                       AT_17 | AI_18 | AT_19 | AI_20 | AT_21 | AI_22 | \
+                                       AT_23 | AI_24 | AT_25 | AI_26 | AT_27 | AI_28 | \
+                                       AT_29 | AI_30 |                                 \
+                                       AT_31 | AI_32 | AT_33 | AI_34 | AT_35 | AI_36 | \
+                                       AT_37 | AI_38 | AT_39 | AI_40 | AT_41 | AI_42 | \
+                                       AT_43 | AI_44 | AT_45 | AI_46 | AT_47 | AI_48 | \
+                                       AT_49 | AI_50 |                                 \
+                                       AF_51 | AF_52 | AF_53 | AF_54 | AF_55 | AF_56 | \
+                                       AF_57 | AF_58 | AF_59 | AO_60 |                 \
+                                       BO_01 | BF_02 | BF_03 | BF_04 | BF_05 | BF_06 | \
+                                       BF_07 | BF_08 | BF_09 | BF_10 |                 \
+                                       BT_11 | BI_12 | BT_13 | BI_14 | BT_15 | BI_16 | \
+                                       BT_17 | BI_18 | BT_19 | BI_20 | BT_21 | BI_22 | \
+                                       BT_23 | BI_24 | BT_25 | BI_26 | BT_27 | BI_28 | \
+                                       BT_29 | BI_30 |                                 \
+                                       BT_31 | BI_32 | BT_33 | BI_34 | BT_35 | BI_36 | \
+                                       BT_37 | BI_38 | BT_39 | BI_40 | BT_41 | BI_42 | \
+                                       BT_43 | BI_44 | BT_45 | BI_46 | BT_47 | BI_48 | \
+                                       BT_49 | BI_50 |                                 \
+                                       BF_51 | BF_52 | BF_53 | BF_54 | BF_55 | BF_56 | \
+                                       BF_57 | BF_58 | BF_59 | BO_60
+REGION  --name  phantom    --equation  phantom				 
+REGION  --name  void       --equation  -@mlc & -@phantom & -@ff & -@target_w & -@target_cu & -@prim_coll & -@jaws

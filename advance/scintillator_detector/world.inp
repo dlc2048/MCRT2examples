@@ -3,18 +3,18 @@
 GEO_GLOBAL
 
 SURFACE_BEGIN
-    CYLINDER name=crystal    center=0,0,0      height=0,0,7.62  radius=3.81
-	CYLINDER name=cavity     center=0,0,-0.185 height=0,0,7.805 radius=3.995
-	CYLINDER name=cage       center=0,0,-0.235 height=0,0,8.155 radius=4.045
-	CYLINDER name=base       center=0,0,7.62   height=0,0,0.3   radius=3.995
-	CUBE     name=shield_out center=0,0,0      size=30.5,30.5,30.5
-	CUBE     name=shield_in  center=0,0,0      size=29.5,29.5,29.5
+    CYLINDER  --name  crystal     --center  0  0  0       --height 0    0    7.62    --radius  3.81
+	CYLINDER  --name  cavity      --center  0  0  -0.185  --height 0    0    7.805   --radius  3.995
+	CYLINDER  --name  cage        --center  0  0  -0.235  --height 0    0    8.155   --radius  4.045
+	CYLINDER  --name  base        --center  0  0  7.62    --height 0    0    0.3     --radius  3.995
+	CUBE      --name  shield_out  --center  0  0  0       --size   30.5 30.5 30.5
+	CUBE      --name  shield_in   --center  0  0  0       --size   29.5 29.5 29.5
 SURFACE_END
 
-REGION crystal    +crystal
-REGION cavity     +cavity & -crystal
-REGION cage       +cage   & -cavity & -base
-REGION base       +base
-REGION shield_cav +shield_in & -cage & -base
-REGION shield     +shield_out & -shield_in
-REGION void       -shield_out
+REGION  --name  crystal     --equation  +crystal
+REGION  --name  cavity      --equation  +cavity & -crystal
+REGION  --name  cage        --equation  +cage   & -cavity & -base
+REGION  --name  base        --equation  +base
+REGION  --name  shield_cav  --equation  +shield_in & -cage & -base
+REGION  --name  shield      --equation  +shield_out & -shield_in
+REGION  --name  void        --equation  -shield_out

@@ -27,17 +27,10 @@ head = ct[:,:,180:180+42]
 # air mask
 mask = head.mask('RFAIR')
 
-rt2_em = (
-    MeshDensity("mc_md1.mdn") +    
-    MeshDensity("mc_md2.mdn") +
-    MeshDensity("mc_md3.mdn")
-    )
+rt2_em = MeshDensity("mc_em.mdn") + 0.0  # add 0 to make read only class -> r/w
 rt2_em.data[mask] = 0
 
-rt2_ion = (
-    MeshDensity("mc_md4.mdn") +    
-    MeshDensity("mc_md5.mdn")
-    )
+rt2_ion = MeshDensity("mc_ion.mdn") + 0.0 
 rt2_ion.data[mask] = 0
 
 rt2_total = rt2_em + rt2_ion

@@ -11,6 +11,8 @@
 *.phs
 *.mdn
 *.atv
+*.den
 
 # binaries
 *.bin
+*.vxl

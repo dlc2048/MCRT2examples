@@ -1,69 +1,67 @@
-$RANGE$ 40
 
-CUDA_SETTINGS block_per_sm=128 gpu=0 block_decay_rate=0.8
+CUDA_SETTINGS  --block_per_sm  128  --gpu  0  --block_decay_rate  0.8
 
-ENTRY ebin  14.1
-ENTRY eprob 1
-ENTRY dbin  1
-ENTRY dprob 1
+ELECTRON      --transport_cutoff  0.001  --production_cutoff  0.01   --use_presta2   true 
+PHOTON        --transport_cutoff  0.001  --production_cutoff  0.001  --compton_mode  simple
+VACANCY       --transport_cutoff  0.001  --production_cutoff  0.001
+GENERIC_ION   --transport_cutoff  100    --production_cutoff  100    # no transport
 
-ELECTRON       use_presta2=1 transport_cutoff=0.001 production_cutoff=0.01
-PHOTON         transport_cutoff=0.001 production_cutoff=0.001 simple_compt=1
-VACANCY        transport_cutoff=0.001 production_cutoff=0.001
-GENERIC_ION    transport_cutoff=100   production_cutoff=100
+CUTOFF_ELECTRON  --target  tool_metal    --production_cutoff  0.23569
+CUTOFF_ELECTRON  --target  wood          --production_cutoff  0.1
+CUTOFF_ELECTRON  --target  bullet_metal  --production_cutoff  0.235186
+CUTOFF_ELECTRON  --target  strap         --production_cutoff  0.0833194
 
-CUTOFF_ELECTRON target=tool_metal   transport_cutoff=0.001 production_cutoff=0.23569
-CUTOFF_ELECTRON target=wood         transport_cutoff=0.001 production_cutoff=0.1
-CUTOFF_ELECTRON target=bullet_metal transport_cutoff=0.001 production_cutoff=0.235186
-CUTOFF_ELECTRON target=strap        transport_cutoff=0.001 production_cutoff=0.0833194
+CUTOFF_PHOTON    --target  tool_metal    --production_cutoff  0.00622775
+CUTOFF_PHOTON    --target  wood          --production_cutoff  0.001
+CUTOFF_PHOTON    --target  bullet_metal  --production_cutoff  0.0270919
+CUTOFF_PHOTON    --target  strap         --production_cutoff  0.00110339
 
-CUTOFF_PHOTON target=tool_metal   transport_cutoff=0.001 production_cutoff=0.00622775
-CUTOFF_PHOTON target=wood         transport_cutoff=0.001 production_cutoff=0.001
-CUTOFF_PHOTON target=bullet_metal transport_cutoff=0.001 production_cutoff=0.0270919
-CUTOFF_PHOTON target=strap        transport_cutoff=0.001 production_cutoff=0.00110339
+# atom alias
+$HYDROGEN$   1000
+$CARBON$     6000
+$NITROGEN$   7000
+$OXYGEN$     8000
+$SILICON$   14000
+$CROMIUM$   24000
+$MANGANESE$ 25000
+$IRON$      26000
+$TIN$       50000
+$ANTIMONY$  51000
+$LEAD$      82000
 
+COMPOUND --name  vacuum        --density  0.0   --composition  
+COMPOUND --name  tool_metal    --density  7.85  --composition  $CARBON$ 1.0    $SILICON$  0.25   $MANGANESE$ 0.35 $CROMIUM$ 1.5 $IRON$ 96.9 
+COMPOUND --name  wood          --density  0.75  --composition  $CARBON$ 50.0   $HYDROGEN$ 6.0    $OXYGEN$    44.0
+COMPOUND --name  bullet_metal  --density  10.8  --composition  $LEAD$   90.0   $TIN$      5.0    $ANTIMONY$   5.0
+COMPOUND --name  strap         --density  1.1   --composition  $CARBON$ -79.25 $OXYGEN$   -18.64 $NITROGEN$ -2.11
 
-COMPOUND vacuum     0.0    
-COMPOUND hydrogen   0.01    1001 99.985 1002 0.015
-COMPOUND carbon     2.4     6012 100.0
-COMPOUND oxygen     0.01    8016 100.0
-COMPOUND nitrogen   0.01    7014 100.0
-COMPOUND manganese  7.476  25055 100.0
-COMPOUND silicon    2.329  14028  92.2 14029   4.7 14030   3.1
-COMPOUND cromium    7.192  24050  4.34 24052  83.8 24053  9.50 24054  2.37
-COMPOUND iron       7.874  26054  5.85 26056  91.8 26057  2.12 26058  0.28
-COMPOUND tin        7.29   50112  0.97 50114  0.65 50115  0.34 50116 14.54 50117  7.68 50118 24.23  \
-						   50119  8.59 50120 32.59 50122  4.63 50124  5.79 
-COMPOUND antimony   6.694  51121  57.2 51123  42.8
-COMPOUND lead       11.348 82204  1.40 82206  24.1 82207  22.1 82208  52.4
+ASSIGN --region  rear             --compound  tool_metal
+ASSIGN --region  trigger          --compound  tool_metal
+ASSIGN --region  barrel           --compound  tool_metal
+ASSIGN --region  receiver         --compound  tool_metal
+ASSIGN --region  body             --compound  wood
+ASSIGN --region  catridge_bullet  --compound  bullet_metal
+ASSIGN --region  catridge_case    --compound  tool_metal
+ASSIGN --region  buckel_metal     --compound  tool_metal
+ASSIGN --region  strap            --compound  strap
+ASSIGN --region  void             --compound  vacuum
 
-COMPOUND tool_metal   7.85  carbon 1.0  silicon  0.25 manganese 0.35 cromium 1.5 iron 96.9 
-COMPOUND wood         0.75  carbon 50.0 hydrogen 6.0  oxygen    44.0
-COMPOUND bullet_metal 10.8  lead   90.0 tin      5.0  antimony   5.0
-COMPOUND strap        1.1   carbon -79.25 oxygen -18.64 nitrogen -2.11
+BEAM_GLOBAL  --mode  macro  --nps  1e10
 
-ASSIGN region=rear             compound=tool_metal
-ASSIGN region=trigger          compound=tool_metal
-ASSIGN region=barrel           compound=tool_metal
-ASSIGN region=receiver         compound=tool_metal
-ASSIGN region=body             compound=wood
-ASSIGN region=catridge_bullet  compound=bullet_metal
-ASSIGN region=catridge_case    compound=tool_metal
-ASSIGN region=buckel_metal     compound=tool_metal
-ASSIGN region=strap            compound=strap
-ASSIGN region=void             compound=vacuum
-
-BEAM_GLOBAL mode=macro nps=1e10
-
-BEAM_CUBIC    name=beam             \
-              pid=6                 \
-              position=-10,0,0      \ 
-              size=120,30,0         \
-              type=linear           \
-              weight=1              \
-              direction=1,0,0       \
-              energy=ebin,eprob     \
-              divergence=dbin,dprob
-			  
-MESH_TRACK   name=image pid=6 xrange=9.9,10.1 yrange=-15,15 zrange=-60,60 \
-             nx=1  ny=300  nz=1200  escale=linear erange=0,20 ne=1
+BEAM_CUBIC    --name      beam        \
+              --part      neutron     \
+              --position  -10 0  0    \ 
+              --size      120 30 0    \
+              --type      linear      \
+              --weight    1           \
+              --direction 1   0  0    \
+              --ebin      14.1        \  # 14.1 MeV D-T generator
+              --eprob     1           \
+              --dbin      1           \
+              --dprob     1
+              
+MESH_TRACK    --name   image    --part   neutron \
+              --xrange 9.9 10.1 --nx     1       \
+              --yrange -15 15   --ny     300     \
+              --zrange -60 60   --nz     1200    \
+              --escale linear   --erange 0   20.0    --ne   1

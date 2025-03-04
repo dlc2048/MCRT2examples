@@ -10,8 +10,8 @@ from rt2.scoring import MeshDensity, MeshTrack
 def replicate(pos: np.ndarray, vec: np.ndarray):
     origin = open('interact_base.inp')
     out    = open('interact_child.inp', mode='w')
-    out.write('$POS$  {},{},{}\n'.format(pos[0], pos[1], pos[2]))
-    out.write('$DIR$  {},{},{}\n'.format(vec[0], vec[1], vec[2]))
+    out.write('$POS$  {}  {}  {}\n'.format(pos[0], pos[1], pos[2]))
+    out.write('$DIR$  {}  {}  {}\n'.format(vec[0], vec[1], vec[2]))
     for line in origin:
         out.write(line)
     out.close()
@@ -75,9 +75,7 @@ for deg in range(0, 360, 30):
             break
     
     # get result
-    depo = (MeshDensity('mc_depo_elect.mdn') +
-            MeshDensity('mc_depo_gamma.mdn') +
-            MeshDensity('mc_depo_posit.mdn'))
+    depo = MeshDensity('mc_depo.mdn')
 
     flux = MeshTrack('mc_xray.mtr')
 

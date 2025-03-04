@@ -35,7 +35,7 @@ plt.show()
 
 levels = [10, 20, 30, 40, 50, 60, 70, 80, 90]
 
-depo = MeshDensity('mc_depo_elect.mdn') + MeshDensity('mc_depo_gamma.mdn')
+depo = MeshDensity('mc_depo.mdn')
 img  = np.transpose(depo.data[50])
 img  = img / np.max(img) * 100
 
